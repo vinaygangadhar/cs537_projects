@@ -1,0 +1,13 @@
+build - build project using make
+arg - bad arguments
+arg2 - bad arguments
+badin - bad input file
+badout - bad output file
+empty - empty input file
+one - a single record
+five1 - five records
+five2 - five records
+medium - 100 records
+large - 10k records
+verylarge - 100k records
+dup - duplicate records

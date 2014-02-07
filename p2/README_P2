@@ -1,0 +1,20 @@
+Use strtok - To split the str to tokens
+
+
+Notes:
+
+Fork():	- OS creates a copy(child) of the calling (parent) process's address space
+				- Child process runs the same code as parent immediately after the fork call
+				- Child process returns a 0 when it returns
+				- When the aprent returns it returns the pid
+
+				- To implement background process, parse & and make sure parent doesn't wait for child to exit and child keeps running
+
+
+FD: 	- Index into OS table of open files
+			- By default, when any process is created 3 automatic file descriptors [STDIN, STDOUT, STDERR]
+			- Redirection -> Close the actual stdout and open a new file and the new file fd will get that location of stdout closed
+			- So when printf tries to print it prints to stdout, but now the stdout(=1) is the redirected fd of the file
+
+
+
