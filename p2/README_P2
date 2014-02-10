@@ -17,4 +17,9 @@ FD: 	- Index into OS table of open files
 			- So when printf tries to print it prints to stdout, but now the stdout(=1) is the redirected fd of the file
 
 
-
+Built in Commands: - Once you get the command, (interactive or batch), parse the command and check following:
+													- Whether the entire command exceeds 512 bytes including carriage return
+													- If command has only carriage return and call arg_check again
+													- check the arg[0] of command and it should match with the built-in commands, if not throw an error
+													- The options also must be parsed to correctness
+													- If options has char '&', then work on getting it run in background
