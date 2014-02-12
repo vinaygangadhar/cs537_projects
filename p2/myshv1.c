@@ -13,6 +13,7 @@ struct command {
 	char* type;
 	char command[max_char];
 	char* eargv[max_args];
+	int opt_cnt;
 	int cmd_flag;
 };
 
@@ -41,6 +42,7 @@ struct command* sh_prompt(struct command* cmd){
 
 	//Command length checker
   unsigned int cmd_ln = ((unsigned) strlen(cmd->command)) - 1;
+	printf("Command length is %u\n", cmd_ln);
 	if ((cmd_ln) > 512) error();
 
 	return (cmd);
@@ -50,7 +52,7 @@ struct command* sh_prompt(struct command* cmd){
 /* Command Tokenizer and Parser */
 struct command* cmd_parse(struct command* cmd){
 	char* token;
-	int opt_cnt = 0;
+	int cnt = 0;
 
 	printf ("Command entered is %s\n", cmd->command);
 	char delims[] = " >&\t\r\n\v";
@@ -60,33 +62,36 @@ struct command* cmd_parse(struct command* cmd){
 	while(token != NULL)
 	{
 		printf("%s\n", token);
-	 	cmd->eargv[opt_cnt] = token;
+	 	cmd->eargv[cnt] = token;
 		token = strtok(NULL, delims);
-		opt_cnt++;
+		cnt++;
 	}
-	cmd->eargv[opt_cnt] = NULL;
-	
-	printf("Number of Tokens: %d\n", opt_cnt);
+	cmd->eargv[cnt] = NULL;
+	cmd->opt_cnt = cnt;
+
+	printf("Number of Tokens: %d\n", cmd->opt_cnt);
 
 	//Check for special characters- if > or & present enable 2 flags
 
 
 	// Parser //
-	char* cmd_args[4] = { "exit", "pwd", "cd", "wait" };
-	int n;
-	cmd->cmd_flag = 0;
+	if(cmd->opt_cnt != 0){
+		char* cmd_args[4] = { "exit", "pwd", "cd", "wait" };
+		int n;
+		cmd->cmd_flag = 0;
 
-	for(n = 0; n < 4; n++)
-	{
-		//printf("Comparing the entered command: %s with command: %s\n", cmd->eargv[0], cmd_args[n]);
+		for(n = 0; n < 4; n++)
+		{
+			//printf("Comparing the entered command: %s with command: %s\n", cmd->eargv[0], cmd_args[n]);
 		
-		//Compare upto 4 characters
-		if (strncmp (cmd_args[n], cmd->eargv[0], 4) == 0){
-			cmd->type = cmd->eargv[0];
-			cmd->cmd_flag = 1;
-			printf("Entered command is %s and Found command is %s\nSetting cmd_flag = %d\n", cmd->type, cmd_args[n], cmd->cmd_flag);
+			//Compare upto 4 characters
+			if (strncmp (cmd_args[n], cmd->eargv[0], 4) == 0){
+				cmd->type = cmd->eargv[0];
+				cmd->cmd_flag = 1;
+				printf("Entered command is %s and Found command is %s\nSetting cmd_flag = %d\n", cmd->type, cmd_args[n], cmd->cmd_flag);
+			}
+		
 		}
-		
 	}
 	
 	return (cmd);
@@ -132,16 +137,18 @@ int shell_mode(){
 		cmd = cmd_parse(cmd);
 		
 		//If no command is found in exec_args[0] then wrong command is entered
-		if(cmd->cmd_flag == 0)
-			error();
-		else if( strcmp(cmd->type, "exit") == 0){
-			exit(0);
-		}
-		else{
-			//If command present, then parse the options
-			int ret_e = exec_cmd(cmd);
-			if (ret_e != 0)
+		if(cmd->opt_cnt != 0){
+			if(cmd->cmd_flag == 0)
 				error();
+			else if( strcmp(cmd->type, "exit") == 0){
+				exit(0);
+			}
+			else{
+				//If command present, then parse the options
+				int ret_e = exec_cmd(cmd);
+				if (ret_e != 0)
+					error();
+			}
 		}
 
 	}
