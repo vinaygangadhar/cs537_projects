@@ -17,11 +17,17 @@ struct command {
 	int cmd_flag;
 };
 
-/* Error Function for all the errors */
-void error(){
+/* Error Function for incorrect arguments */
+void exit_error(){
 	char error_message[30] = "An error has occurred\n";
 	write(STDERR_FILENO, error_message, strlen(error_message));
 	exit(1);
+}
+
+/* Error Function for all the others errors */
+void error(){
+	char error_message[30] = "An error has occurred\n";
+	write(STDERR_FILENO, error_message, strlen(error_message));
 }
 
 /* Argument checker Function */
@@ -169,7 +175,7 @@ int main (int argc, char* argv[]){
 
 	//Check foe execution mode
 	if(exec_flag < 0)
-		error();
+		exit_error();
 
 	else if (exec_flag == 0) {
 		//Call interactive mode shell
