@@ -1,3 +1,5 @@
+//Linux
+
 Use strtok - To split the str to tokens
 
 
@@ -23,3 +25,45 @@ Built in Commands: - Once you get the command, (interactive or batch), parse the
 													- check the arg[0] of command and it should match with the built-in commands, if not throw an error
 													- The options also must be parsed to correctness
 													- If options has char '&', then work on getting it run in background
+
+
+//XV6
+
+Scheduling project
+
+
+MLFQ- every process has a priority level 
+		- High priority - process assigned at start
+		- low priority 	- set after one time slice
+										- run for 2 consecutive slice before descheduling
+
+
+Lottery scheduler 	- Proportional share 
+												- assign fraction of tickets to a process run
+												- look at fraction of the time slices used by process 
+										- Assign tickets to each process
+										- hold random lottery 
+										- schedule the process holding winning ticket
+										
+										- Implement a random number generator
+										- Implement a system call called "settickets"
+										- Also implement "getpinfo" to get info of each process
+										- Draw a graph to show how lottery scheduler is implmented
+												
+
+
+										|
+										|
+										|      /
+										|     /
+										|		 /
+										|		/
+										|	 /
+										| /
+										----------------------
+
+										- Add state of the process in struct proc
+										- Add allotted tickets in strcut proc
+										- Track the status i.e priority level of each process and then schedule
+
+
