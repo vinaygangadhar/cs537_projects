@@ -2,10 +2,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <fcntl.h>
 #include <sys/wait.h>
 #include <sys/types.h>
 
-//#define DEBUG
+#define DEBUG
 
 /* Some common varibles and declarations */
 enum { max_char = 514, max_args = 5 };
@@ -17,9 +18,9 @@ struct command {
 	char* eargv[max_args];
 	int opt_cnt;
 	int cmd_flag;
-	int redirect;
-	char* redir_file;
-	int bak;
+	int err_flag;
+	int red_t;
+	int bak_t;
 };
 
 /* Error Function for incorrect arguments */
@@ -65,77 +66,100 @@ struct command* sh_prompt(struct command* cmd){
 
 /* Command Tokenizer and Parser */
 struct command* cmd_parse(struct command* cmd){
-	char *token, *sub_char;
+	char *token;
 	int cnt = 0;
+	
+	#ifdef DEBUG
+		printf ("Command entered is %s\n", cmd->command);
+	#endif
 
-	printf ("Command entered is %s\n", cmd->command);
+	char delims[] = " >&\t\r\n\v";
 
-	char delims[] = " \t\r\n\v";
-  char symbols[] = " >";
 
+	//Get the special characters count
+	char *sym1, *sym2;
+	int cnt1 = 0, cnt2 = 0;
+
+	sym1 = strchr(cmd->command, '>');
+	while(sym1 != NULL){
+		cnt1++;
+		sym1 = strchr(sym1+1, '>');
+	}
+	if(cnt1 > 1) cmd->err_flag = 1;
+	else if(cnt1 == 1) cmd->red_t = 1;
+
+	sym2 = strchr(cmd->command, '&');
+	while(sym2 != NULL){
+		cnt2++;
+		sym2 = strchr(sym2+1, '&');
+	}
+	if(cnt2 > 1) cmd->err_flag = 1;
+  else if(cnt2 == 1) cmd->bak_t = 1;	
+	
+	#ifdef DEBUG
+		printf("Count of >: %d, Count of &: %d\n", cnt1, cnt2);
+	#endif
+	
 	//Get the commands and store in exec_args
+
 	token = strtok(cmd->command, delims);
 	while(token != NULL)
 	{
-			sub_char = strchr(token, '>');  //Parse for '>'
-			
-			if( (sub_char != NULL) && (*sub_char == '>') ){
-					printf("Found > at: %d\n", sub_char-token);
-
-					token[sub_char-token] = ' ';
-					token = strtok(token, delims);
-					printf("TOKEN Found: %s\n", token);
-					cmd->eargv[cnt] = token;
-					cnt++;
-					
-					token = strtok(NULL, delims);
-					if(token != NULL){
-							printf("Redirect File: %s\n", token);
-							cmd->redirect = 1;
-							cmd->redir_file = token;
-					}
-					else printf("redirect file not specified\n");
-			}
-			else{
-					printf("TOKEN Found: %s\n", token);
-					cmd->eargv[cnt] = token;
-					token = strtok(NULL, delims);
-					cnt++;
-			}
-
-	}
-
-	cmd->eargv[cnt] = NULL;
-	cmd->opt_cnt = cnt;
-
-	printf("Number of Tokens: %d\n", cmd->opt_cnt);
+		#ifdef DEBUG
+			printf("Token is: %s\n", token);
+		#endif
 	
-	// Parser //
-	if(cmd->opt_cnt != 0){
-		char* cmd_args[4] = { "exit", "pwd", "cd", "wait" };
-		int n;
-		cmd->cmd_flag = 0;
-
-		for(n = 0; n < 4; n++)
-		{
-			//printf("Comparing the entered command: %s with command: %s\n", cmd->eargv[0], cmd_args[n]);
-		
-			//Compare upto 4 characters
-			if (strncmp (cmd_args[n], cmd->eargv[0], 4) == 0){
-				cmd->type = cmd->eargv[0];
-				cmd->cmd_flag = 1;
-				printf("Entered command is %s and Found command is %s\nSetting cmd_flag = %d\n", cmd->type, cmd_args[n], cmd->cmd_flag);
-			}
-		
-		}
+		cmd->eargv[cnt] = token;	
+		token = strtok(NULL, delims);
+		cnt++;
 	}
+
+		cmd->eargv[cnt] = NULL;
+		cmd->opt_cnt = cnt;
+
+		#ifdef DEBUG
+			printf("Number of Tokens: %d\n", cmd->opt_cnt);
+		#endif
+
+		// Parser //
+		if(cmd->opt_cnt != 0){
+			char* cmd_args[5] = { "exit", "pwd", "cd", "wait", "ls" };
+			int n;
+
+			for(n = 0; n < 5; n++)
+			{
+				#ifdef DEBUG
+					printf("Comparing the entered command: %s with command: %s\n", cmd->eargv[0], cmd_args[n]);
+				#endif
+
+				//Compare upto 4 characters
+				if (strncmp (cmd_args[n], cmd->eargv[0], 4) == 0){
+					cmd->type = cmd->eargv[0];
+					cmd->cmd_flag = 1;
+					
+					#ifdef DEBUG
+						printf("Entered command is %s and Found command is %s\nSetting cmd_flag = %d\n", cmd->type, cmd_args[n], cmd->cmd_flag);
+					#endif
+				}
+		
+			}
+
+			if( strstr(cmd->eargv[0], ".py")){
+					cmd->type = ".py";
+					cmd->cmd_flag = 1;
+
+					#ifdef DEBUG
+						printf("Entered command is %s and Found command is %s\nSetting cmd_flag = %d\n", cmd->eargv[0], cmd->type , cmd->cmd_flag);
+					#endif
+			}
+
+		}	
 
 	return (cmd);
 }
 
 /* Process creation and execution */
-
-int exec_cmd(struct command* runcmd){
+int exec_cmd(struct command* cmd){
 	int cpid  = fork();
 
 	if(cpid < 0)
@@ -145,16 +169,117 @@ int exec_cmd(struct command* runcmd){
 		#ifdef DEBUG
 			printf("I'm the child process with PID = %d with cpid = %d\n", (int) getpid(), cpid);
 		#endif
+		
+		// Command pwd	
+		if(strcmp(cmd->type, "pwd") == 0 ){
+		
+			struct command temp;
+			temp = *cmd;
 
-		if(strcmp(runcmd->type, "pwd") == 0 ){
-			execvp(runcmd->type, runcmd->eargv);
+			#ifdef DEBUG
+				printf("Command params- Type : %s, opt_cnt: %d, cmd_flag: %d, err_flag: %d, red_t: %d, bak_t: %d\n", temp.type, temp.opt_cnt, temp.cmd_flag, temp.err_flag, temp.red_t, temp.bak_t);
+			#endif
+			
+				if(((temp.opt_cnt == 1) && (temp.red_t ==1)) || (temp.opt_cnt > 2)) return (-1);
+				else{ 
+				
+					if(temp.red_t == 1){
+						int close_rc = close (STDOUT_FILENO);
+						if(close_rc < 0) return(-1);
+
+						int new_fd = open(temp.eargv[1], O_RDWR | O_TRUNC | O_CREAT, S_IRWXU);
+						if(new_fd < 0) return (-1);
+							temp.eargv[1] = NULL;
+					}
+				
+					execvp(temp.type, temp.eargv);
+				}
 		}
+
+		// Command cd	
+		else if(strcmp(cmd->type, "cd") == 0 ){
+		
+			struct command temp;
+			temp = *cmd;
+
+			#ifdef DEBUG
+				printf("Command params- Type : %s, opt_cnt: %d, cmd_flag: %d, err_flag: %d, red_t: %d, bak_t: %d\n", temp.type, temp.opt_cnt, temp.cmd_flag, temp.err_flag, temp.red_t, temp.bak_t);
+			#endif
+			
+				if(((temp.opt_cnt <= 2 ) && (temp.red_t ==1)) || (temp.opt_cnt > 3)) return (-1);
+				else{ 
+				
+					if(temp.red_t == 1){
+						int close_rc = close (STDOUT_FILENO);
+						if(close_rc < 0) return(-1);
+
+						int new_fd = open(temp.eargv[1], O_RDWR | O_TRUNC | O_CREAT, S_IRWXU);
+						if(new_fd < 0) return (-1);
+						temp.eargv[1] = NULL;
+					}
+			
+					if(temp.opt_cnt == 1){
+						char* home = getenv("HOME");
+						int ret_c =	chdir(home);
+						if(ret_c < 0) return (-1);
+					}
+					else{
+						int ret_c = chdir(temp.eargv[1]);
+						if(ret_c < 0) return(-1);
+					}
+
+				}
+		}
+
+		// Command ls	
+		else if(strcmp(cmd->type, "ls") == 0 ){
+		
+			struct command temp;
+			temp = *cmd;
+
+			#ifdef DEBUG
+				printf("Command params- Type : %s, opt_cnt: %d, cmd_flag: %d, err_flag: %d, red_t: %d, bak_t: %d\n", temp.type, temp.opt_cnt, temp.cmd_flag, temp.err_flag, temp.red_t, temp.bak_t);
+			#endif
+			
+
+				if(((temp.opt_cnt == 1) && (temp.red_t ==1)) || (temp.opt_cnt > 2)) return (-1);
+				else{ 
+				
+					if(temp.red_t == 1){
+						int close_rc = close (STDOUT_FILENO);
+						if(close_rc < 0) return(-1);
+
+						int new_fd = open(temp.eargv[1], O_RDWR | O_TRUNC | O_CREAT, S_IRWXU);
+						if(new_fd < 0) return (-1);
+							temp.eargv[1] = NULL;
+					}
+				
+					execvp(temp.type, temp.eargv);
+				}
+		}
+
+		//Python interpreter
+		else if(strcmp(cmd->type, ".py") == 0 ){
+		
+			struct command temp;
+			temp = *cmd;
+
+			#ifdef DEBUG
+				printf("Command params- Type : %s, opt_cnt: %d, cmd_flag: %d, err_flag: %d, red_t: %d, bak_t: %d\n", temp.type, temp.opt_cnt, temp.cmd_flag, temp.err_flag, temp.red_t, temp.bak_t);
+			#endif
+						
+					temp.eargv[1] = temp.eargv[0];
+					temp.eargv[2] = NULL;
+					execvp("/usr/bin/python", temp.eargv);
+				}
+	
 	}
 
 	else{
-		int wc = wait(NULL);
+		 if(cmd->bak_t != 1)	wait(NULL);
+		
 		#ifdef DEBUG
-			printf("I'm the parent process of child cpid: %d with PID = %d and waited till %d finished\n", cpid, (int) getpid(), wc);
+			printf("I'm the parent process of child cpid: %d with PID = %d\n", cpid, (int) getpid());
 		#endif	
 	}
 
@@ -178,17 +303,19 @@ int shell_mode(){
 		
 		//If eargv[0] is NULL, then no command is entered and its just \n
 		if(cmd->opt_cnt != 0){
-			if(cmd->cmd_flag == 0){ 
-				//If entered command is not found and matched, then wrong command is entered
-				error();
+
+			if((cmd->cmd_flag == 0) || (cmd->err_flag == 1)){ 
+				error(); //If entered command is not found and matched, then wrong command is entered or if the error_flag is set
 			}
 			else if( strcmp(cmd->type, "exit") == 0){
 				exit(0);
 			}
 			else{
-				int ret_e = exec_cmd(cmd);
+/**/				
+ 				int ret_e = exec_cmd(cmd);
 				if(ret_e != 0) 
 					error();
+/**/
 			}
 		}
 
