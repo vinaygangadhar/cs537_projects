@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
     // Open a new file
     // This new file will be assigned the smallest available descriptor, which
     // will equal STDOUT_FILENO, which we made available using close()
-    int fd = open("redirected_output.txt", O_RDWR | O_TRUNC | O_CREAT, S_IRWXU);
+    int fd = open("redir.txt", O_RDWR | O_TRUNC | O_CREAT, S_IRWXU);
     if (fd < 0) {
       perror("open");
       exit(1);

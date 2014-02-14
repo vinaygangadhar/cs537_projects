@@ -3,7 +3,9 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/wait.h>
+#include <sys/types.h>
 
+//#define DEBUG
 
 /* Some common varibles and declarations */
 enum { max_char = 514, max_args = 5 };
@@ -15,6 +17,9 @@ struct command {
 	char* eargv[max_args];
 	int opt_cnt;
 	int cmd_flag;
+	int redirect;
+	char* redir_file;
+	int bak;
 };
 
 /* Error Function for incorrect arguments */
@@ -48,38 +53,63 @@ struct command* sh_prompt(struct command* cmd){
 
 	//Command length checker
   unsigned int cmd_ln = ((unsigned) strlen(cmd->command)) - 1;
-	printf("Command length is %u\n", cmd_ln);
-	if ((cmd_ln) > 512) error();
+	
+	#ifdef DEBUG
+		printf("Command length is %u\n", cmd_ln);
+	#endif
 
+	if ((cmd_ln) > 512) error();
 	return (cmd);
 }
 
 
 /* Command Tokenizer and Parser */
 struct command* cmd_parse(struct command* cmd){
-	char* token;
+	char *token, *sub_char;
 	int cnt = 0;
 
 	printf ("Command entered is %s\n", cmd->command);
-	char delims[] = " >&\t\r\n\v";
+
+	char delims[] = " \t\r\n\v";
+  char symbols[] = " >";
 
 	//Get the commands and store in exec_args
 	token = strtok(cmd->command, delims);
 	while(token != NULL)
 	{
-		printf("%s\n", token);
-	 	cmd->eargv[cnt] = token;
-		token = strtok(NULL, delims);
-		cnt++;
+			sub_char = strchr(token, '>');  //Parse for '>'
+			
+			if( (sub_char != NULL) && (*sub_char == '>') ){
+					printf("Found > at: %d\n", sub_char-token);
+
+					token[sub_char-token] = ' ';
+					token = strtok(token, delims);
+					printf("TOKEN Found: %s\n", token);
+					cmd->eargv[cnt] = token;
+					cnt++;
+					
+					token = strtok(NULL, delims);
+					if(token != NULL){
+							printf("Redirect File: %s\n", token);
+							cmd->redirect = 1;
+							cmd->redir_file = token;
+					}
+					else printf("redirect file not specified\n");
+			}
+			else{
+					printf("TOKEN Found: %s\n", token);
+					cmd->eargv[cnt] = token;
+					token = strtok(NULL, delims);
+					cnt++;
+			}
+
 	}
+
 	cmd->eargv[cnt] = NULL;
 	cmd->opt_cnt = cnt;
 
 	printf("Number of Tokens: %d\n", cmd->opt_cnt);
-
-	//Check for special characters- if > or & present enable 2 flags
-
-
+	
 	// Parser //
 	if(cmd->opt_cnt != 0){
 		char* cmd_args[4] = { "exit", "pwd", "cd", "wait" };
@@ -99,29 +129,33 @@ struct command* cmd_parse(struct command* cmd){
 		
 		}
 	}
-	
+
 	return (cmd);
 }
 
 /* Process creation and execution */
 
-int exec_cmd(struct command* cmd){
-	int rc = fork();
+int exec_cmd(struct command* runcmd){
+	int cpid  = fork();
 
-	if(rc < 0)
+	if(cpid < 0)
 		error();
 
-	else if(rc == 0){
-		printf("I'm the child process with PID = %d with rc = %d\n", (int) getpid(), rc);
+	else if(cpid == 0){
+		#ifdef DEBUG
+			printf("I'm the child process with PID = %d with cpid = %d\n", (int) getpid(), cpid);
+		#endif
 
-		if(strcmp(cmd->type, "pwd") == 0 ){
-			execvp(cmd->type, cmd->eargv);
+		if(strcmp(runcmd->type, "pwd") == 0 ){
+			execvp(runcmd->type, runcmd->eargv);
 		}
 	}
 
 	else{
-	int wc = wait(NULL);
-		printf("I'm the parent process of child rc: %d with PID = %d and waited till %d finished\n", rc, (int) getpid(), wc);
+		int wc = wait(NULL);
+		#ifdef DEBUG
+			printf("I'm the parent process of child cpid: %d with PID = %d and waited till %d finished\n", cpid, (int) getpid(), wc);
+		#endif	
 	}
 
 	return 0;
@@ -130,35 +164,35 @@ int exec_cmd(struct command* cmd){
 
 /* Shell Mode */
 int shell_mode(){
-	//Call interactive mode shell
-		
-	struct command execcmd;
-	struct command* cmd = &execcmd;
-
+  
 	//Print the shell prompt, accept the command and check for the length
-	while(1){   //strcmp(cmd->type, "exit") != 0
+	while(1){ 
+		
+		struct command execcmd = {0};
+		struct command* cmd = &execcmd;
+
 		cmd = sh_prompt(cmd);
 
 		//If command length is correct, tokenize and parse the commands
 		cmd = cmd_parse(cmd);
 		
-		//If no command is found in exec_args[0] then wrong command is entered
+		//If eargv[0] is NULL, then no command is entered and its just \n
 		if(cmd->opt_cnt != 0){
-			if(cmd->cmd_flag == 0)
+			if(cmd->cmd_flag == 0){ 
+				//If entered command is not found and matched, then wrong command is entered
 				error();
+			}
 			else if( strcmp(cmd->type, "exit") == 0){
 				exit(0);
 			}
 			else{
-				//If command present, then parse the options
 				int ret_e = exec_cmd(cmd);
-				if (ret_e != 0)
+				if(ret_e != 0) 
 					error();
 			}
 		}
 
 	}
-
 	return 0;
 }
 
@@ -178,16 +212,20 @@ int main (int argc, char* argv[]){
 		exit_error();
 
 	else if (exec_flag == 0) {
-		//Call interactive mode shell
-		printf ("Entering shell mode\n");
+		#ifdef DEBUG
+			printf ("Entering shell mode\n"); //Call interactive mode shell
+		#endif
+		
 		int ret_s = shell_mode();
 		if (ret_s != 0)
 			error();
 	}
 
 	else {
-		printf ("Entering batch mode\n");
-		
+		#ifdef DEBUG
+			printf ("Entering batch mode\n");  //Call batch mode
+		#endif
+
 		char* batch_file = argv[1];
 		int ret_b = batch_mode(batch_file);
 		if (ret_b != 0)
