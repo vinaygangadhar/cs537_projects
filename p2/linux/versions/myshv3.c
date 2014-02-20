@@ -6,7 +6,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
-#define DEBUG
+//#define DEBUG
 
 /* Some common varibles and declarations */
 enum { max_char = 514, max_args = 5 };
@@ -95,7 +95,8 @@ struct command* cmd_parse(struct command* cmd){
 	}
 	if(cnt2 > 1) cmd->err_flag = 1;
   else if(cnt2 == 1) cmd->bak_t = 1;	
-	
+	//> and & count parsing done
+
 	#ifdef DEBUG
 		printf("Count of >: %d, Count of &: %d\n", cnt1, cnt2);
 	#endif
@@ -103,6 +104,7 @@ struct command* cmd_parse(struct command* cmd){
 	//Get the commands and store in exec_args
 
 	token = strtok(cmd->command, delims);
+
 	while(token != NULL)
 	{
 		#ifdef DEBUG
@@ -311,11 +313,9 @@ int shell_mode(){
 				exit(0);
 			}
 			else{
-/**/				
  				int ret_e = exec_cmd(cmd);
 				if(ret_e != 0) 
 					error();
-/**/
 			}
 		}
 

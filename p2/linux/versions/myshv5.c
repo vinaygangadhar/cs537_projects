@@ -503,8 +503,9 @@ int exec_cmd(struct command* cmd)
 			#endif
 			cmd->bak_t = 0;
 		}
-	}
 
+	}
+	
 	return 0;
 }
 

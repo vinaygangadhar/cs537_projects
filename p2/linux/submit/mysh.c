@@ -6,7 +6,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
-#define DEBUG
+//#define DEBUG
 
 /* Some common varibles and declarations */
 enum { max_char = 1000, max_args = 20 };
