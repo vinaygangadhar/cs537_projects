@@ -5,6 +5,7 @@
 #include <fcntl.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <errno.h>
 
 //#define DEBUG
 
@@ -642,7 +643,9 @@ int shell_mode(struct command* cmd)
 							}
 							
 							//wait for all the background jobs to complete
-							waitpid(-1, NULL , 0);
+							while(waitpid(-1, NULL , 0)){
+								if(errno == ECHILD) break;
+							}
 						}
 
 						//Call Exec_cmd

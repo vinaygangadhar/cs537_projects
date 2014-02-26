@@ -1,0 +1,31 @@
+starting build
+
+**********************************************************************
+
+Test build
+build project using make
+
+**********************************************************************
+Trying to clean project using make clean
+make clean
+rm -f runtests
+rm -f *.pyc
+Trying to build project using make
+make
+echo "#!/bin/bash" > runtests
+echo "base=/tmp/tmp2aO43C/p" >> runtests
+echo "python \$base/project2a.py --test-path \$base \$@"\
+		" | tee runtests.log" >> runtests
+echo "exit \$?" >> runtests
+chmod a+x runtests
+gcc -o mysh mysh.c
+gcc: mysh.c: No such file or directory
+gcc: no input files
+
+
+test build FAILED
+ (build project using make)
+ required file 'mysh' does not exist after make
+
+Skipped 34 tests.
+To keep testing after failing a test, use flag '-c' or '--continue'

@@ -8,8 +8,6 @@
 #include "pstat.h"
 #include "param.h"
 
-#define N 10
-
 struct pstat p_stat;
 struct pstat* pt = &p_stat;
 
@@ -22,7 +20,6 @@ spin() {
       }
    }
 }
-
 int
 main(int argc, char **argv)
 {
@@ -37,24 +34,17 @@ main(int argc, char **argv)
 	}
 	*/
 
-	 struct p_info
-	 {
-		 int pids;
-		 int tk;
-	 };
-
-	 struct p_info p_table[N];
-
-	 int i,r,j,k;
+   int pids[10];
+	 int i,r,j;
 	 int ppid = getpid();
-  
-	 for(i = 0; i < N; i++)
+		printf(1,"Setting tickets:");
+   for(i=0; i<10; i++)
 	 {
-		p_table[i].pids = fork();
-		if (p_table[i].pids == 0) 
+		pids[i] = fork();
+		if (pids[i] == 0) 
 		{
-			p_table[i].tk = i * N + N;
-      r = settickets(i * N + N);
+      r = settickets(i*10+10);
+			printf(1,"%d ",(i*10+10));
       if (r != 0) 
 			{
          printf(1, "settickets failed");
@@ -63,28 +53,27 @@ main(int argc, char **argv)
       spin();
 		}
 	 }
-	 //sleep(10);
+	 
+		printf(1,"Wait started");
+	 sleep(100);
+		printf(1,"Wait ended");
 
 	 int lticks[10] ;
 	 int hticks[10];
    struct pstat st;
-	 getpinfo(&st);	
 
-	
-   for(k = 0; i < NPROC; k++)
-	 {
-      for(j = 0; j < N; j++)
-			{
-         if (st.inuse[i] && (st.pid[i] == p_table[j].pids)) {
-					  lticks[j] = st.lticks[i];
+   for(i = 0; i < NPROC; i++) {
+      for(j = 0; j < 10; j++) {
+         if (st.inuse[i] && st.pid[i] == pids[j]) {
+            lticks[j] = st.lticks[i];
             hticks[j] = st.hticks[i];
-						printf(1,"pid: %d\t tickets: %d\t ltick: %d\t hticks: %d\n",p_table[j].pids, p_table[j].tk, hticks[j], lticks[j]);
+						printf(1," %d\t %d\n",lticks[j], hticks[j]);
          }
       }
    }
 
-   for (i = 0; i < N; i++) {
-      kill(p_table[i].pids);
+   for (i = 0; i < 10; i++) {
+      kill(pids[i]);
       wait();
    }
 	 exit();
