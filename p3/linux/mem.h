@@ -19,6 +19,9 @@ extern int m_error;
 // routines
 int Mem_Init(int sizeOfRegion);
 void *Mem_Alloc(int size, int style);
+int Mem_Free(void *ptr);
+void Mem_Dump();
 
-#endif  __mem_h__
+#endif // __mem_h__
+
 
