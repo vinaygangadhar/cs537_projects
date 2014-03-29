@@ -10,6 +10,7 @@
 #define FILEPATH "/dev/zero"
 
 volatile int mem_call = 0;
+int m_error;
 
 //Mem_init
 int Mem_Init(int sizeOfRegion)
@@ -27,12 +28,12 @@ int Mem_Init(int sizeOfRegion)
 	int pg_div = (int) sizeOfRegion / pg_sz;
 
 	if(!pg_div)
-		round_size = pg_sz;
+		round_sz = pg_sz;
 	else 
-		int round_sz = sizeOfregion % getpagesize();
+		round_sz = (int) (sizeOfRegion % getpagesize());
 
 	#ifdef DEBUG
-		printf("page size: %d\n", pg_size);
+		printf("page size: %d\n", pg_sz);
 	#endif
 	
 	//Open a file for mapping

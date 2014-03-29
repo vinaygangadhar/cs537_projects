@@ -5,5 +5,6 @@
 int main(int argc, char** argv)
 {
 	printf("page size: %d\n", getpagesize());
+
 	return 0;
 }

@@ -12,10 +12,10 @@ Ex: 4k mem_init
 
 	- Each free list node will have a pointer to next free list node
 
-	- struct __node_t {
+	- typedef struct __node_t {
 			int size;
 			struct __node_t* next;
-		}
+		} node_t;
 	
 	- You need to incorporate all the free list of nodes of memory in mem_init function -> Embedded free list
 
@@ -36,4 +36,7 @@ Ex: 4k mem_init
 					int magic;
 				} header_t;
 
-		 
+	- Make sure the header space is also considered for free list
+
+	- Use best-fit policy to search the free list to find the smallest free region large enough to satisfy request
+			- Choose the first entry in case of a tie
