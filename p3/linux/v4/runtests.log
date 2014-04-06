@@ -1,0 +1,1486 @@
+starting build
+
+**********************************************************************
+
+Test build
+build project using make
+
+**********************************************************************
+Trying to clean project using make clean
+make clean
+rm -f *.o *.so
+Trying to build project using make
+make
+gcc -Wall  -c mem.c -fpic
+gcc -Wall  -c helper.c -fpic
+gcc -shared -o libmem.so mem.o helper.o -lm  
+
+
+test build PASSED
+ (build project using make)
+
+starting init
+
+**********************************************************************
+
+Test init
+call Mem_Init with size = 1 page
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/init
+
+Allocated Init size: 4096
+
+
+test init PASSED
+ (call Mem_Init with size = 1 page)
+
+starting init2
+
+**********************************************************************
+
+Test init2
+init that should be rounded up to 1 page
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/init2
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 4056
+Returning from Mem_Alloc with hptr: 0x7f7a37de1000, size: 4056, head: 0x7f7a37de1fd8
+
+
+test init2 PASSED
+ (init that should be rounded up to 1 page)
+
+starting badinit
+
+**********************************************************************
+
+Test badinit
+bad argument to Mem_Init
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/badinit
+
+
+test badinit PASSED
+ (bad argument to Mem_Init)
+
+starting badinit2
+
+**********************************************************************
+
+Test badinit2
+bad argument to Mem_Init
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/badinit2
+
+
+test badinit2 PASSED
+ (bad argument to Mem_Init)
+
+starting doubleinit
+
+**********************************************************************
+
+Test doubleinit
+call init twice
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/doubleinit
+
+Allocated Init size: 4096
+
+
+test doubleinit PASSED
+ (call init twice)
+
+starting alloc
+
+**********************************************************************
+
+Test alloc
+a simple 8 byte allocation
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/alloc
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f9616fc9000, size: 16, head: 0x7f9616fc9010
+
+
+test alloc PASSED
+ (a simple 8 byte allocation)
+
+starting alloc2
+
+**********************************************************************
+
+Test alloc2
+a few aligned allocations
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/alloc2
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f500610f000, size: 16, head: 0x7f500610f010
+
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with hptr: 0x7f500610f010, size: 24, head: 0x7f500610f028
+
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with hptr: 0x7f500610f028, size: 40, head: 0x7f500610f050
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f500610f050, size: 16, head: 0x7f500610f060
+
+
+test alloc2 PASSED
+ (a few aligned allocations)
+
+starting alloc3
+
+**********************************************************************
+
+Test alloc3
+many odd sized allocations
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/alloc3
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f7f0bba0000, size: 16, head: 0x7f7f0bba0010
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f7f0bba0010, size: 16, head: 0x7f7f0bba0020
+
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with hptr: 0x7f7f0bba0020, size: 24, head: 0x7f7f0bba0038
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f7f0bba0038, size: 16, head: 0x7f7f0bba0048
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f7f0bba0048, size: 16, head: 0x7f7f0bba0058
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f7f0bba0058, size: 16, head: 0x7f7f0bba0068
+
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with hptr: 0x7f7f0bba0068, size: 24, head: 0x7f7f0bba0080
+
+Allocated memory size (MEM-ALLOC): 48
+Returning from Mem_Alloc with hptr: 0x7f7f0bba0080, size: 48, head: 0x7f7f0bba00b0
+
+Allocated memory size (MEM-ALLOC): 64
+Returning from Mem_Alloc with hptr: 0x7f7f0bba00b0, size: 64, head: 0x7f7f0bba00f0
+
+
+test alloc3 PASSED
+ (many odd sized allocations)
+
+starting free
+
+**********************************************************************
+
+Test free
+a simple allocation followed by a free
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/free
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7fab6208e000, size: 16, head: 0x7fab6208e010
+
+Entering Mem_Free with hptr: 0x7fab6208e000, magic: 314159, size: 16
+Cur_node: 0x7fab6208e010
+Current node is Head
+Free list node found after the chunk being freed - so change the head
+Current Node = 0x7fab6208e010, Next node = (nil)
+
+
+test free PASSED
+ (a simple allocation followed by a free)
+
+starting free2
+
+**********************************************************************
+
+Test free2
+a few aligned allocations and frees
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/free2
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f18b0c55000, size: 16, head: 0x7f18b0c55010
+
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with hptr: 0x7f18b0c55010, size: 24, head: 0x7f18b0c55028
+
+Entering Mem_Free with hptr: 0x7f18b0c55000, magic: 314159, size: 16
+Cur_node: 0x7f18b0c55028
+Current Node = 0x7f18b0c55028, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Entering Mem_Free with hptr: 0x7f18b0c55010, magic: 314159, size: 24
+Cur_node: 0x7f18b0c55000
+Free list node found before the chunk being freed
+Current Node = 0x7f18b0c55000, Next node = 0x7f18b0c55028
+Cur_node: 0x7f18b0c55028
+Free list node found after the chunk being freed - so change the head
+Current Node = 0x7f18b0c55028, Next node = (nil)
+
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with hptr: 0x7f18b0c55000, size: 40, head: 0x7f18b0c55010
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f18b0c55010, size: 16, head: 0x7f18b0c55020
+
+Entering Mem_Free with hptr: 0x7f18b0c55000, magic: 314159, size: 40
+Cur_node: 0x7f18b0c55020
+Current Node = 0x7f18b0c55020, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Entering Mem_Free with hptr: 0x7f18b0c55010, magic: 314159, size: 16
+Cur_node: 0x7f18b0c55000
+Current Node = 0x7f18b0c55000, Next node = 0x7f18b0c55020
+Cur_node: 0x7f18b0c55020
+Free list node found after the chunk being freed - so change the head
+Current Node = 0x7f18b0c55020, Next node = (nil)
+
+
+test free2 PASSED
+ (a few aligned allocations and frees)
+
+starting badfree
+
+**********************************************************************
+
+Test badfree
+freeing a pointer that was not returned by Mem_Alloc
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/badfree
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f3452158000, size: 16, head: 0x7f3452158010
+
+Entering Mem_Free with hptr: 0x7f3452158008, magic: 0, size: 0
+
+
+test badfree PASSED
+ (freeing a pointer that was not returned by Mem_Alloc)
+
+starting align
+
+**********************************************************************
+
+Test align
+check first pointer returned is 8-byte aligned
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/align
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f764d0eb000, size: 16, head: 0x7f764d0eb010
+
+
+test align PASSED
+ (check first pointer returned is 8-byte aligned)
+
+starting align2
+
+**********************************************************************
+
+Test align2
+a few allocations checked for alignment
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/align2
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7fa00286e000, size: 16, head: 0x7fa00286e010
+
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with hptr: 0x7fa00286e010, size: 24, head: 0x7fa00286e028
+
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with hptr: 0x7fa00286e028, size: 40, head: 0x7fa00286e050
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7fa00286e050, size: 16, head: 0x7fa00286e060
+
+
+test align2 PASSED
+ (a few allocations checked for alignment)
+
+starting align3
+
+**********************************************************************
+
+Test align3
+many odd sized allocations checked for alignment
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/align3
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f703fe36000, size: 16, head: 0x7f703fe36010
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f703fe36010, size: 16, head: 0x7f703fe36020
+
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with hptr: 0x7f703fe36020, size: 24, head: 0x7f703fe36038
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f703fe36038, size: 16, head: 0x7f703fe36048
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f703fe36048, size: 16, head: 0x7f703fe36058
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f703fe36058, size: 16, head: 0x7f703fe36068
+
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with hptr: 0x7f703fe36068, size: 24, head: 0x7f703fe36080
+
+Allocated memory size (MEM-ALLOC): 48
+Returning from Mem_Alloc with hptr: 0x7f703fe36080, size: 48, head: 0x7f703fe360b0
+
+Allocated memory size (MEM-ALLOC): 64
+Returning from Mem_Alloc with hptr: 0x7f703fe360b0, size: 64, head: 0x7f703fe360f0
+
+
+test align3 PASSED
+ (many odd sized allocations checked for alignment)
+
+starting writeable
+
+**********************************************************************
+
+Test writeable
+write to a chunk from Mem_Alloc
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/writeable
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f9bc7314000, size: 16, head: 0x7f9bc7314010
+
+
+test writeable PASSED
+ (write to a chunk from Mem_Alloc)
+
+starting writeable2
+
+**********************************************************************
+
+Test writeable2
+align misaligned requests, don't overlap
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/writeable2
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7fb49b07f000, size: 16, head: 0x7fb49b07f010
+
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with hptr: 0x7fb49b07f010, size: 24, head: 0x7fb49b07f028
+
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with hptr: 0x7fb49b07f028, size: 40, head: 0x7fb49b07f050
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7fb49b07f050, size: 16, head: 0x7fb49b07f060
+
+Entering Mem_Free with hptr: 0x7fb49b07f000, magic: 314159, size: 16
+Cur_node: 0x7fb49b07f060
+Current Node = 0x7fb49b07f060, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Entering Mem_Free with hptr: 0x7fb49b07f010, magic: 314159, size: 24
+Cur_node: 0x7fb49b07f000
+Free list node found before the chunk being freed
+Current Node = 0x7fb49b07f000, Next node = 0x7fb49b07f060
+Cur_node: 0x7fb49b07f060
+Current Node = 0x7fb49b07f060, Next node = (nil)
+
+Entering Mem_Free with hptr: 0x7fb49b07f028, magic: 314159, size: 40
+Cur_node: 0x7fb49b07f000
+Free list node found before the chunk being freed
+Current Node = 0x7fb49b07f000, Next node = 0x7fb49b07f060
+Cur_node: 0x7fb49b07f060
+Current Node = 0x7fb49b07f060, Next node = (nil)
+
+Entering Mem_Free with hptr: 0x7fb49b07f050, magic: 314159, size: 16
+Cur_node: 0x7fb49b07f000
+Free list node found before the chunk being freed
+Current Node = 0x7fb49b07f000, Next node = 0x7fb49b07f060
+Cur_node: 0x7fb49b07f060
+Free list node found after the chunk being freed - so change the head
+Current Node = 0x7fb49b07f060, Next node = (nil)
+
+
+test writeable2 PASSED
+ (align misaligned requests, don't overlap)
+
+starting bestfit
+
+**********************************************************************
+
+Test bestfit
+use smallest free space for allocation
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/bestfit
+bestfit: bestfit.c:46: main: Assertion `ptr[4] != ((void *)0)' failed.
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 408
+Returning from Mem_Alloc with hptr: 0x7fa77ab90000, size: 408, head: 0x7fa77ab90198
+
+Allocated memory size (MEM-ALLOC): 408
+Returning from Mem_Alloc with hptr: 0x7fa77ab90198, size: 408, head: 0x7fa77ab90330
+
+Allocated memory size (MEM-ALLOC): 1008
+Returning from Mem_Alloc with hptr: 0x7fa77ab90330, size: 1008, head: 0x7fa77ab90720
+
+Allocated memory size (MEM-ALLOC): 1008
+Returning from Mem_Alloc with hptr: 0x7fa77ab90720, size: 1008, head: 0x7fa77ab90b10
+
+Allocated memory size (MEM-ALLOC): 408
+Returning from Mem_Alloc with hptr: 0x7fa77ab90b10, size: 408, head: 0x7fa77ab90ca8
+
+Allocated memory size (MEM-ALLOC): 408
+Returning from Mem_Alloc with hptr: 0x7fa77ab90ca8, size: 408, head: 0x7fa77ab90e40
+
+Allocated memory size (MEM-ALLOC): 368
+Returning from Mem_Alloc with hptr: 0x7fa77ab90e40, size: 368, head: 0x7fa77ab90fb0
+
+Allocated memory size (MEM-ALLOC): 368
+
+Entering Mem_Free with hptr: 0x7fa77ab90000, magic: 314159, size: 408
+Cur_node: 0x7fa77ab90fb0
+Current Node = 0x7fa77ab90fb0, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Entering Mem_Free with hptr: 0x7fa77ab90330, magic: 314159, size: 1008
+Cur_node: 0x7fa77ab90000
+Current Node = 0x7fa77ab90000, Next node = 0x7fa77ab90fb0
+Cur_node: 0x7fa77ab90fb0
+Current Node = 0x7fa77ab90fb0, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Entering Mem_Free with hptr: 0x7fa77ab90b10, magic: 314159, size: 408
+Cur_node: 0x7fa77ab90330
+Current Node = 0x7fa77ab90330, Next node = 0x7fa77ab90000
+Cur_node: 0x7fa77ab90000
+Current Node = 0x7fa77ab90000, Next node = 0x7fa77ab90fb0
+Cur_node: 0x7fa77ab90fb0
+Current Node = 0x7fa77ab90fb0, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Allocated memory size (MEM-ALLOC): 368
+Returning from Mem_Alloc with hptr: 0x7fa77ab90000, size: 368, head: 0x7fa77ab90b10
+
+Allocated memory size (MEM-ALLOC): 368
+Returning from Mem_Alloc with hptr: 0x7fa77ab90330, size: 368, head: 0x7fa77ab90b10
+
+Allocated memory size (MEM-ALLOC): 968
+Failure: /afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/bestfit returned incorrect status code. Expected 0 got -6
+
+
+test bestfit FAILED
+ (use smallest free space for allocation)
+ /afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/bestfit returned incorrect status code. Expected 0 got -6
+
+starting bestfit2
+
+**********************************************************************
+
+Test bestfit2
+use best fit free space for allocation
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/bestfit2
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7fbc7903e000, size: 16, head: 0x7fbc7903e010
+
+Allocated memory size (MEM-ALLOC): 48
+Returning from Mem_Alloc with hptr: 0x7fbc7903e010, size: 48, head: 0x7fbc7903e040
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7fbc7903e040, size: 16, head: 0x7fbc7903e050
+
+Allocated memory size (MEM-ALLOC): 64
+Returning from Mem_Alloc with hptr: 0x7fbc7903e050, size: 64, head: 0x7fbc7903e090
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7fbc7903e090, size: 16, head: 0x7fbc7903e0a0
+
+Allocated memory size (MEM-ALLOC): 264
+Returning from Mem_Alloc with hptr: 0x7fbc7903e0a0, size: 264, head: 0x7fbc7903e1a8
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7fbc7903e1a8, size: 16, head: 0x7fbc7903e1b8
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903e1b8, size: 136, head: 0x7fbc7903e240
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7fbc7903e240, size: 16, head: 0x7fbc7903e250
+
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with hptr: 0x7fbc7903e250, size: 40, head: 0x7fbc7903e278
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7fbc7903e278, size: 16, head: 0x7fbc7903e288
+
+Allocated memory size (MEM-ALLOC): 520
+Returning from Mem_Alloc with hptr: 0x7fbc7903e288, size: 520, head: 0x7fbc7903e490
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7fbc7903e490, size: 16, head: 0x7fbc7903e4a0
+
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with hptr: 0x7fbc7903e4a0, size: 40, head: 0x7fbc7903e4c8
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903e4c8, size: 136, head: 0x7fbc7903e550
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903e550, size: 136, head: 0x7fbc7903e5d8
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903e5d8, size: 136, head: 0x7fbc7903e660
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903e660, size: 136, head: 0x7fbc7903e6e8
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903e6e8, size: 136, head: 0x7fbc7903e770
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903e770, size: 136, head: 0x7fbc7903e7f8
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903e7f8, size: 136, head: 0x7fbc7903e880
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903e880, size: 136, head: 0x7fbc7903e908
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903e908, size: 136, head: 0x7fbc7903e990
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903e990, size: 136, head: 0x7fbc7903ea18
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903ea18, size: 136, head: 0x7fbc7903eaa0
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903eaa0, size: 136, head: 0x7fbc7903eb28
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903eb28, size: 136, head: 0x7fbc7903ebb0
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903ebb0, size: 136, head: 0x7fbc7903ec38
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903ec38, size: 136, head: 0x7fbc7903ecc0
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903ecc0, size: 136, head: 0x7fbc7903ed48
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903ed48, size: 136, head: 0x7fbc7903edd0
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903edd0, size: 136, head: 0x7fbc7903ee58
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903ee58, size: 136, head: 0x7fbc7903eee0
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903eee0, size: 136, head: 0x7fbc7903ef68
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903ef68, size: 136, head: 0x7fbc7903eff0
+
+Allocated memory size (MEM-ALLOC): 136
+
+Entering Mem_Free with hptr: 0x7fbc7903e250, magic: 314159, size: 40
+Cur_node: 0x7fbc7903eff0
+Current Node = 0x7fbc7903eff0, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Entering Mem_Free with hptr: 0x7fbc7903e4a0, magic: 314159, size: 40
+Cur_node: 0x7fbc7903e250
+Current Node = 0x7fbc7903e250, Next node = 0x7fbc7903eff0
+Cur_node: 0x7fbc7903eff0
+Current Node = 0x7fbc7903eff0, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Entering Mem_Free with hptr: 0x7fbc7903e0a0, magic: 314159, size: 264
+Cur_node: 0x7fbc7903e4a0
+Current Node = 0x7fbc7903e4a0, Next node = 0x7fbc7903e250
+Cur_node: 0x7fbc7903e250
+Current Node = 0x7fbc7903e250, Next node = 0x7fbc7903eff0
+Cur_node: 0x7fbc7903eff0
+Current Node = 0x7fbc7903eff0, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Entering Mem_Free with hptr: 0x7fbc7903e1b8, magic: 314159, size: 136
+Cur_node: 0x7fbc7903e0a0
+Current Node = 0x7fbc7903e0a0, Next node = 0x7fbc7903e4a0
+Cur_node: 0x7fbc7903e4a0
+Current Node = 0x7fbc7903e4a0, Next node = 0x7fbc7903e250
+Cur_node: 0x7fbc7903e250
+Current Node = 0x7fbc7903e250, Next node = 0x7fbc7903eff0
+Cur_node: 0x7fbc7903eff0
+Current Node = 0x7fbc7903eff0, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Entering Mem_Free with hptr: 0x7fbc7903e050, magic: 314159, size: 64
+Cur_node: 0x7fbc7903e1b8
+Current Node = 0x7fbc7903e1b8, Next node = 0x7fbc7903e0a0
+Cur_node: 0x7fbc7903e0a0
+Current Node = 0x7fbc7903e0a0, Next node = 0x7fbc7903e4a0
+Cur_node: 0x7fbc7903e4a0
+Current Node = 0x7fbc7903e4a0, Next node = 0x7fbc7903e250
+Cur_node: 0x7fbc7903e250
+Current Node = 0x7fbc7903e250, Next node = 0x7fbc7903eff0
+Cur_node: 0x7fbc7903eff0
+Current Node = 0x7fbc7903eff0, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Entering Mem_Free with hptr: 0x7fbc7903e288, magic: 314159, size: 520
+Cur_node: 0x7fbc7903e050
+Current Node = 0x7fbc7903e050, Next node = 0x7fbc7903e1b8
+Cur_node: 0x7fbc7903e1b8
+Current Node = 0x7fbc7903e1b8, Next node = 0x7fbc7903e0a0
+Cur_node: 0x7fbc7903e0a0
+Current Node = 0x7fbc7903e0a0, Next node = 0x7fbc7903e4a0
+Cur_node: 0x7fbc7903e4a0
+Current Node = 0x7fbc7903e4a0, Next node = 0x7fbc7903e250
+Cur_node: 0x7fbc7903e250
+Current Node = 0x7fbc7903e250, Next node = 0x7fbc7903eff0
+Cur_node: 0x7fbc7903eff0
+Current Node = 0x7fbc7903eff0, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Entering Mem_Free with hptr: 0x7fbc7903e010, magic: 314159, size: 48
+Cur_node: 0x7fbc7903e288
+Current Node = 0x7fbc7903e288, Next node = 0x7fbc7903e050
+Cur_node: 0x7fbc7903e050
+Current Node = 0x7fbc7903e050, Next node = 0x7fbc7903e1b8
+Cur_node: 0x7fbc7903e1b8
+Current Node = 0x7fbc7903e1b8, Next node = 0x7fbc7903e0a0
+Cur_node: 0x7fbc7903e0a0
+Current Node = 0x7fbc7903e0a0, Next node = 0x7fbc7903e4a0
+Cur_node: 0x7fbc7903e4a0
+Current Node = 0x7fbc7903e4a0, Next node = 0x7fbc7903e250
+Cur_node: 0x7fbc7903e250
+Current Node = 0x7fbc7903e250, Next node = 0x7fbc7903eff0
+Cur_node: 0x7fbc7903eff0
+Current Node = 0x7fbc7903eff0, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fbc7903e1b8, size: 136, head: 0x7fbc7903e010
+
+
+test bestfit2 PASSED
+ (use best fit free space for allocation)
+
+starting nospace
+
+**********************************************************************
+
+Test nospace
+second allocation is too big to fit
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/nospace
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 2056
+Returning from Mem_Alloc with hptr: 0x7f3813035000, size: 2056, head: 0x7f3813035808
+
+Allocated memory size (MEM-ALLOC): 2064
+
+
+test nospace PASSED
+ (second allocation is too big to fit)
+
+starting coalesce
+
+**********************************************************************
+
+Test coalesce
+check for coalesce free space
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/coalesce
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 808
+Returning from Mem_Alloc with hptr: 0x7f115385e000, size: 808, head: 0x7f115385e328
+
+Allocated memory size (MEM-ALLOC): 808
+Returning from Mem_Alloc with hptr: 0x7f115385e328, size: 808, head: 0x7f115385e650
+
+Allocated memory size (MEM-ALLOC): 808
+Returning from Mem_Alloc with hptr: 0x7f115385e650, size: 808, head: 0x7f115385e978
+
+Allocated memory size (MEM-ALLOC): 808
+Returning from Mem_Alloc with hptr: 0x7f115385e978, size: 808, head: 0x7f115385eca0
+
+Allocated memory size (MEM-ALLOC): 808
+Returning from Mem_Alloc with hptr: 0x7f115385eca0, size: 808, head: 0x7f115385efc8
+
+Allocated memory size (MEM-ALLOC): 808
+
+Entering Mem_Free with hptr: 0x7f115385e328, magic: 314159, size: 808
+Cur_node: 0x7f115385efc8
+Current Node = 0x7f115385efc8, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Entering Mem_Free with hptr: 0x7f115385e650, magic: 314159, size: 808
+Cur_node: 0x7f115385e328
+Free list node found before the chunk being freed
+Current Node = 0x7f115385e328, Next node = 0x7f115385efc8
+Cur_node: 0x7f115385efc8
+Current Node = 0x7f115385efc8, Next node = (nil)
+
+Allocated memory size (MEM-ALLOC): 1608
+Returning from Mem_Alloc with hptr: 0x7f115385e328, size: 1608, head: 0x7f115385e970
+
+
+test coalesce PASSED
+ (check for coalesce free space)
+
+starting coalesce2
+
+**********************************************************************
+
+Test coalesce2
+check for coalesce free space
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/coalesce2
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 808
+Returning from Mem_Alloc with hptr: 0x7f005bd65000, size: 808, head: 0x7f005bd65328
+
+Allocated memory size (MEM-ALLOC): 808
+Returning from Mem_Alloc with hptr: 0x7f005bd65328, size: 808, head: 0x7f005bd65650
+
+Allocated memory size (MEM-ALLOC): 808
+Returning from Mem_Alloc with hptr: 0x7f005bd65650, size: 808, head: 0x7f005bd65978
+
+Allocated memory size (MEM-ALLOC): 808
+Returning from Mem_Alloc with hptr: 0x7f005bd65978, size: 808, head: 0x7f005bd65ca0
+
+Allocated memory size (MEM-ALLOC): 808
+Returning from Mem_Alloc with hptr: 0x7f005bd65ca0, size: 808, head: 0x7f005bd65fc8
+
+Allocated memory size (MEM-ALLOC): 808
+
+Entering Mem_Free with hptr: 0x7f005bd65650, magic: 314159, size: 808
+Cur_node: 0x7f005bd65fc8
+Current Node = 0x7f005bd65fc8, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Entering Mem_Free with hptr: 0x7f005bd65328, magic: 314159, size: 808
+Cur_node: 0x7f005bd65650
+Current node is Head
+Free list node found after the chunk being freed - so change the head
+Current Node = 0x7f005bd65650, Next node = 0x7f005bd65fc8
+Cur_node: 0x7f005bd65fc8
+Current Node = 0x7f005bd65fc8, Next node = (nil)
+
+Allocated memory size (MEM-ALLOC): 1608
+Returning from Mem_Alloc with hptr: 0x7f005bd65328, size: 1608, head: 0x7f005bd65970
+
+
+test coalesce2 PASSED
+ (check for coalesce free space)
+
+starting coalesce3
+
+**********************************************************************
+
+Test coalesce3
+check for coalesce free space
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/coalesce3
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 808
+Returning from Mem_Alloc with hptr: 0x7f22f69bc000, size: 808, head: 0x7f22f69bc328
+
+Allocated memory size (MEM-ALLOC): 808
+Returning from Mem_Alloc with hptr: 0x7f22f69bc328, size: 808, head: 0x7f22f69bc650
+
+Allocated memory size (MEM-ALLOC): 808
+Returning from Mem_Alloc with hptr: 0x7f22f69bc650, size: 808, head: 0x7f22f69bc978
+
+Allocated memory size (MEM-ALLOC): 808
+Returning from Mem_Alloc with hptr: 0x7f22f69bc978, size: 808, head: 0x7f22f69bcca0
+
+Allocated memory size (MEM-ALLOC): 808
+Returning from Mem_Alloc with hptr: 0x7f22f69bcca0, size: 808, head: 0x7f22f69bcfc8
+
+Allocated memory size (MEM-ALLOC): 808
+
+Entering Mem_Free with hptr: 0x7f22f69bc328, magic: 314159, size: 808
+Cur_node: 0x7f22f69bcfc8
+Current Node = 0x7f22f69bcfc8, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Entering Mem_Free with hptr: 0x7f22f69bc978, magic: 314159, size: 808
+Cur_node: 0x7f22f69bc328
+Current Node = 0x7f22f69bc328, Next node = 0x7f22f69bcfc8
+Cur_node: 0x7f22f69bcfc8
+Current Node = 0x7f22f69bcfc8, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Entering Mem_Free with hptr: 0x7f22f69bc650, magic: 314159, size: 808
+Cur_node: 0x7f22f69bc978
+Current node is Head
+Free list node found after the chunk being freed - so change the head
+Current Node = 0x7f22f69bc978, Next node = 0x7f22f69bc328
+Cur_node: 0x7f22f69bc328
+Free list node found before the chunk being freed
+Current Node = 0x7f22f69bc328, Next node = 0x7f22f69bcfc8
+Cur_node: 0x7f22f69bcfc8
+Current Node = 0x7f22f69bcfc8, Next node = (nil)
+
+Allocated memory size (MEM-ALLOC): 2408
+Returning from Mem_Alloc with hptr: 0x7f22f69bc328, size: 2408, head: 0x7f22f69bc650
+
+
+test coalesce3 PASSED
+ (check for coalesce free space)
+
+starting coalesce4
+
+**********************************************************************
+
+Test coalesce4
+check for coalesce free space (last chunk)
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/coalesce4
+
+Allocated Init size: 4096
+
+Allocated memory size (MEM-ALLOC): 888
+Returning from Mem_Alloc with hptr: 0x7fb12fbb8000, size: 888, head: 0x7fb12fbb8378
+
+Allocated memory size (MEM-ALLOC): 888
+Returning from Mem_Alloc with hptr: 0x7fb12fbb8378, size: 888, head: 0x7fb12fbb86f0
+
+Allocated memory size (MEM-ALLOC): 888
+Returning from Mem_Alloc with hptr: 0x7fb12fbb86f0, size: 888, head: 0x7fb12fbb8a68
+
+Allocated memory size (MEM-ALLOC): 888
+Returning from Mem_Alloc with hptr: 0x7fb12fbb8a68, size: 888, head: 0x7fb12fbb8de0
+
+Allocated memory size (MEM-ALLOC): 888
+
+Entering Mem_Free with hptr: 0x7fb12fbb8a68, magic: 314159, size: 888
+Cur_node: 0x7fb12fbb8de0
+Current node is Head
+Free list node found after the chunk being freed - so change the head
+Current Node = 0x7fb12fbb8de0, Next node = (nil)
+
+Allocated memory size (MEM-ALLOC): 1368
+Returning from Mem_Alloc with hptr: 0x7fb12fbb8a68, size: 1368, head: 0x7fb12fbb8fc0
+
+
+test coalesce4 PASSED
+ (check for coalesce free space (last chunk))
+
+starting random
+
+**********************************************************************
+
+Test random
+psuedo-random sequence of allocs and frees
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/random 0 10 0
+
+Allocated Init size: 323584
+
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with hptr: 0x7f113abf0000, size: 120, head: 0x7f113abf0078
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7f113abf0078, size: 136, head: 0x7f113abf0100
+
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with hptr: 0x7f113abf0100, size: 72, head: 0x7f113abf0148
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7f113abf0148, size: 136, head: 0x7f113abf01d0
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7f113abf01d0, size: 136, head: 0x7f113abf0258
+
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with hptr: 0x7f113abf0258, size: 120, head: 0x7f113abf02d0
+
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with hptr: 0x7f113abf02d0, size: 128, head: 0x7f113abf0350
+
+Allocated memory size (MEM-ALLOC): 112
+Returning from Mem_Alloc with hptr: 0x7f113abf0350, size: 112, head: 0x7f113abf03c0
+time: 0.0357820987701
+
+
+test random PASSED
+ (psuedo-random sequence of allocs and frees)
+
+starting random2
+
+**********************************************************************
+
+Test random2
+psuedo-random sequence of allocs and frees
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/random 0 1000 1
+random: random.c:94: main: Assertion `ptr[slot] != ((void *)0)' failed.
+
+Allocated Init size: 323584
+
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd000, size: 120, head: 0x7f1eaeadd078
+
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd078, size: 104, head: 0x7f1eaeadd0e0
+
+Allocated memory size (MEM-ALLOC): 88
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd0e0, size: 88, head: 0x7f1eaeadd138
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd138, size: 16, head: 0x7f1eaeadd148
+
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd148, size: 96, head: 0x7f1eaeadd1a8
+
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd1a8, size: 72, head: 0x7f1eaeadd1f0
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd1f0, size: 136, head: 0x7f1eaeadd278
+
+Allocated memory size (MEM-ALLOC): 56
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd278, size: 56, head: 0x7f1eaeadd2b0
+
+Allocated memory size (MEM-ALLOC): 112
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd2b0, size: 112, head: 0x7f1eaeadd320
+
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd320, size: 96, head: 0x7f1eaeadd380
+
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd380, size: 128, head: 0x7f1eaeadd400
+
+Allocated memory size (MEM-ALLOC): 88
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd400, size: 88, head: 0x7f1eaeadd458
+
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd458, size: 72, head: 0x7f1eaeadd4a0
+
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd4a0, size: 104, head: 0x7f1eaeadd508
+
+Allocated memory size (MEM-ALLOC): 64
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd508, size: 64, head: 0x7f1eaeadd548
+
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd548, size: 120, head: 0x7f1eaeadd5c0
+
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd5c0, size: 40, head: 0x7f1eaeadd5e8
+
+Entering Mem_Free with hptr: 0x7f1eaeadd400, magic: 314159, size: 88
+Cur_node: 0x7f1eaeadd5e8
+Current Node = 0x7f1eaeadd5e8, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd5e8, size: 80, head: 0x7f1eaeadd400
+
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with hptr: 0x7f1eaeadd400, size: 72, head: 0x7f1eaeadd448
+
+Allocated memory size (MEM-ALLOC): 104
+Failure: /afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/random returned incorrect status code. Expected 0 got -6
+
+
+test random2 FAILED
+ (psuedo-random sequence of allocs and frees)
+ /afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/random returned incorrect status code. Expected 0 got -6
+
+starting random3
+
+**********************************************************************
+
+Test random3
+psuedo-random sequence of allocs and frees
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/random 0 100000 1
+random: random.c:94: main: Assertion `ptr[slot] != ((void *)0)' failed.
+
+Allocated Init size: 323584
+
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with hptr: 0x7f0cc0a56000, size: 120, head: 0x7f0cc0a56078
+
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with hptr: 0x7f0cc0a56078, size: 104, head: 0x7f0cc0a560e0
+
+Allocated memory size (MEM-ALLOC): 88
+Returning from Mem_Alloc with hptr: 0x7f0cc0a560e0, size: 88, head: 0x7f0cc0a56138
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f0cc0a56138, size: 16, head: 0x7f0cc0a56148
+
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with hptr: 0x7f0cc0a56148, size: 96, head: 0x7f0cc0a561a8
+
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with hptr: 0x7f0cc0a561a8, size: 72, head: 0x7f0cc0a561f0
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7f0cc0a561f0, size: 136, head: 0x7f0cc0a56278
+
+Allocated memory size (MEM-ALLOC): 56
+Returning from Mem_Alloc with hptr: 0x7f0cc0a56278, size: 56, head: 0x7f0cc0a562b0
+
+Allocated memory size (MEM-ALLOC): 112
+Returning from Mem_Alloc with hptr: 0x7f0cc0a562b0, size: 112, head: 0x7f0cc0a56320
+
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with hptr: 0x7f0cc0a56320, size: 96, head: 0x7f0cc0a56380
+
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with hptr: 0x7f0cc0a56380, size: 128, head: 0x7f0cc0a56400
+
+Allocated memory size (MEM-ALLOC): 88
+Returning from Mem_Alloc with hptr: 0x7f0cc0a56400, size: 88, head: 0x7f0cc0a56458
+
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with hptr: 0x7f0cc0a56458, size: 72, head: 0x7f0cc0a564a0
+
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with hptr: 0x7f0cc0a564a0, size: 104, head: 0x7f0cc0a56508
+
+Allocated memory size (MEM-ALLOC): 64
+Returning from Mem_Alloc with hptr: 0x7f0cc0a56508, size: 64, head: 0x7f0cc0a56548
+
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with hptr: 0x7f0cc0a56548, size: 120, head: 0x7f0cc0a565c0
+
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with hptr: 0x7f0cc0a565c0, size: 40, head: 0x7f0cc0a565e8
+
+Entering Mem_Free with hptr: 0x7f0cc0a56400, magic: 314159, size: 88
+Cur_node: 0x7f0cc0a565e8
+Current Node = 0x7f0cc0a565e8, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with hptr: 0x7f0cc0a565e8, size: 80, head: 0x7f0cc0a56400
+
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with hptr: 0x7f0cc0a56400, size: 72, head: 0x7f0cc0a56448
+
+Allocated memory size (MEM-ALLOC): 104
+Failure: /afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/random returned incorrect status code. Expected 0 got -6
+
+
+test random3 FAILED
+ (psuedo-random sequence of allocs and frees)
+ /afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/random returned incorrect status code. Expected 0 got -6
+
+starting random4
+
+**********************************************************************
+
+Test random4
+psuedo-random sequence of allocs and frees
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/random 1 500000 1
+random: random.c:94: main: Assertion `ptr[slot] != ((void *)0)' failed.
+
+Allocated Init size: 323584
+
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with hptr: 0x7fc9ed782000, size: 120, head: 0x7fc9ed782078
+
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with hptr: 0x7fc9ed782078, size: 104, head: 0x7fc9ed7820e0
+
+Allocated memory size (MEM-ALLOC): 88
+Returning from Mem_Alloc with hptr: 0x7fc9ed7820e0, size: 88, head: 0x7fc9ed782138
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7fc9ed782138, size: 16, head: 0x7fc9ed782148
+
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with hptr: 0x7fc9ed782148, size: 96, head: 0x7fc9ed7821a8
+
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with hptr: 0x7fc9ed7821a8, size: 72, head: 0x7fc9ed7821f0
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7fc9ed7821f0, size: 136, head: 0x7fc9ed782278
+
+Allocated memory size (MEM-ALLOC): 56
+Returning from Mem_Alloc with hptr: 0x7fc9ed782278, size: 56, head: 0x7fc9ed7822b0
+
+Allocated memory size (MEM-ALLOC): 112
+Returning from Mem_Alloc with hptr: 0x7fc9ed7822b0, size: 112, head: 0x7fc9ed782320
+
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with hptr: 0x7fc9ed782320, size: 96, head: 0x7fc9ed782380
+
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with hptr: 0x7fc9ed782380, size: 128, head: 0x7fc9ed782400
+
+Allocated memory size (MEM-ALLOC): 88
+Returning from Mem_Alloc with hptr: 0x7fc9ed782400, size: 88, head: 0x7fc9ed782458
+
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with hptr: 0x7fc9ed782458, size: 72, head: 0x7fc9ed7824a0
+
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with hptr: 0x7fc9ed7824a0, size: 104, head: 0x7fc9ed782508
+
+Allocated memory size (MEM-ALLOC): 64
+Returning from Mem_Alloc with hptr: 0x7fc9ed782508, size: 64, head: 0x7fc9ed782548
+
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with hptr: 0x7fc9ed782548, size: 120, head: 0x7fc9ed7825c0
+
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with hptr: 0x7fc9ed7825c0, size: 40, head: 0x7fc9ed7825e8
+
+Entering Mem_Free with hptr: 0x7fc9ed782400, magic: 314159, size: 88
+Cur_node: 0x7fc9ed7825e8
+Current Node = 0x7fc9ed7825e8, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with hptr: 0x7fc9ed7825e8, size: 80, head: 0x7fc9ed782400
+
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with hptr: 0x7fc9ed782400, size: 72, head: 0x7fc9ed782448
+
+Allocated memory size (MEM-ALLOC): 104
+Failure: /afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/random returned incorrect status code. Expected 0 got -6
+
+
+test random4 FAILED
+ (psuedo-random sequence of allocs and frees)
+ /afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/random returned incorrect status code. Expected 0 got -6
+
+starting random5
+
+**********************************************************************
+
+Test random5
+psuedo-random sequence of allocs and frees
+
+**********************************************************************
+/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/random 1 2000000 0
+
+Allocated Init size: 323584
+
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3000, size: 120, head: 0x7f31bf2f3078
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3078, size: 136, head: 0x7f31bf2f3100
+
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3100, size: 72, head: 0x7f31bf2f3148
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3148, size: 136, head: 0x7f31bf2f31d0
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7f31bf2f31d0, size: 136, head: 0x7f31bf2f3258
+
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3258, size: 120, head: 0x7f31bf2f32d0
+
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with hptr: 0x7f31bf2f32d0, size: 128, head: 0x7f31bf2f3350
+
+Allocated memory size (MEM-ALLOC): 112
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3350, size: 112, head: 0x7f31bf2f33c0
+
+Allocated memory size (MEM-ALLOC): 88
+Returning from Mem_Alloc with hptr: 0x7f31bf2f33c0, size: 88, head: 0x7f31bf2f3418
+
+Allocated memory size (MEM-ALLOC): 64
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3418, size: 64, head: 0x7f31bf2f3458
+
+Allocated memory size (MEM-ALLOC): 64
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3458, size: 64, head: 0x7f31bf2f3498
+
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3498, size: 104, head: 0x7f31bf2f3500
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3500, size: 16, head: 0x7f31bf2f3510
+
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3510, size: 96, head: 0x7f31bf2f3570
+
+Allocated memory size (MEM-ALLOC): 88
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3570, size: 88, head: 0x7f31bf2f35c8
+
+Allocated memory size (MEM-ALLOC): 64
+Returning from Mem_Alloc with hptr: 0x7f31bf2f35c8, size: 64, head: 0x7f31bf2f3608
+
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3608, size: 24, head: 0x7f31bf2f3620
+
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3620, size: 72, head: 0x7f31bf2f3668
+
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3668, size: 128, head: 0x7f31bf2f36e8
+
+Allocated memory size (MEM-ALLOC): 48
+Returning from Mem_Alloc with hptr: 0x7f31bf2f36e8, size: 48, head: 0x7f31bf2f3718
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3718, size: 136, head: 0x7f31bf2f37a0
+
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with hptr: 0x7f31bf2f37a0, size: 16, head: 0x7f31bf2f37b0
+
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with hptr: 0x7f31bf2f37b0, size: 120, head: 0x7f31bf2f3828
+
+Allocated memory size (MEM-ALLOC): 32
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3828, size: 32, head: 0x7f31bf2f3848
+
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3848, size: 120, head: 0x7f31bf2f38c0
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7f31bf2f38c0, size: 136, head: 0x7f31bf2f3948
+
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3948, size: 72, head: 0x7f31bf2f3990
+
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3990, size: 104, head: 0x7f31bf2f39f8
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7f31bf2f39f8, size: 136, head: 0x7f31bf2f3a80
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3a80, size: 136, head: 0x7f31bf2f3b08
+
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3b08, size: 136, head: 0x7f31bf2f3b90
+
+Allocated memory size (MEM-ALLOC): 112
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3b90, size: 112, head: 0x7f31bf2f3c00
+
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3c00, size: 24, head: 0x7f31bf2f3c18
+
+Allorandom: random.c:94: main: Assertion `ptr[slot] != ((void *)0)' failed.
+cated memory size (MEM-ALLOC): 32
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3c18, size: 32, head: 0x7f31bf2f3c38
+
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3c38, size: 128, head: 0x7f31bf2f3cb8
+
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3cb8, size: 120, head: 0x7f31bf2f3d30
+
+Entering Mem_Free with hptr: 0x7f31bf2f32d0, magic: 314159, size: 128
+Cur_node: 0x7f31bf2f3d30
+Current Node = 0x7f31bf2f3d30, Next node = (nil)
+Could not coalesce- Creating a new node
+
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with hptr: 0x7f31bf2f3d30, size: 72, head: 0x7f31bf2f32d0
+
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with hptr: 0x7f31bf2f32d0, size: 24, head: 0x7f31bf2f32e8
+
+Allocated memory size (MEM-ALLOC): 112
+Failure: /afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/random returned incorrect status code. Expected 0 got -6
+
+
+test random5 FAILED
+ (psuedo-random sequence of allocs and frees)
+ /afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/random returned incorrect status code. Expected 0 got -6
+
+starting prohibit
+
+**********************************************************************
+
+Test prohibit
+check for prohibited library functions
+
+**********************************************************************
+objdump --dynamic-syms libmem.so
+
+
+test prohibit PASSED
+ (check for prohibited library functions)
+
+**********************************************************************
+Summary:
+test build PASSED
+ (build project using make)
+
+test init PASSED
+ (call Mem_Init with size = 1 page)
+
+test init2 PASSED
+ (init that should be rounded up to 1 page)
+
+test badinit PASSED
+ (bad argument to Mem_Init)
+
+test badinit2 PASSED
+ (bad argument to Mem_Init)
+
+test doubleinit PASSED
+ (call init twice)
+
+test alloc PASSED
+ (a simple 8 byte allocation)
+
+test alloc2 PASSED
+ (a few aligned allocations)
+
+test alloc3 PASSED
+ (many odd sized allocations)
+
+test free PASSED
+ (a simple allocation followed by a free)
+
+test free2 PASSED
+ (a few aligned allocations and frees)
+
+test badfree PASSED
+ (freeing a pointer that was not returned by Mem_Alloc)
+
+test align PASSED
+ (check first pointer returned is 8-byte aligned)
+
+test align2 PASSED
+ (a few allocations checked for alignment)
+
+test align3 PASSED
+ (many odd sized allocations checked for alignment)
+
+test writeable PASSED
+ (write to a chunk from Mem_Alloc)
+
+test writeable2 PASSED
+ (align misaligned requests, don't overlap)
+
+test bestfit FAILED
+ (use smallest free space for allocation)
+ /afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/tests/bestfit returned incorrect status code. Expected 0 got -6
+
+test bestfit2 PASSED
+ (use best fit free space for allocation)
+
+test nospace PASSED
+ (second allocation is too big to fit)
+
+test coalesce PASSED
+ (check for coalesce free space)
+
+test coalesce2 PASSED
+ (check for coalesce free space)
+
+test coalesce3 PASSED
+ (check for coalesce free space)
+
+test coalesce4 PASSED
+ (check for coalesce free space (last chunk))
+
+test random PASSED
+ (psuedo-random sequence of allocs and frees)
+
+test random2 FAILED
+ (psuedo-random sequence of allocs and frees)
+ /afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/random returned incorrect status code. Expected 0 got -6
+
+test random3 FAILED
+ (psuedo-random sequence of allocs and frees)
+ /afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/random returned incorrect status code. Expected 0 got -6
+
+test random4 FAILED
+ (psuedo-random sequence of allocs and frees)
+ /afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/random returned incorrect status code. Expected 0 got -6
+
+test random5 FAILED
+ (psuedo-random sequence of allocs and frees)
+ /afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3a/random returned incorrect status code. Expected 0 got -6
+
+test prohibit PASSED
+ (check for prohibited library functions)
+
+Passed 25 of 30 tests.
+Overall 25 of 30
