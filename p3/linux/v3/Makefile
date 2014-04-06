@@ -3,7 +3,7 @@ CC = gcc
 CFLAGS= -Werror -Wall 
 
 all: mem.o helper.o 
-	$(CC) -shared -o libmem.so mem.o helper.o -lm -L. 
+	$(CC) -shared -o libmem.so mem.o helper.o -lm  
 
 mem.o: mem.c
 	$(CC) $(CFLAGS) -c mem.c -fpic

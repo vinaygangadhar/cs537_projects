@@ -6,11 +6,17 @@
 int main() {
 	assert(Mem_Init(40960) == 0);
 	Mem_Dump();
-	assert(Mem_Alloc(4040) != NULL);
+  
+	void* ptr = Mem_Alloc(4040);
 	Mem_Dump();
-	assert(Mem_Alloc(16) != NULL);
-	assert(Mem_Alloc(32) != NULL);
-	assert(Mem_Alloc(8) != NULL);
+  	
+	void* ptr2 = Mem_Alloc(4040);
+	//Mem_Dump();
+	Mem_Free(ptr);
+	//Mem_Dump();
+	Mem_Free(ptr2);
+	//Mem_Dump();
+	
 	exit(0);
 }
 

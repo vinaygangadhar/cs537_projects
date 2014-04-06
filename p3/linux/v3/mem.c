@@ -77,9 +77,7 @@ int Mem_Init(int sizeOfRegion)
 //Memory allocator
 void *Mem_Alloc(int size)
 {
-	printf("Entered Alloc with size = %d\n", size);
 	void* ptr = list_add(size);
-  printf("Returned from list_add with ptr=%p", ptr);
 	if(ptr == NULL)
 	{
 		m_error = E_NO_SPACE;
