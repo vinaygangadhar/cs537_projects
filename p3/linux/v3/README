@@ -1,0 +1,42 @@
+Linux p3
+
+- Mem_Init to allocate an initial amount of free space - 1 time
+- Maintain a free list of available regions of memory pn alloc, search the free list to find a chunk of memory to satisfy the request
+
+Ex: 4k mem_init
+	- head of the free list is at start of 4k
+	- Alloc 512B 
+	- Head points to next free space 
+	- Keep track of remaining space (Use some global variable)
+
+
+	- Each free list node will have a pointer to next free list node
+
+	- typedef struct __node_t {
+			int size;
+			struct __node_t* next;
+		} node_t;
+	
+	- You need to incorporate all the free list of nodes of memory in mem_init function -> Embedded free list
+
+	- Initially 
+			- Head pointing to start of region
+			-	First node : Size = 4k, next = NULL
+
+
+	- Free (void* ptr)
+			- How do you guarantee that the free ptr was allocated previously?
+			- How much space is reclaimed when freed?
+			- Coalesce free regions when free is called (add the freed region to free nodes)
+
+
+	- Add a header structure -> keeps track of the size of allocated region and magic number(keep updating this number whenver the memory is llocated for that pointer)
+			- typedef struct __header_t {
+					int size; // Allocated region size
+					int magic;
+				} header_t;
+
+	- Make sure the header space is also considered for free list
+
+	- Use best-fit policy to search the free list to find the smallest free region large enough to satisfy request
+			- Choose the first entry in case of a tie
