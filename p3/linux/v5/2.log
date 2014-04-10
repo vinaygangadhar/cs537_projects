@@ -1,0 +1,75 @@
+[H[2Jrm -f *.o *.so
+gcc -Wall  -c mem.c -fpic
+gcc -Wall  -c helper.c -fpic
+gcc -shared -o libmem.so mem.o helper.o -lm  
+
+------------------------------MEM-INIT--------------------------------
+Allocated Init size: 4096
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7f5bf3bd8000 , Available size: 4096
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 1024
+Returning from Mem_Alloc with PTR: 0x7f5bf3bd8008, HPTR: 0x7f5bf3bd8000, Size: 1024, HEAD: 0x7f5bf3bd8400
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7f5bf3bd8400 , Available size: 3072
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 1024
+Returning from Mem_Alloc with PTR: 0x7f5bf3bd8408, HPTR: 0x7f5bf3bd8400, Size: 1024, HEAD: 0x7f5bf3bd8800
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7f5bf3bd8800 , Available size: 2048
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 1024
+Returning from Mem_Alloc with PTR: 0x7f5bf3bd8808, HPTR: 0x7f5bf3bd8800, Size: 1024, HEAD: 0x7f5bf3bd8c00
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7f5bf3bd8c00 , Available size: 1024
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 1024
+Returning from Mem_Alloc with PTR: 0x7f5bf3bd8c08, HPTR: 0x7f5bf3bd8c00, Size: 1024, HEAD: (nil)
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: (nil) , Available size: 0
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7f5bf3bd8008, HPTR: 0x7f5bf3bd8000, Magic: 314159, Size: 1024
+NULL header - nothing to coalesce
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7f5bf3bd8000 , Available size: 1024
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7f5bf3bd8408, HPTR: 0x7f5bf3bd8400, Magic: 314159, Size: 1024
+<=====Coaelescer=====>
+Cur_node: 0x7f5bf3bd8400
+Free list node is serially 'PRIOR' to current_node - Change the head and Coalesce
+Cur_node: 0x7f5bf3bd8000
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7f5bf3bd8000 , Available size: 2048
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7f5bf3bd8808, HPTR: 0x7f5bf3bd8800, Magic: 314159, Size: 1024
+<=====Coaelescer=====>
+Cur_node: 0x7f5bf3bd8800
+Free list node is serially 'PRIOR' to current_node - Change the head and Coalesce
+Cur_node: 0x7f5bf3bd8000
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7f5bf3bd8000 , Available size: 3072
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7f5bf3bd8c08, HPTR: 0x7f5bf3bd8c00, Magic: 314159, Size: 1024
+<=====Coaelescer=====>
+Cur_node: 0x7f5bf3bd8c00
+Free list node is serially 'PRIOR' to current_node - Change the head and Coalesce
+Cur_node: 0x7f5bf3bd8000
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7f5bf3bd8000 , Available size: 4096

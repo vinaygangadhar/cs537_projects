@@ -7,15 +7,13 @@
 
 #include "mem.h"
 #include "helper.h"
-
-#define DEBUG
+//#define DEBUG
 
 #define FILEPATH "/dev/zero"
 
 
 volatile int mem_call = 0;
-int m_error;
-
+int m_error = 0;
 
 //Mem_init function initially called
 int Mem_Init(int sizeOfRegion)
@@ -32,14 +30,15 @@ int Mem_Init(int sizeOfRegion)
 	
 	int round_size = (int)(sizeOfRegion / page_size);
 	int reminder = sizeOfRegion % page_size;
-	if (reminder !=0)
+	if (reminder != 0)
 		round_size++;
 	
 	round_size = round_size * page_size;	
 
-	#ifdef DEBUG
-		printf("Allocated size:%d \n ", round_size);
-	#endif
+#ifdef DEBUG
+	printf("\n------------------------------MEM-INIT--------------------------------\n");
+	printf("Allocated Init size: %d\n", round_size);
+#endif
 	
 	//Open a file for mapping
 	int fd = open(FILEPATH, O_RDWR);
@@ -95,5 +94,5 @@ int Mem_Free(void* ptr)
 
 void Mem_Dump()
 {
-list_dump();
+	list_dump();
 }

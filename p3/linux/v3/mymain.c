@@ -11,10 +11,15 @@ int main() {
 	Mem_Dump();
   	
 	void* ptr2 = Mem_Alloc(4040);
+
 	//Mem_Dump();
+	
 	Mem_Free(ptr);
+	
 	//Mem_Dump();
+	
 	Mem_Free(ptr2);
+	
 	//Mem_Dump();
 	
 	exit(0);

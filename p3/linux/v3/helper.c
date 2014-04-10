@@ -12,13 +12,15 @@
 void* list_add (int sz)
 {
 	//Align the size to be multiple of 8 and add the header size to it
-	int size = (int) (sz/8) ;
-	if(sz%8 != 0)
-		size ++ ; 
-	size = size* 8 + sizeof(header_t);
+	int size = (int)(sz / 8);
+	if(sz % 8 != 0)
+		size++; 
+	
+	size = size * 8 + sizeof(header_t);
 
 	#ifdef DEBUG
-		printf("\nAllocated memory szie (MEM-ALLOC)= %d\n", size);
+		printf("\n");
+		printf("Allocated memory size (MEM-ALLOC): %d\n", size);
  	#endif
 
 	header_t* new_header = NULL;
@@ -32,7 +34,7 @@ void* list_add (int sz)
 	{
 		if(cur_node->size >= size)
 		{
-			if(found == head)														//First node search, so found will be NULL
+			if(found == head)														//First node search, so found will be head
 			{
 				found = cur_node;
 				prev_node = searched_node;

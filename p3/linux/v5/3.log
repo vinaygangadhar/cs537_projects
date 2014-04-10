@@ -1,0 +1,118 @@
+[H[2Jrm -f *.o *.so
+gcc -Wall  -c mem.c -fpic
+gcc -Wall  -c helper.c -fpic
+gcc -shared -o libmem.so mem.o helper.o -lm  
+
+------------------------------MEM-INIT--------------------------------
+Allocated Init size: 4096
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 408
+Best-fit loop: 0x7fa17ca4d000 size is more than 408
+Returning from Mem_Alloc with PTR: 0x7fa17ca4d008, HPTR: 0x7fa17ca4d000, Size: 408, HEAD: 0x7fa17ca4d198
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 408
+Best-fit loop: 0x7fa17ca4d198 size is more than 408
+Returning from Mem_Alloc with PTR: 0x7fa17ca4d1a0, HPTR: 0x7fa17ca4d198, Size: 408, HEAD: 0x7fa17ca4d330
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 1008
+Best-fit loop: 0x7fa17ca4d330 size is more than 1008
+Returning from Mem_Alloc with PTR: 0x7fa17ca4d338, HPTR: 0x7fa17ca4d330, Size: 1008, HEAD: 0x7fa17ca4d720
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 1008
+Best-fit loop: 0x7fa17ca4d720 size is more than 1008
+Returning from Mem_Alloc with PTR: 0x7fa17ca4d728, HPTR: 0x7fa17ca4d720, Size: 1008, HEAD: 0x7fa17ca4db10
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 408
+Best-fit loop: 0x7fa17ca4db10 size is more than 408
+Returning from Mem_Alloc with PTR: 0x7fa17ca4db18, HPTR: 0x7fa17ca4db10, Size: 408, HEAD: 0x7fa17ca4dca8
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 408
+Best-fit loop: 0x7fa17ca4dca8 size is more than 408
+Returning from Mem_Alloc with PTR: 0x7fa17ca4dcb0, HPTR: 0x7fa17ca4dca8, Size: 408, HEAD: 0x7fa17ca4de40
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 368
+Best-fit loop: 0x7fa17ca4de40 size is more than 368
+Returning from Mem_Alloc with PTR: 0x7fa17ca4de48, HPTR: 0x7fa17ca4de40, Size: 368, HEAD: 0x7fa17ca4dfb0
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 368
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fa17ca4dfb0 , Available size: 80
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fa17ca4d008, HPTR: 0x7fa17ca4d000, Magic: 314159, Size: 408
+Sorting Done- HEAD: 0x7fa17ca4d000
+<=====Coaelescer=====>
+Cur_node: 0x7fa17ca4d000
+Cur_node: 0x7fa17ca4dfb0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fa17ca4d000 , Available size: 408
+Node: 1, Start Address: 0x7fa17ca4dfb0 , Available size: 80
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fa17ca4d338, HPTR: 0x7fa17ca4d330, Magic: 314159, Size: 1008
+Sorting Done- HEAD: 0x7fa17ca4d000
+<=====Coaelescer=====>
+Cur_node: 0x7fa17ca4d000
+Cur_node: 0x7fa17ca4d330
+Cur_node: 0x7fa17ca4dfb0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fa17ca4d000 , Available size: 408
+Node: 1, Start Address: 0x7fa17ca4d330 , Available size: 1008
+Node: 2, Start Address: 0x7fa17ca4dfb0 , Available size: 80
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fa17ca4db18, HPTR: 0x7fa17ca4db10, Magic: 314159, Size: 408
+Sorting Done- HEAD: 0x7fa17ca4d000
+<=====Coaelescer=====>
+Cur_node: 0x7fa17ca4d000
+Cur_node: 0x7fa17ca4d330
+Cur_node: 0x7fa17ca4db10
+Cur_node: 0x7fa17ca4dfb0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fa17ca4d000 , Available size: 408
+Node: 1, Start Address: 0x7fa17ca4d330 , Available size: 1008
+Node: 2, Start Address: 0x7fa17ca4db10 , Available size: 408
+Node: 3, Start Address: 0x7fa17ca4dfb0 , Available size: 80
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 368
+Best-fit loop: 0x7fa17ca4d000 size is more than 368
+Best-fit loop: 0x7fa17ca4d330 size is more than 368
+Best-fit loop: 0x7fa17ca4db10 size is more than 368
+cur_node size : 408
+Returning from Mem_Alloc with PTR: 0x7fa17ca4db18, HPTR: 0x7fa17ca4db10, Size: 368, HEAD: 0x7fa17ca4d000
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fa17ca4d000 , Available size: 408
+Node: 1, Start Address: 0x7fa17ca4d330 , Available size: 1008
+Node: 2, Start Address: 0x7fa17ca4dc80 , Available size: 40
+Node: 3, Start Address: 0x7fa17ca4dfb0 , Available size: 80
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 368
+Best-fit loop: 0x7fa17ca4d000 size is more than 368
+Best-fit loop: 0x7fa17ca4d330 size is more than 368
+Returning from Mem_Alloc with PTR: 0x7fa17ca4d008, HPTR: 0x7fa17ca4d000, Size: 368, HEAD: 0x7fa17ca4d170
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fa17ca4d170 , Available size: 40
+Node: 1, Start Address: 0x7fa17ca4d330 , Available size: 1008
+Node: 2, Start Address: 0x7fa17ca4dc80 , Available size: 40
+Node: 3, Start Address: 0x7fa17ca4dfb0 , Available size: 80
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 968
+Best-fit loop: 0x7fa17ca4d330 size is more than 968
+Returning from Mem_Alloc with PTR: 0x7fa17ca4d338, HPTR: 0x7fa17ca4d330, Size: 968, HEAD: 0x7fa17ca4d170

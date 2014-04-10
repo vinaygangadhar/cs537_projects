@@ -1,0 +1,4 @@
+#!/bin/bash
+base=/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/3b
+python $base/project3b.py --test-path $base $@ | tee -i runtests.log
+exit $?

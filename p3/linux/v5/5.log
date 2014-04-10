@@ -1,0 +1,4 @@
+[H[2Jrm -f *.o *.so
+gcc -Wall  -c mem.c -fpic
+gcc -Wall  -c helper.c -fpic
+gcc -shared -o libmem.so mem.o helper.o -lm  

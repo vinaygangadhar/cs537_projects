@@ -1,0 +1,1570 @@
+[H[2Jrm -f *.o *.so
+gcc -Wall  -c mem.c -fpic
+gcc -Wall  -c helper.c -fpic
+gcc -shared -o libmem.so mem.o helper.o -lm  
+
+------------------------------MEM-INIT--------------------------------
+Allocated Init size: 323584
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6000 , Available size: 323584
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with PTR: 0x7fd9465f6008, HPTR: 0x7fd9465f6000, Size: 120, HEAD: 0x7fd9465f6078
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6078 , Available size: 323464
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with PTR: 0x7fd9465f6080, HPTR: 0x7fd9465f6078, Size: 104, HEAD: 0x7fd9465f60e0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f60e0 , Available size: 323360
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 88
+Returning from Mem_Alloc with PTR: 0x7fd9465f60e8, HPTR: 0x7fd9465f60e0, Size: 88, HEAD: 0x7fd9465f6138
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6138 , Available size: 323272
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with PTR: 0x7fd9465f6140, HPTR: 0x7fd9465f6138, Size: 16, HEAD: 0x7fd9465f6148
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6148 , Available size: 323256
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with PTR: 0x7fd9465f6150, HPTR: 0x7fd9465f6148, Size: 96, HEAD: 0x7fd9465f61a8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f61a8 , Available size: 323160
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with PTR: 0x7fd9465f61b0, HPTR: 0x7fd9465f61a8, Size: 72, HEAD: 0x7fd9465f61f0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f61f0 , Available size: 323088
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with PTR: 0x7fd9465f61f8, HPTR: 0x7fd9465f61f0, Size: 136, HEAD: 0x7fd9465f6278
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6278 , Available size: 322952
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 56
+Returning from Mem_Alloc with PTR: 0x7fd9465f6280, HPTR: 0x7fd9465f6278, Size: 56, HEAD: 0x7fd9465f62b0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f62b0 , Available size: 322896
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 112
+Returning from Mem_Alloc with PTR: 0x7fd9465f62b8, HPTR: 0x7fd9465f62b0, Size: 112, HEAD: 0x7fd9465f6320
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6320 , Available size: 322784
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with PTR: 0x7fd9465f6328, HPTR: 0x7fd9465f6320, Size: 96, HEAD: 0x7fd9465f6380
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6380 , Available size: 322688
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with PTR: 0x7fd9465f6388, HPTR: 0x7fd9465f6380, Size: 128, HEAD: 0x7fd9465f6400
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6400 , Available size: 322560
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 88
+Returning from Mem_Alloc with PTR: 0x7fd9465f6408, HPTR: 0x7fd9465f6400, Size: 88, HEAD: 0x7fd9465f6458
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6458 , Available size: 322472
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with PTR: 0x7fd9465f6460, HPTR: 0x7fd9465f6458, Size: 72, HEAD: 0x7fd9465f64a0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f64a0 , Available size: 322400
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with PTR: 0x7fd9465f64a8, HPTR: 0x7fd9465f64a0, Size: 104, HEAD: 0x7fd9465f6508
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6508 , Available size: 322296
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 64
+Returning from Mem_Alloc with PTR: 0x7fd9465f6510, HPTR: 0x7fd9465f6508, Size: 64, HEAD: 0x7fd9465f6548
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6548 , Available size: 322232
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with PTR: 0x7fd9465f6550, HPTR: 0x7fd9465f6548, Size: 120, HEAD: 0x7fd9465f65c0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f65c0 , Available size: 322112
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f65c8, HPTR: 0x7fd9465f65c0, Size: 40, HEAD: 0x7fd9465f65e8
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fd9465f6408, HPTR: 0x7fd9465f6400, Magic: 314159, Size: 88
+Sorting Done- HEAD: 0x7fd9465f6400
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6400 , Available size: 88
+Node: 1, Start Address: 0x7fd9465f65e8 , Available size: 322072
+<=====Coaelescer=====>
+Cur_node: 0x7fd9465f6400
+Cur_node: 0x7fd9465f65e8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6400 , Available size: 88
+Node: 1, Start Address: 0x7fd9465f65e8 , Available size: 322072
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with PTR: 0x7fd9465f6408, HPTR: 0x7fd9465f6400, Size: 88, HEAD: 0x7fd9465f65e8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f65e8 , Available size: 322072
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with PTR: 0x7fd9465f65f0, HPTR: 0x7fd9465f65e8, Size: 72, HEAD: 0x7fd9465f6630
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6630 , Available size: 322000
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with PTR: 0x7fd9465f6638, HPTR: 0x7fd9465f6630, Size: 104, HEAD: 0x7fd9465f6698
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6698 , Available size: 321896
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f66a0, HPTR: 0x7fd9465f6698, Size: 40, HEAD: 0x7fd9465f66c0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f66c0 , Available size: 321856
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f66c8, HPTR: 0x7fd9465f66c0, Size: 40, HEAD: 0x7fd9465f66e8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f66e8 , Available size: 321816
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f66f0, HPTR: 0x7fd9465f66e8, Size: 40, HEAD: 0x7fd9465f6710
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6710 , Available size: 321776
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 48
+Returning from Mem_Alloc with PTR: 0x7fd9465f6718, HPTR: 0x7fd9465f6710, Size: 48, HEAD: 0x7fd9465f6740
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6740 , Available size: 321728
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with PTR: 0x7fd9465f6748, HPTR: 0x7fd9465f6740, Size: 120, HEAD: 0x7fd9465f67b8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f67b8 , Available size: 321608
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with PTR: 0x7fd9465f67c0, HPTR: 0x7fd9465f67b8, Size: 72, HEAD: 0x7fd9465f6800
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6800 , Available size: 321536
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with PTR: 0x7fd9465f6808, HPTR: 0x7fd9465f6800, Size: 104, HEAD: 0x7fd9465f6868
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6868 , Available size: 321432
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with PTR: 0x7fd9465f6870, HPTR: 0x7fd9465f6868, Size: 120, HEAD: 0x7fd9465f68e0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f68e0 , Available size: 321312
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with PTR: 0x7fd9465f68e8, HPTR: 0x7fd9465f68e0, Size: 128, HEAD: 0x7fd9465f6960
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6960 , Available size: 321184
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f6968, HPTR: 0x7fd9465f6960, Size: 40, HEAD: 0x7fd9465f6988
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6988 , Available size: 321144
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 56
+Returning from Mem_Alloc with PTR: 0x7fd9465f6990, HPTR: 0x7fd9465f6988, Size: 56, HEAD: 0x7fd9465f69c0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f69c0 , Available size: 321088
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with PTR: 0x7fd9465f69c8, HPTR: 0x7fd9465f69c0, Size: 128, HEAD: 0x7fd9465f6a40
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6a40 , Available size: 320960
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with PTR: 0x7fd9465f6a48, HPTR: 0x7fd9465f6a40, Size: 96, HEAD: 0x7fd9465f6aa0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6aa0 , Available size: 320864
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 64
+Returning from Mem_Alloc with PTR: 0x7fd9465f6aa8, HPTR: 0x7fd9465f6aa0, Size: 64, HEAD: 0x7fd9465f6ae0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6ae0 , Available size: 320800
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with PTR: 0x7fd9465f6ae8, HPTR: 0x7fd9465f6ae0, Size: 120, HEAD: 0x7fd9465f6b58
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6b58 , Available size: 320680
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with PTR: 0x7fd9465f6b60, HPTR: 0x7fd9465f6b58, Size: 104, HEAD: 0x7fd9465f6bc0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6bc0 , Available size: 320576
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with PTR: 0x7fd9465f6bc8, HPTR: 0x7fd9465f6bc0, Size: 72, HEAD: 0x7fd9465f6c08
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6c08 , Available size: 320504
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 112
+Returning from Mem_Alloc with PTR: 0x7fd9465f6c10, HPTR: 0x7fd9465f6c08, Size: 112, HEAD: 0x7fd9465f6c78
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6c78 , Available size: 320392
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with PTR: 0x7fd9465f6c80, HPTR: 0x7fd9465f6c78, Size: 24, HEAD: 0x7fd9465f6c90
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6c90 , Available size: 320368
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with PTR: 0x7fd9465f6c98, HPTR: 0x7fd9465f6c90, Size: 24, HEAD: 0x7fd9465f6ca8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6ca8 , Available size: 320344
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with PTR: 0x7fd9465f6cb0, HPTR: 0x7fd9465f6ca8, Size: 128, HEAD: 0x7fd9465f6d28
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6d28 , Available size: 320216
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with PTR: 0x7fd9465f6d30, HPTR: 0x7fd9465f6d28, Size: 72, HEAD: 0x7fd9465f6d70
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6d70 , Available size: 320144
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with PTR: 0x7fd9465f6d78, HPTR: 0x7fd9465f6d70, Size: 128, HEAD: 0x7fd9465f6df0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6df0 , Available size: 320016
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with PTR: 0x7fd9465f6df8, HPTR: 0x7fd9465f6df0, Size: 128, HEAD: 0x7fd9465f6e70
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6e70 , Available size: 319888
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with PTR: 0x7fd9465f6e78, HPTR: 0x7fd9465f6e70, Size: 136, HEAD: 0x7fd9465f6ef8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6ef8 , Available size: 319752
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with PTR: 0x7fd9465f6f00, HPTR: 0x7fd9465f6ef8, Size: 80, HEAD: 0x7fd9465f6f48
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6f48 , Available size: 319672
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with PTR: 0x7fd9465f6f50, HPTR: 0x7fd9465f6f48, Size: 136, HEAD: 0x7fd9465f6fd0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6fd0 , Available size: 319536
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with PTR: 0x7fd9465f6fd8, HPTR: 0x7fd9465f6fd0, Size: 136, HEAD: 0x7fd9465f7058
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7058 , Available size: 319400
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with PTR: 0x7fd9465f7060, HPTR: 0x7fd9465f7058, Size: 96, HEAD: 0x7fd9465f70b8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f70b8 , Available size: 319304
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with PTR: 0x7fd9465f70c0, HPTR: 0x7fd9465f70b8, Size: 80, HEAD: 0x7fd9465f7108
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7108 , Available size: 319224
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with PTR: 0x7fd9465f7110, HPTR: 0x7fd9465f7108, Size: 16, HEAD: 0x7fd9465f7118
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7118 , Available size: 319208
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 48
+Returning from Mem_Alloc with PTR: 0x7fd9465f7120, HPTR: 0x7fd9465f7118, Size: 48, HEAD: 0x7fd9465f7148
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7148 , Available size: 319160
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f7150, HPTR: 0x7fd9465f7148, Size: 40, HEAD: 0x7fd9465f7170
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7170 , Available size: 319120
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with PTR: 0x7fd9465f7178, HPTR: 0x7fd9465f7170, Size: 24, HEAD: 0x7fd9465f7188
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7188 , Available size: 319096
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with PTR: 0x7fd9465f7190, HPTR: 0x7fd9465f7188, Size: 120, HEAD: 0x7fd9465f7200
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7200 , Available size: 318976
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with PTR: 0x7fd9465f7208, HPTR: 0x7fd9465f7200, Size: 80, HEAD: 0x7fd9465f7250
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7250 , Available size: 318896
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f7258, HPTR: 0x7fd9465f7250, Size: 40, HEAD: 0x7fd9465f7278
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7278 , Available size: 318856
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 64
+Returning from Mem_Alloc with PTR: 0x7fd9465f7280, HPTR: 0x7fd9465f7278, Size: 64, HEAD: 0x7fd9465f72b8
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fd9465f7208, HPTR: 0x7fd9465f7200, Magic: 314159, Size: 80
+Sorting Done- HEAD: 0x7fd9465f7200
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7200 , Available size: 80
+Node: 1, Start Address: 0x7fd9465f72b8 , Available size: 318792
+<=====Coaelescer=====>
+Cur_node: 0x7fd9465f7200
+Cur_node: 0x7fd9465f72b8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7200 , Available size: 80
+Node: 1, Start Address: 0x7fd9465f72b8 , Available size: 318792
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with PTR: 0x7fd9465f7208, HPTR: 0x7fd9465f7200, Size: 80, HEAD: 0x7fd9465f72b8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f72b8 , Available size: 318792
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with PTR: 0x7fd9465f72c0, HPTR: 0x7fd9465f72b8, Size: 96, HEAD: 0x7fd9465f7318
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7318 , Available size: 318696
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 48
+Returning from Mem_Alloc with PTR: 0x7fd9465f7320, HPTR: 0x7fd9465f7318, Size: 48, HEAD: 0x7fd9465f7348
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7348 , Available size: 318648
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 112
+Returning from Mem_Alloc with PTR: 0x7fd9465f7350, HPTR: 0x7fd9465f7348, Size: 112, HEAD: 0x7fd9465f73b8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f73b8 , Available size: 318536
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 56
+Returning from Mem_Alloc with PTR: 0x7fd9465f73c0, HPTR: 0x7fd9465f73b8, Size: 56, HEAD: 0x7fd9465f73f0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f73f0 , Available size: 318480
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with PTR: 0x7fd9465f73f8, HPTR: 0x7fd9465f73f0, Size: 128, HEAD: 0x7fd9465f7470
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7470 , Available size: 318352
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with PTR: 0x7fd9465f7478, HPTR: 0x7fd9465f7470, Size: 136, HEAD: 0x7fd9465f74f8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f74f8 , Available size: 318216
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 88
+Returning from Mem_Alloc with PTR: 0x7fd9465f7500, HPTR: 0x7fd9465f74f8, Size: 88, HEAD: 0x7fd9465f7550
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7550 , Available size: 318128
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 112
+Returning from Mem_Alloc with PTR: 0x7fd9465f7558, HPTR: 0x7fd9465f7550, Size: 112, HEAD: 0x7fd9465f75c0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f75c0 , Available size: 318016
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with PTR: 0x7fd9465f75c8, HPTR: 0x7fd9465f75c0, Size: 128, HEAD: 0x7fd9465f7640
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7640 , Available size: 317888
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 112
+Returning from Mem_Alloc with PTR: 0x7fd9465f7648, HPTR: 0x7fd9465f7640, Size: 112, HEAD: 0x7fd9465f76b0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f76b0 , Available size: 317776
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with PTR: 0x7fd9465f76b8, HPTR: 0x7fd9465f76b0, Size: 72, HEAD: 0x7fd9465f76f8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f76f8 , Available size: 317704
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 112
+Returning from Mem_Alloc with PTR: 0x7fd9465f7700, HPTR: 0x7fd9465f76f8, Size: 112, HEAD: 0x7fd9465f7768
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7768 , Available size: 317592
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with PTR: 0x7fd9465f7770, HPTR: 0x7fd9465f7768, Size: 104, HEAD: 0x7fd9465f77d0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f77d0 , Available size: 317488
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f77d8, HPTR: 0x7fd9465f77d0, Size: 40, HEAD: 0x7fd9465f77f8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f77f8 , Available size: 317448
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f7800, HPTR: 0x7fd9465f77f8, Size: 40, HEAD: 0x7fd9465f7820
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fd9465f7190, HPTR: 0x7fd9465f7188, Magic: 314159, Size: 120
+Sorting Done- HEAD: 0x7fd9465f7188
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7188 , Available size: 120
+Node: 1, Start Address: 0x7fd9465f7820 , Available size: 317408
+<=====Coaelescer=====>
+Cur_node: 0x7fd9465f7188
+Cur_node: 0x7fd9465f7820
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7188 , Available size: 120
+Node: 1, Start Address: 0x7fd9465f7820 , Available size: 317408
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with PTR: 0x7fd9465f7190, HPTR: 0x7fd9465f7188, Size: 72, HEAD: 0x7fd9465f71d0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f71d0 , Available size: 48
+Node: 1, Start Address: 0x7fd9465f7820 , Available size: 317408
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with PTR: 0x7fd9465f7828, HPTR: 0x7fd9465f7820, Size: 80, HEAD: 0x7fd9465f71d0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f71d0 , Available size: 48
+Node: 1, Start Address: 0x7fd9465f7870 , Available size: 317328
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with PTR: 0x7fd9465f7878, HPTR: 0x7fd9465f7870, Size: 128, HEAD: 0x7fd9465f71d0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f71d0 , Available size: 48
+Node: 1, Start Address: 0x7fd9465f78f0 , Available size: 317200
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with PTR: 0x7fd9465f78f8, HPTR: 0x7fd9465f78f0, Size: 120, HEAD: 0x7fd9465f71d0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f71d0 , Available size: 48
+Node: 1, Start Address: 0x7fd9465f7968 , Available size: 317080
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 112
+Returning from Mem_Alloc with PTR: 0x7fd9465f7970, HPTR: 0x7fd9465f7968, Size: 112, HEAD: 0x7fd9465f71d0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f71d0 , Available size: 48
+Node: 1, Start Address: 0x7fd9465f79d8 , Available size: 316968
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 56
+Returning from Mem_Alloc with PTR: 0x7fd9465f79e0, HPTR: 0x7fd9465f79d8, Size: 56, HEAD: 0x7fd9465f71d0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f71d0 , Available size: 48
+Node: 1, Start Address: 0x7fd9465f7a10 , Available size: 316912
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f71d8, HPTR: 0x7fd9465f71d0, Size: 48, HEAD: 0x7fd9465f7a10
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7a10 , Available size: 316912
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with PTR: 0x7fd9465f7a18, HPTR: 0x7fd9465f7a10, Size: 96, HEAD: 0x7fd9465f7a70
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7a70 , Available size: 316816
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f7a78, HPTR: 0x7fd9465f7a70, Size: 40, HEAD: 0x7fd9465f7a98
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7a98 , Available size: 316776
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with PTR: 0x7fd9465f7aa0, HPTR: 0x7fd9465f7a98, Size: 80, HEAD: 0x7fd9465f7ae8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7ae8 , Available size: 316696
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with PTR: 0x7fd9465f7af0, HPTR: 0x7fd9465f7ae8, Size: 24, HEAD: 0x7fd9465f7b00
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fd9465f68e8, HPTR: 0x7fd9465f68e0, Magic: 314159, Size: 128
+Sorting Done- HEAD: 0x7fd9465f68e0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f68e0 , Available size: 128
+Node: 1, Start Address: 0x7fd9465f7b00 , Available size: 316672
+<=====Coaelescer=====>
+Cur_node: 0x7fd9465f68e0
+Cur_node: 0x7fd9465f7b00
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f68e0 , Available size: 128
+Node: 1, Start Address: 0x7fd9465f7b00 , Available size: 316672
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 64
+Returning from Mem_Alloc with PTR: 0x7fd9465f68e8, HPTR: 0x7fd9465f68e0, Size: 64, HEAD: 0x7fd9465f6920
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6920 , Available size: 64
+Node: 1, Start Address: 0x7fd9465f7b00 , Available size: 316672
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f6928, HPTR: 0x7fd9465f6920, Size: 40, HEAD: 0x7fd9465f6948
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6948 , Available size: 24
+Node: 1, Start Address: 0x7fd9465f7b00 , Available size: 316672
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with PTR: 0x7fd9465f7b08, HPTR: 0x7fd9465f7b00, Size: 80, HEAD: 0x7fd9465f6948
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6948 , Available size: 24
+Node: 1, Start Address: 0x7fd9465f7b50 , Available size: 316592
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with PTR: 0x7fd9465f6950, HPTR: 0x7fd9465f6948, Size: 24, HEAD: 0x7fd9465f7b50
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7b50 , Available size: 316592
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with PTR: 0x7fd9465f7b58, HPTR: 0x7fd9465f7b50, Size: 72, HEAD: 0x7fd9465f7b98
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7b98 , Available size: 316520
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with PTR: 0x7fd9465f7ba0, HPTR: 0x7fd9465f7b98, Size: 80, HEAD: 0x7fd9465f7be8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7be8 , Available size: 316440
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 32
+Returning from Mem_Alloc with PTR: 0x7fd9465f7bf0, HPTR: 0x7fd9465f7be8, Size: 32, HEAD: 0x7fd9465f7c08
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7c08 , Available size: 316408
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with PTR: 0x7fd9465f7c10, HPTR: 0x7fd9465f7c08, Size: 104, HEAD: 0x7fd9465f7c70
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7c70 , Available size: 316304
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with PTR: 0x7fd9465f7c78, HPTR: 0x7fd9465f7c70, Size: 72, HEAD: 0x7fd9465f7cb8
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fd9465f73c0, HPTR: 0x7fd9465f73b8, Magic: 314159, Size: 56
+Sorting Done- HEAD: 0x7fd9465f73b8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f73b8 , Available size: 56
+Node: 1, Start Address: 0x7fd9465f7cb8 , Available size: 316232
+<=====Coaelescer=====>
+Cur_node: 0x7fd9465f73b8
+Cur_node: 0x7fd9465f7cb8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f73b8 , Available size: 56
+Node: 1, Start Address: 0x7fd9465f7cb8 , Available size: 316232
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with PTR: 0x7fd9465f7cc0, HPTR: 0x7fd9465f7cb8, Size: 104, HEAD: 0x7fd9465f73b8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f73b8 , Available size: 56
+Node: 1, Start Address: 0x7fd9465f7d20 , Available size: 316128
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 56
+Returning from Mem_Alloc with PTR: 0x7fd9465f73c0, HPTR: 0x7fd9465f73b8, Size: 56, HEAD: 0x7fd9465f7d20
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7d20 , Available size: 316128
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with PTR: 0x7fd9465f7d28, HPTR: 0x7fd9465f7d20, Size: 24, HEAD: 0x7fd9465f7d38
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7d38 , Available size: 316104
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with PTR: 0x7fd9465f7d40, HPTR: 0x7fd9465f7d38, Size: 104, HEAD: 0x7fd9465f7da0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7da0 , Available size: 316000
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with PTR: 0x7fd9465f7da8, HPTR: 0x7fd9465f7da0, Size: 72, HEAD: 0x7fd9465f7de8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7de8 , Available size: 315928
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f7df0, HPTR: 0x7fd9465f7de8, Size: 40, HEAD: 0x7fd9465f7e10
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7e10 , Available size: 315888
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 48
+Returning from Mem_Alloc with PTR: 0x7fd9465f7e18, HPTR: 0x7fd9465f7e10, Size: 48, HEAD: 0x7fd9465f7e40
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7e40 , Available size: 315840
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with PTR: 0x7fd9465f7e48, HPTR: 0x7fd9465f7e40, Size: 104, HEAD: 0x7fd9465f7ea8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7ea8 , Available size: 315736
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with PTR: 0x7fd9465f7eb0, HPTR: 0x7fd9465f7ea8, Size: 104, HEAD: 0x7fd9465f7f10
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fd9465f62b8, HPTR: 0x7fd9465f62b0, Magic: 314159, Size: 112
+Sorting Done- HEAD: 0x7fd9465f62b0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f62b0 , Available size: 112
+Node: 1, Start Address: 0x7fd9465f7f10 , Available size: 315632
+<=====Coaelescer=====>
+Cur_node: 0x7fd9465f62b0
+Cur_node: 0x7fd9465f7f10
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f62b0 , Available size: 112
+Node: 1, Start Address: 0x7fd9465f7f10 , Available size: 315632
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 64
+Returning from Mem_Alloc with PTR: 0x7fd9465f62b8, HPTR: 0x7fd9465f62b0, Size: 64, HEAD: 0x7fd9465f62f0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f62f0 , Available size: 48
+Node: 1, Start Address: 0x7fd9465f7f10 , Available size: 315632
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with PTR: 0x7fd9465f7f18, HPTR: 0x7fd9465f7f10, Size: 128, HEAD: 0x7fd9465f62f0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f62f0 , Available size: 48
+Node: 1, Start Address: 0x7fd9465f7f90 , Available size: 315504
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 48
+Returning from Mem_Alloc with PTR: 0x7fd9465f62f8, HPTR: 0x7fd9465f62f0, Size: 48, HEAD: 0x7fd9465f7f90
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7f90 , Available size: 315504
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with PTR: 0x7fd9465f7f98, HPTR: 0x7fd9465f7f90, Size: 120, HEAD: 0x7fd9465f8008
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8008 , Available size: 315384
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with PTR: 0x7fd9465f8010, HPTR: 0x7fd9465f8008, Size: 24, HEAD: 0x7fd9465f8020
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8020 , Available size: 315360
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 48
+Returning from Mem_Alloc with PTR: 0x7fd9465f8028, HPTR: 0x7fd9465f8020, Size: 48, HEAD: 0x7fd9465f8050
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fd9465f6140, HPTR: 0x7fd9465f6138, Magic: 314159, Size: 16
+Sorting Done- HEAD: 0x7fd9465f6138
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6138 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f8050 , Available size: 315312
+<=====Coaelescer=====>
+Cur_node: 0x7fd9465f6138
+Cur_node: 0x7fd9465f8050
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6138 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f8050 , Available size: 315312
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f8058, HPTR: 0x7fd9465f8050, Size: 40, HEAD: 0x7fd9465f6138
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6138 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f8078 , Available size: 315272
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with PTR: 0x7fd9465f8080, HPTR: 0x7fd9465f8078, Size: 24, HEAD: 0x7fd9465f6138
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6138 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f8090 , Available size: 315248
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 56
+Returning from Mem_Alloc with PTR: 0x7fd9465f8098, HPTR: 0x7fd9465f8090, Size: 56, HEAD: 0x7fd9465f6138
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6138 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f80c8 , Available size: 315192
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with PTR: 0x7fd9465f80d0, HPTR: 0x7fd9465f80c8, Size: 136, HEAD: 0x7fd9465f6138
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6138 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f8150 , Available size: 315056
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with PTR: 0x7fd9465f8158, HPTR: 0x7fd9465f8150, Size: 120, HEAD: 0x7fd9465f6138
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6138 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f81c8 , Available size: 314936
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with PTR: 0x7fd9465f81d0, HPTR: 0x7fd9465f81c8, Size: 96, HEAD: 0x7fd9465f6138
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6138 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f8228 , Available size: 314840
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with PTR: 0x7fd9465f8230, HPTR: 0x7fd9465f8228, Size: 136, HEAD: 0x7fd9465f6138
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6138 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f82b0 , Available size: 314704
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with PTR: 0x7fd9465f82b8, HPTR: 0x7fd9465f82b0, Size: 128, HEAD: 0x7fd9465f6138
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6138 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f8330 , Available size: 314576
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with PTR: 0x7fd9465f6140, HPTR: 0x7fd9465f6138, Size: 16, HEAD: 0x7fd9465f8330
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8330 , Available size: 314576
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 56
+Returning from Mem_Alloc with PTR: 0x7fd9465f8338, HPTR: 0x7fd9465f8330, Size: 56, HEAD: 0x7fd9465f8368
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8368 , Available size: 314520
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with PTR: 0x7fd9465f8370, HPTR: 0x7fd9465f8368, Size: 80, HEAD: 0x7fd9465f83b8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f83b8 , Available size: 314440
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 56
+Returning from Mem_Alloc with PTR: 0x7fd9465f83c0, HPTR: 0x7fd9465f83b8, Size: 56, HEAD: 0x7fd9465f83f0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f83f0 , Available size: 314384
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with PTR: 0x7fd9465f83f8, HPTR: 0x7fd9465f83f0, Size: 16, HEAD: 0x7fd9465f8400
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8400 , Available size: 314368
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with PTR: 0x7fd9465f8408, HPTR: 0x7fd9465f8400, Size: 104, HEAD: 0x7fd9465f8468
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8468 , Available size: 314264
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with PTR: 0x7fd9465f8470, HPTR: 0x7fd9465f8468, Size: 128, HEAD: 0x7fd9465f84e8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f84e8 , Available size: 314136
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with PTR: 0x7fd9465f84f0, HPTR: 0x7fd9465f84e8, Size: 80, HEAD: 0x7fd9465f8538
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8538 , Available size: 314056
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with PTR: 0x7fd9465f8540, HPTR: 0x7fd9465f8538, Size: 80, HEAD: 0x7fd9465f8588
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8588 , Available size: 313976
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 48
+Returning from Mem_Alloc with PTR: 0x7fd9465f8590, HPTR: 0x7fd9465f8588, Size: 48, HEAD: 0x7fd9465f85b8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f85b8 , Available size: 313928
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 112
+Returning from Mem_Alloc with PTR: 0x7fd9465f85c0, HPTR: 0x7fd9465f85b8, Size: 112, HEAD: 0x7fd9465f8628
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8628 , Available size: 313816
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with PTR: 0x7fd9465f8630, HPTR: 0x7fd9465f8628, Size: 80, HEAD: 0x7fd9465f8678
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8678 , Available size: 313736
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 88
+Returning from Mem_Alloc with PTR: 0x7fd9465f8680, HPTR: 0x7fd9465f8678, Size: 88, HEAD: 0x7fd9465f86d0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f86d0 , Available size: 313648
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with PTR: 0x7fd9465f86d8, HPTR: 0x7fd9465f86d0, Size: 72, HEAD: 0x7fd9465f8718
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8718 , Available size: 313576
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 48
+Returning from Mem_Alloc with PTR: 0x7fd9465f8720, HPTR: 0x7fd9465f8718, Size: 48, HEAD: 0x7fd9465f8748
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fd9465f7f98, HPTR: 0x7fd9465f7f90, Magic: 314159, Size: 120
+Sorting Done- HEAD: 0x7fd9465f7f90
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7f90 , Available size: 120
+Node: 1, Start Address: 0x7fd9465f8748 , Available size: 313528
+<=====Coaelescer=====>
+Cur_node: 0x7fd9465f7f90
+Cur_node: 0x7fd9465f8748
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7f90 , Available size: 120
+Node: 1, Start Address: 0x7fd9465f8748 , Available size: 313528
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f7f98, HPTR: 0x7fd9465f7f90, Size: 40, HEAD: 0x7fd9465f7fb8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7fb8 , Available size: 80
+Node: 1, Start Address: 0x7fd9465f8748 , Available size: 313528
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 48
+Returning from Mem_Alloc with PTR: 0x7fd9465f7fc0, HPTR: 0x7fd9465f7fb8, Size: 48, HEAD: 0x7fd9465f7fe8
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fd9465f6cb0, HPTR: 0x7fd9465f6ca8, Magic: 314159, Size: 128
+Sorting Done- HEAD: 0x7fd9465f6ca8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6ca8 , Available size: 128
+Node: 1, Start Address: 0x7fd9465f7fe8 , Available size: 32
+Node: 2, Start Address: 0x7fd9465f8748 , Available size: 313528
+<=====Coaelescer=====>
+Cur_node: 0x7fd9465f6ca8
+Cur_node: 0x7fd9465f7fe8
+Cur_node: 0x7fd9465f8748
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6ca8 , Available size: 128
+Node: 1, Start Address: 0x7fd9465f7fe8 , Available size: 32
+Node: 2, Start Address: 0x7fd9465f8748 , Available size: 313528
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 88
+Returning from Mem_Alloc with PTR: 0x7fd9465f6cb0, HPTR: 0x7fd9465f6ca8, Size: 88, HEAD: 0x7fd9465f6d00
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6d00 , Available size: 40
+Node: 1, Start Address: 0x7fd9465f7fe8 , Available size: 32
+Node: 2, Start Address: 0x7fd9465f8748 , Available size: 313528
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with PTR: 0x7fd9465f8750, HPTR: 0x7fd9465f8748, Size: 96, HEAD: 0x7fd9465f6d00
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6d00 , Available size: 40
+Node: 1, Start Address: 0x7fd9465f7fe8 , Available size: 32
+Node: 2, Start Address: 0x7fd9465f87a8 , Available size: 313432
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with PTR: 0x7fd9465f7ff0, HPTR: 0x7fd9465f7fe8, Size: 16, HEAD: 0x7fd9465f6d00
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6d00 , Available size: 40
+Node: 1, Start Address: 0x7fd9465f7ff8 , Available size: 16
+Node: 2, Start Address: 0x7fd9465f87a8 , Available size: 313432
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 88
+Returning from Mem_Alloc with PTR: 0x7fd9465f87b0, HPTR: 0x7fd9465f87a8, Size: 88, HEAD: 0x7fd9465f6d00
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6d00 , Available size: 40
+Node: 1, Start Address: 0x7fd9465f7ff8 , Available size: 16
+Node: 2, Start Address: 0x7fd9465f8800 , Available size: 313344
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f6d08, HPTR: 0x7fd9465f6d00, Size: 40, HEAD: 0x7fd9465f7ff8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7ff8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f8800 , Available size: 313344
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with PTR: 0x7fd9465f8808, HPTR: 0x7fd9465f8800, Size: 80, HEAD: 0x7fd9465f7ff8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7ff8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f8850 , Available size: 313264
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 56
+Returning from Mem_Alloc with PTR: 0x7fd9465f8858, HPTR: 0x7fd9465f8850, Size: 56, HEAD: 0x7fd9465f7ff8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7ff8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f8888 , Available size: 313208
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 56
+Returning from Mem_Alloc with PTR: 0x7fd9465f8890, HPTR: 0x7fd9465f8888, Size: 56, HEAD: 0x7fd9465f7ff8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7ff8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f88c0 , Available size: 313152
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 32
+Returning from Mem_Alloc with PTR: 0x7fd9465f88c8, HPTR: 0x7fd9465f88c0, Size: 32, HEAD: 0x7fd9465f7ff8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7ff8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f88e0 , Available size: 313120
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 48
+Returning from Mem_Alloc with PTR: 0x7fd9465f88e8, HPTR: 0x7fd9465f88e0, Size: 48, HEAD: 0x7fd9465f7ff8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7ff8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f8910 , Available size: 313072
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f8918, HPTR: 0x7fd9465f8910, Size: 40, HEAD: 0x7fd9465f7ff8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7ff8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f8938 , Available size: 313032
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f8940, HPTR: 0x7fd9465f8938, Size: 40, HEAD: 0x7fd9465f7ff8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7ff8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f8960 , Available size: 312992
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with PTR: 0x7fd9465f8968, HPTR: 0x7fd9465f8960, Size: 72, HEAD: 0x7fd9465f7ff8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7ff8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f89a8 , Available size: 312920
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with PTR: 0x7fd9465f89b0, HPTR: 0x7fd9465f89a8, Size: 104, HEAD: 0x7fd9465f7ff8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7ff8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f8a10 , Available size: 312816
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with PTR: 0x7fd9465f8a18, HPTR: 0x7fd9465f8a10, Size: 72, HEAD: 0x7fd9465f7ff8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7ff8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f8a58 , Available size: 312744
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 56
+Returning from Mem_Alloc with PTR: 0x7fd9465f8a60, HPTR: 0x7fd9465f8a58, Size: 56, HEAD: 0x7fd9465f7ff8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f7ff8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f8a90 , Available size: 312688
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with PTR: 0x7fd9465f8000, HPTR: 0x7fd9465f7ff8, Size: 16, HEAD: 0x7fd9465f8a90
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fd9465f76b8, HPTR: 0x7fd9465f76b0, Magic: 314159, Size: 72
+Sorting Done- HEAD: 0x7fd9465f76b0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f76b0 , Available size: 72
+Node: 1, Start Address: 0x7fd9465f8a90 , Available size: 312688
+<=====Coaelescer=====>
+Cur_node: 0x7fd9465f76b0
+Cur_node: 0x7fd9465f8a90
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f76b0 , Available size: 72
+Node: 1, Start Address: 0x7fd9465f8a90 , Available size: 312688
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with PTR: 0x7fd9465f8a98, HPTR: 0x7fd9465f8a90, Size: 96, HEAD: 0x7fd9465f76b0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f76b0 , Available size: 72
+Node: 1, Start Address: 0x7fd9465f8af0 , Available size: 312592
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 48
+Returning from Mem_Alloc with PTR: 0x7fd9465f76b8, HPTR: 0x7fd9465f76b0, Size: 48, HEAD: 0x7fd9465f76e0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f76e0 , Available size: 24
+Node: 1, Start Address: 0x7fd9465f8af0 , Available size: 312592
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with PTR: 0x7fd9465f76e8, HPTR: 0x7fd9465f76e0, Size: 24, HEAD: 0x7fd9465f8af0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8af0 , Available size: 312592
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 88
+Returning from Mem_Alloc with PTR: 0x7fd9465f8af8, HPTR: 0x7fd9465f8af0, Size: 88, HEAD: 0x7fd9465f8b48
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8b48 , Available size: 312504
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with PTR: 0x7fd9465f8b50, HPTR: 0x7fd9465f8b48, Size: 136, HEAD: 0x7fd9465f8bd0
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fd9465f6c80, HPTR: 0x7fd9465f6c78, Magic: 314159, Size: 24
+Sorting Done- HEAD: 0x7fd9465f6c78
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6c78 , Available size: 24
+Node: 1, Start Address: 0x7fd9465f8bd0 , Available size: 312368
+<=====Coaelescer=====>
+Cur_node: 0x7fd9465f6c78
+Cur_node: 0x7fd9465f8bd0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6c78 , Available size: 24
+Node: 1, Start Address: 0x7fd9465f8bd0 , Available size: 312368
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with PTR: 0x7fd9465f8bd8, HPTR: 0x7fd9465f8bd0, Size: 104, HEAD: 0x7fd9465f6c78
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6c78 , Available size: 24
+Node: 1, Start Address: 0x7fd9465f8c38 , Available size: 312264
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with PTR: 0x7fd9465f8c40, HPTR: 0x7fd9465f8c38, Size: 80, HEAD: 0x7fd9465f6c78
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f6c78 , Available size: 24
+Node: 1, Start Address: 0x7fd9465f8c88 , Available size: 312184
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 120
+Returning from Mem_Alloc with PTR: 0x7fd9465f8c90, HPTR: 0x7fd9465f8c88, Size: 120, HEAD: 0x7fd9465f6c78
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fd9465f62f8, HPTR: 0x7fd9465f62f0, Magic: 314159, Size: 48
+Sorting Done- HEAD: 0x7fd9465f62f0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f62f0 , Available size: 48
+Node: 1, Start Address: 0x7fd9465f6c78 , Available size: 24
+Node: 2, Start Address: 0x7fd9465f8d00 , Available size: 312064
+<=====Coaelescer=====>
+Cur_node: 0x7fd9465f62f0
+Cur_node: 0x7fd9465f6c78
+Cur_node: 0x7fd9465f8d00
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f62f0 , Available size: 48
+Node: 1, Start Address: 0x7fd9465f6c78 , Available size: 24
+Node: 2, Start Address: 0x7fd9465f8d00 , Available size: 312064
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with PTR: 0x7fd9465f6c80, HPTR: 0x7fd9465f6c78, Size: 24, HEAD: 0x7fd9465f62f0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f62f0 , Available size: 48
+Node: 1, Start Address: 0x7fd9465f8d00 , Available size: 312064
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 80
+Returning from Mem_Alloc with PTR: 0x7fd9465f8d08, HPTR: 0x7fd9465f8d00, Size: 80, HEAD: 0x7fd9465f62f0
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fd9465f8010, HPTR: 0x7fd9465f8008, Magic: 314159, Size: 24
+Sorting Done- HEAD: 0x7fd9465f62f0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f62f0 , Available size: 48
+Node: 1, Start Address: 0x7fd9465f8008 , Available size: 24
+Node: 2, Start Address: 0x7fd9465f8d50 , Available size: 311984
+<=====Coaelescer=====>
+Cur_node: 0x7fd9465f62f0
+Cur_node: 0x7fd9465f8008
+Cur_node: 0x7fd9465f8d50
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f62f0 , Available size: 48
+Node: 1, Start Address: 0x7fd9465f8008 , Available size: 24
+Node: 2, Start Address: 0x7fd9465f8d50 , Available size: 311984
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with PTR: 0x7fd9465f8d58, HPTR: 0x7fd9465f8d50, Size: 72, HEAD: 0x7fd9465f62f0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f62f0 , Available size: 48
+Node: 1, Start Address: 0x7fd9465f8008 , Available size: 24
+Node: 2, Start Address: 0x7fd9465f8d98 , Available size: 311912
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with PTR: 0x7fd9465f8da0, HPTR: 0x7fd9465f8d98, Size: 128, HEAD: 0x7fd9465f62f0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f62f0 , Available size: 48
+Node: 1, Start Address: 0x7fd9465f8008 , Available size: 24
+Node: 2, Start Address: 0x7fd9465f8e18 , Available size: 311784
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with PTR: 0x7fd9465f8010, HPTR: 0x7fd9465f8008, Size: 24, HEAD: 0x7fd9465f62f0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f62f0 , Available size: 48
+Node: 1, Start Address: 0x7fd9465f8e18 , Available size: 311784
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f62f8, HPTR: 0x7fd9465f62f0, Size: 48, HEAD: 0x7fd9465f8e18
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8e18 , Available size: 311784
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 16
+Returning from Mem_Alloc with PTR: 0x7fd9465f8e20, HPTR: 0x7fd9465f8e18, Size: 16, HEAD: 0x7fd9465f8e28
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8e28 , Available size: 311768
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 112
+Returning from Mem_Alloc with PTR: 0x7fd9465f8e30, HPTR: 0x7fd9465f8e28, Size: 112, HEAD: 0x7fd9465f8e98
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fd9465f8370, HPTR: 0x7fd9465f8368, Magic: 314159, Size: 80
+Sorting Done- HEAD: 0x7fd9465f8368
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8368 , Available size: 80
+Node: 1, Start Address: 0x7fd9465f8e98 , Available size: 311656
+<=====Coaelescer=====>
+Cur_node: 0x7fd9465f8368
+Cur_node: 0x7fd9465f8e98
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8368 , Available size: 80
+Node: 1, Start Address: 0x7fd9465f8e98 , Available size: 311656
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 136
+Returning from Mem_Alloc with PTR: 0x7fd9465f8ea0, HPTR: 0x7fd9465f8e98, Size: 136, HEAD: 0x7fd9465f8368
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fd9465f82b8, HPTR: 0x7fd9465f82b0, Magic: 314159, Size: 128
+Sorting Done- HEAD: 0x7fd9465f82b0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f82b0 , Available size: 128
+Node: 1, Start Address: 0x7fd9465f8368 , Available size: 80
+Node: 2, Start Address: 0x7fd9465f8f20 , Available size: 311520
+<=====Coaelescer=====>
+Cur_node: 0x7fd9465f82b0
+Cur_node: 0x7fd9465f8368
+Cur_node: 0x7fd9465f8f20
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f82b0 , Available size: 128
+Node: 1, Start Address: 0x7fd9465f8368 , Available size: 80
+Node: 2, Start Address: 0x7fd9465f8f20 , Available size: 311520
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with PTR: 0x7fd9465f82b8, HPTR: 0x7fd9465f82b0, Size: 104, HEAD: 0x7fd9465f8318
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8318 , Available size: 24
+Node: 1, Start Address: 0x7fd9465f8368 , Available size: 80
+Node: 2, Start Address: 0x7fd9465f8f20 , Available size: 311520
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 88
+Returning from Mem_Alloc with PTR: 0x7fd9465f8f28, HPTR: 0x7fd9465f8f20, Size: 88, HEAD: 0x7fd9465f8318
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8318 , Available size: 24
+Node: 1, Start Address: 0x7fd9465f8368 , Available size: 80
+Node: 2, Start Address: 0x7fd9465f8f78 , Available size: 311432
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 64
+Returning from Mem_Alloc with PTR: 0x7fd9465f8370, HPTR: 0x7fd9465f8368, Size: 64, HEAD: 0x7fd9465f8318
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8318 , Available size: 24
+Node: 1, Start Address: 0x7fd9465f83a8 , Available size: 16
+Node: 2, Start Address: 0x7fd9465f8f78 , Available size: 311432
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f8f80, HPTR: 0x7fd9465f8f78, Size: 40, HEAD: 0x7fd9465f8318
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8318 , Available size: 24
+Node: 1, Start Address: 0x7fd9465f83a8 , Available size: 16
+Node: 2, Start Address: 0x7fd9465f8fa0 , Available size: 311392
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 72
+Returning from Mem_Alloc with PTR: 0x7fd9465f8fa8, HPTR: 0x7fd9465f8fa0, Size: 72, HEAD: 0x7fd9465f8318
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f8318 , Available size: 24
+Node: 1, Start Address: 0x7fd9465f83a8 , Available size: 16
+Node: 2, Start Address: 0x7fd9465f8fe8 , Available size: 311320
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 24
+Returning from Mem_Alloc with PTR: 0x7fd9465f8320, HPTR: 0x7fd9465f8318, Size: 24, HEAD: 0x7fd9465f83a8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f83a8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f8fe8 , Available size: 311320
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with PTR: 0x7fd9465f8ff0, HPTR: 0x7fd9465f8fe8, Size: 104, HEAD: 0x7fd9465f83a8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f83a8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f9050 , Available size: 311216
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with PTR: 0x7fd9465f9058, HPTR: 0x7fd9465f9050, Size: 96, HEAD: 0x7fd9465f83a8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f83a8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f90b0 , Available size: 311120
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with PTR: 0x7fd9465f90b8, HPTR: 0x7fd9465f90b0, Size: 128, HEAD: 0x7fd9465f83a8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f83a8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f9130 , Available size: 310992
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 128
+Returning from Mem_Alloc with PTR: 0x7fd9465f9138, HPTR: 0x7fd9465f9130, Size: 128, HEAD: 0x7fd9465f83a8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f83a8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f91b0 , Available size: 310864
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 32
+Returning from Mem_Alloc with PTR: 0x7fd9465f91b8, HPTR: 0x7fd9465f91b0, Size: 32, HEAD: 0x7fd9465f83a8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f83a8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f91d0 , Available size: 310832
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 32
+Returning from Mem_Alloc with PTR: 0x7fd9465f91d8, HPTR: 0x7fd9465f91d0, Size: 32, HEAD: 0x7fd9465f83a8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f83a8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f91f0 , Available size: 310800
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 104
+Returning from Mem_Alloc with PTR: 0x7fd9465f91f8, HPTR: 0x7fd9465f91f0, Size: 104, HEAD: 0x7fd9465f83a8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f83a8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f9258 , Available size: 310696
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 40
+Returning from Mem_Alloc with PTR: 0x7fd9465f9260, HPTR: 0x7fd9465f9258, Size: 40, HEAD: 0x7fd9465f83a8
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f83a8 , Available size: 16
+Node: 1, Start Address: 0x7fd9465f9280 , Available size: 310656
+
+------------------------------MEM-ALLOC-------------------------------
+Allocated memory size (MEM-ALLOC): 96
+Returning from Mem_Alloc with PTR: 0x7fd9465f9288, HPTR: 0x7fd9465f9280, Size: 96, HEAD: 0x7fd9465f83a8
+
+------------------------------MEM-FREE--------------------------------
+Entering Mem_Free with PTR: 0x7fd9465f64a8, HPTR: 0x7fd9465f64a0, Magic: 314159, Size: 104
+Sorting Done- HEAD: 0x7fd9465f64a0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f64a0 , Available size: 104
+Node: 1, Start Address: 0x7fd9465f83a8 , Available size: 16
+Node: 2, Start Address: 0x7fd9465f92e0 , Available size: 310560
+<=====Coaelescer=====>
+Cur_node: 0x7fd9465f64a0
+Cur_node: 0x7fd9465f83a8
+Cur_node: 0x7fd9465f92e0
+
+------------------------------MEM-DUMP--------------------------------
+Node: 0, Start Address: 0x7fd9465f64a0 , Available size: 104
+Node: 1, Start Address: 0x7fd9465f83a8 , Available size: 16
+Node: 2, Start Address: 0x7fd9465f92e0 , Available size: 310560
+
+------------------------------MEM-ALLOC----------------
