@@ -1,0 +1,30 @@
+// CS537 P3 Project //
+
+TEAM-NAME: FBI
+
+TEAMMATES: 
+1) VINAY GANGADHAR, CS_LOGIN: vinay 
+2) ANILKUMAR RANGANAGOUDRA, CS_LOGIN: anilkuma
+
+
+/* Linux Project */
+Memory Allocator Implemenation
+
+	1) The Main memory allocation routines are written in mem.c [Mem_Init, Mem_Alloc, Mem_Free, Mem_Dump]
+	2) All the linked list helper functions are written in helper.c. The corresponding header file is helper.h
+	3) A best-fit mechanism is written to allocate the requested size of memory. Some corner cases like, allocating the remaining bytes when, the free list has only 8 bytes more than the requested size.
+	4) In the memory free routine(lis_free), before coalescing, the free list of nodes is sorted, such that the head always points to the lowest availbale free node's address.
+	5) Once, the free list is sorted, coalescing is done with 2 cases:
+			i) A free node before the memory chunk being freed.
+			ii) A free node after the memory chunk being freed.
+		 In either cases, you increase the free node's size(coalesce) and make it as a single large node. Othe r special case is when, the last node is being freed.
+	6) A memory dump routine was also written to dump the free list trace which helped in debugging. 
+
+/* XV6 part */
+Implementation steps
+	1) Wrote a user program in xv6/user/null_def.c to dereference a null pointer and we found out that kernel was not throwing the null pointer exception. We could read some data, possibly first instruction in the code segment.
+	2) In exec.c, changed the process address space from {0 to sz} to {PGSIZE to sz}. An unallocated page of size 4096 is added to each process's address space before the code segement. 
+	3) Checked if all the fetch arguments are in the range of new address space. No pointer references out of the bound.
+	4) Made sure while forking to create new child, parent address space is copied from the new modified address space range.
+	5) Made sure kernel doesnt throw an error when initproc( Process pid = 1) executes. Because init address space still starts from 0.
+	6) Made sure that binary's code is loaded from PGSIZE instead of 0 in the makefile.

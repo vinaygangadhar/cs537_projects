@@ -1,0 +1,54 @@
+//Linux P4 Project //
+
+Socket: Abstraction for network
+Port: Abstraction to recieve some incoming requests
+	-	Webserver port 80 is standard for http requests
+
+
+bind - bind the port to the socket created
+listen- initialise the process to get the requests on that port
+accept - block the process and accept data packets
+
+
+Client side
+- get the ip address by name of the host
+- connect: make logical connection to the network at the specified port
+
+Server code for project
+- Choose port > 1200
+
+Imp files: cs537.c, server.c, request.c, client.c(to create http requests)
+
+
+Multithreaded:
+
+- Create a buffer of requests
+- A main thread which accepts requests and puts them in a buffer
+- A pool of worker worker thread that handle requests
+
+Modifications:
+- Mainly in server.c
+- Look at requestHandle routine 
+
+
+//XV6//
+
+- create a system call called clone
+	- similar to fork but for new thread
+	- what code should the thread should run
+- Create a join system call
+	- Stop and wait for the clone thread to finish
+
+- Look at locks in xv6
+	- add support for cv's
+
+*Clone system call: - Proc.c
+	- Use the existing process scheduler
+	- Look in the ptable to get a new spot
+	- Let the new thread point to the parent process page dir itself
+	- But the new thread needs to have its own thread_stack
+	- Create a user_level thread_create function, -> This should call the malloc and return the pointer to memory and return the same to cloen routine as a new thread_stack pointer
+
+	- For exec.c, pass the arguments, to exec routine, required to push the exec arguments to the thread stack (consider passing the thread_stack pointer also as the argument)
+
+	- set the eip to point to the thread stacks function you want to run
