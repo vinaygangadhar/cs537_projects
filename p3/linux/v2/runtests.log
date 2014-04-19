@@ -1,0 +1,36 @@
+starting build
+
+**********************************************************************
+
+Test build
+build project using make
+
+**********************************************************************
+Trying to clean project using make clean
+make clean
+rm -f *.o
+Trying to build project using make
+make
+gcc -Werror -Wall -lm -o helper.o helper.c
+helper.c: In function ‘list_add’:
+helper.c:24: error: redefinition of ‘cur_node’
+helper.c:23: note: previous definition of ‘cur_node’ was here
+helper.c:50: error: expected ‘;’ before ‘if’
+helper.c:52: error: ‘else’ without a previous ‘if’
+helper.c:74: error: incompatible types when assigning to type ‘node_t’ from type ‘struct node_t *’
+helper.c:75: error: invalid type argument of ‘->’ (have ‘node_t’)
+helper.c:76: error: invalid type argument of ‘->’ (have ‘node_t’)
+cc1: warnings being treated as errors
+helper.c: In function ‘list_free’:
+helper.c:102: error: comparison of distinct pointer types lacks a cast
+helper.c:111: error: expected ‘;’ before ‘return’
+make: *** [helper.o] Error 1
+
+
+test build FAILED
+ (build project using make)
+ make failed (error 2)
+ required file 'libmem.so' does not exist after make
+
+Skipped 29 tests.
+To keep testing after failing a test, use flag '-c' or '--continue'

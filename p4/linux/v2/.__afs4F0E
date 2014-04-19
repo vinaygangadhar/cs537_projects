@@ -1,0 +1,334 @@
+starting build
+
+**********************************************************************
+
+Test build
+build project using make
+
+**********************************************************************
+Trying to clean project using make clean
+make clean
+rm -f server.o request.o cs537.o client.o server client output.cgi
+Trying to build project using make
+make
+gcc -g -Wall -o server.o -c server.c 
+gcc -g -Wall -o request.o -c request.c 
+gcc -g -Wall -o cs537.o -c cs537.c 
+gcc -g -Wall -o server server.o request.o cs537.o -lpthread 
+gcc -g -Wall -o client.o -c client.c 
+gcc -g -Wall -o client client.o cs537.o
+gcc -g -Wall -o output.cgi output.c
+
+
+test build PASSED
+ (build project using make)
+
+starting basic
+
+**********************************************************************
+
+Test basic
+check if the webserver can serve requests
+
+**********************************************************************
+Starting server on port 9942
+/tmp/tmpiOqe6g/p/server 9942 1 1 FIFO
+Arguments received: Port = 9942, Threads = 1, Buffers= 1, Sched Algo = 0
+Producer: Created 1 worker threads 
+Worker: Going to sleep, tail=0
+Producer: Received a request from client. Acquiring a lock now, tail=0
+Producer: acquired lock
+Producer: Parsing file to PraseFile routine
+Producer:File Content: GET /home.html HTTP/1.1
+Host: localhost:9942
+Accept-Encoding: identity
+
+Producer: File Name received is home.html, SIZE:253
+Producer: Filename:home.html, File FD:7
+Producer:tail=1
+ Releasing lock
+Worker: Selected FIFO algorithmWorker: Woke up and handling the request, tail=0
+Worker: Number of requests serviced = 1
+
+GET /home.html HTTP/1.1
+Worker: Going to sleep, tail=0
+Producer: Received a request from client. Acquiring a lock now, tail=0
+Producer: acquired lock
+Producer: Parsing file to PraseFile routine
+Producer:File Content: GET /home.html HTTP/1.1
+Host: localhost:9942
+Accept-Encoding: identity
+
+Producer: File Name received is home.html, SIZE:253
+Producer: Filename:home.html, File FD:7
+Producer:tail=1
+ Releasing lock
+Worker: Selected FIFO algorithmWorker: Woke up and handling the request, tail=0
+Worker: Number of requests serviced = 2
+
+GET /home.html HTTP/1.1
+Worker: Going to sleep, tail=0
+Connected
+Requested
+Got response
+Read response
+
+
+test basic PASSED
+ (check if the webserver can serve requests)
+
+starting nobusywait
+
+**********************************************************************
+
+Test nobusywait
+test to make sure you are not busy-waiting
+
+**********************************************************************
+Starting server on port 8026
+/tmp/tmpiOqe6g/p/server 8026 10 1 FIFO
+Arguments received: Port = 8026, Threads = 10, Buffers= 1, Sched Algo = 0
+Worker: Going to sleep, tail=0
+Worker: Going to sleep, tail=0
+Worker: Going to sleep, tail=0
+Worker: Going to sleep, tail=0
+Worker: Going to sleep, tail=0
+Producer: Created 10 worker threads 
+Worker: Going to sleep, tail=0
+Worker: Going to sleep, tail=0
+Worker: Going to sleep, tail=0
+Worker: Going to sleep, tail=0
+Worker: Going to sleep, tail=0
+Producer: Received a request from client. Acquiring a lock now, tail=0
+Producer: acquired lock
+Producer: Parsing file to PraseFile routine
+Producer:File Content: GET /home.html HTTP/1.1
+Host: localhost:8026
+Accept-Encoding: identity
+
+Producer: File Name received is home.html, SIZE:253
+Producer: Filename:home.html, File FD:7
+Producer:tail=1
+ Releasing lock
+Worker: Selected FIFO algorithmWorker: Woke up and handling the request, tail=0
+Worker: Number of requests serviced = 1
+
+GET /home.html HTTP/1.1
+Worker: Going to sleep, tail=0
+idle server spent 0 seconds running on CPU
+
+
+test nobusywait PASSED
+ (test to make sure you are not busy-waiting)
+
+starting fifo
+
+**********************************************************************
+
+Test fifo
+FIFO with dynamic requests and one thread
+
+**********************************************************************
+Starting server on port 7891
+/tmp/tmpiOqe6g/p/server 7891 1 1 FIFO
+Arguments received: Port = 7891, Threads = 1, Buffers= 1, Sched Algo = 0
+Producer: Created 1 worker threads 
+Worker: Going to sleep, tail=0
+Producer: Received a request from client. Acquiring a lock now, tail=0
+Producer: acquired lock
+Producer: Parsing file to PraseFile routine
+Producer:File Content: GET /home.html HTTP/1.1
+Host: localhost:7891
+Accept-Encoding: identity
+
+Producer: File Name received is home.html, SIZE:253
+Producer: Filename:home.html, File FD:7
+Producer:tail=1
+ Releasing lock
+Worker: Selected FIFO algorithmWorker: Woke up and handling the request, tail=0
+Worker: Number of requests serviced = 1
+
+GET /home.html HTTP/1.1
+Worker: Going to sleep, tail=0
+Producer: Received a request from client. Acquiring a lock now, tail=0
+Producer: acquired lock
+Producer: Parsing file to PraseFile routine
+Producer:File Content: GET /output.cgi?3 HTTP/1.1
+Host: localhost:7891
+Accept-Encoding: identity
+
+Producer: File Name received is output.cgi, SIZE:9742
+Producer: Filename:output.cgi, File FD:8
+Producer:tail=1
+ Releasing lock
+Worker: Selected FIFO algorithmWorker: Woke up and handling the request, tail=0
+Worker: Number of requests serviced = 2
+
+GET /output.cgi?3 HTTP/1.1
+Producer: Received a request from client. Acquiring a lock now, tail=0
+Producer: acquired lock
+Producer: Parsing file to PraseFile routine
+Producer:File Content: GET /3.cgi?1 HTTP/1.1
+Host: localhost:7891
+Accept-Encoding: identity
+
+y
+
+Producer: File Name received is 3.cgi, SIZE:32
+Producer: Filename:3.cgi, File FD:7
+Producer:tail=1
+ Releasing lock
+Producer: Received a request from client. Acquiring a lock now, tail=1
+Producer: acquired lock
+Worker: Selected FIFO algorithmWorker: Woke up and handling the request, tail=0
+Worker: Number of requests serviced = 3
+
+Producer: Parsing file to PraseFile routine
+GET /3.cgi?1 HTTP/1.1
+Producer:File Content: GET /2.cgi?1 HTTP/1.1
+Host: localhost:7891
+Accept-Encoding: identity
+
+y
+
+Producer: File Name received is 2.cgi, SIZE:31
+Producer: Filename:2.cgi, File FD:9
+Producer:tail=1
+ Releasing lock
+Producer: Received a request from client. Acquiring a lock now, tail=1
+Producer: acquired lock
+Worker: Selected FIFO algorithmWorker: Woke up and handling the request, tail=0
+Worker: Number of requests serviced = 4
+
+GET /2.cgi?1 HTTP/1.1
+Producer: Parsing file to PraseFile routine
+Producer:File Content: GET /1.cgi?1 HTTP/1.1
+Host: localhost:7891
+Accept-Encoding: identity
+
+y
+
+Producer: File Name received is 1.cgi, SIZE:30
+Producer: Filename:1.cgi, File FD:8
+Producer:tail=1
+ Releasing lock
+Worker: Selected FIFO algorithmWorker: Woke up and handling the request, tail=0
+Worker: Number of requests serviced = 5
+
+GET /1.cgi?1 HTTP/1.1
+Worker: Going to sleep, tail=0
+
+
+test fifo PASSED
+ (FIFO with dynamic requests and one thread)
+
+starting sff
+
+**********************************************************************
+
+Test sff
+Smallest file first with dynamic requests and one thread
+
+**********************************************************************
+Starting server on port 8183
+/tmp/tmpiOqe6g/p/server 8183 1 10 SFF
+Arguments received: Port = 8183, Threads = 1, Buffers= 10, Sched Algo = 2
+Producer: Created 1 worker threads 
+Worker: Going to sleep, tail=0
+Producer: Received a request from client. Acquiring a lock now, tail=0
+Producer: acquired lock
+Producer: Parsing file to PraseFile routine
+Producer:File Content: GET /home.html HTTP/1.1
+Host: localhost:8183
+Accept-Encoding: identity
+
+Producer: File Name received is home.html, SIZE:253
+Producer: Filename:home.html, File FD:7
+Producer:tail=1
+ Releasing lock
+Worker: Selected SFF algorithm
+Worker: Woke up and handling the request, tail=0
+Worker: Number of requests serviced = 1
+
+GET /home.html HTTP/1.1
+Worker: Going to sleep, tail=0
+Producer: Received a request from client. Acquiring a lock now, tail=0
+Producer: acquired lock
+Producer: Parsing file to PraseFile routine
+Producer:File Content: GET /output.cgi?3 HTTP/1.1
+Host: localhost:8183
+Accept-Encoding: identity
+
+Producer: File Name received is output.cgi, SIZE:9742
+Producer: Filename:output.cgi, File FD:8
+Producer:tail=1
+ Releasing lock
+Worker: Selected SFF algorithm
+Worker: Woke up and handling the request, tail=0
+Worker: Number of requests serviced = 2
+
+GET /output.cgi?3 HTTP/1.1
+Producer: Received a request from client. Acquiring a lock now, tail=0
+Producer: acquired lock
+Producer: Parsing file to PraseFile routine
+Producer:File Content: GET /2.cgi?1 HTTP/1.1
+Host: localhost:8183
+Accept-Encoding: identity
+
+y
+
+Producer: File Name received is 2.cgi, SIZE:31
+Producer: Filename:2.cgi, File FD:7
+Producer:tail=1
+ Releasing lock
+Producer: Received a request from client. Acquiring a lock now, tail=1
+Producer: acquired lock
+Producer: Parsing file to PraseFile routine
+Producer:File Content: GET /3.cgi?1 HTTP/1.1
+Host: localhost:8183
+Accept-Encoding: identity
+
+y
+
+Producer: File Name received is 3.cgi, SIZE:32
+Producer: Filename:3.cgi, File FD:7
+Producer:tail=2
+ Releasing lock
+Producer: Received a request from client. Acquiring a lock now, tail=2
+Producer: acquired lock
+Producer: Parsing file to PraseFile routine
+Producer:File Content: GET /1.cgi?1 HTTP/1.1
+Host: localhost:8183
+Accept-Encoding: identity
+
+y
+
+Producer: File Name received is 1.cgi, SIZE:30
+Producer: Filename:1.cgi, File FD:7
+Producer:tail=3
+ Releasing lock
+Worker: Selected SFF algorithm
+Worker: Woke up and handling the request, tail=2
+Worker: Number of requests serviced = 3
+
+GET /1.cgi?1 HTTP/1.1
+Worker: Selected SFF algorithm
+Worker: Woke up and handling the request, tail=1
+Worker: Number of requests serviced = 4
+
+GET /3.cgi?1 HTTP/1.1
+Worker: Selected SFF algorithm
+Worker: Woke up and handling the request, tail=0
+Worker: Number of requests serviced = 5
+
+GET /2.cgi?1 HTTP/1.1
+Worker: Going to sleep, tail=0
+
+
+test sff FAILED
+ (Smallest file first with dynamic requests and one thread)
+ reply 3 was received before reply 2
+ reply 3 received too soon
+
+Skipped 10 tests.
+To keep testing after failing a test, use flag '-c' or '--continue'

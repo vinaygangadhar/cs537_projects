@@ -1,0 +1,164 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Accept	cs537.c	/^int Accept(int s, struct sockaddr *addr, socklen_t *addrlen) $/;"	f
+Accept	web_server/cs537.c	/^int Accept(int s, struct sockaddr *addr, socklen_t *addrlen) $/;"	f
+Bind	cs537.c	/^void Bind(int sockfd, struct sockaddr *my_addr, int addrlen) $/;"	f
+Bind	web_server/cs537.c	/^void Bind(int sockfd, struct sockaddr *my_addr, int addrlen) $/;"	f
+CC	Makefile	/^CC = gcc$/;"	m
+CC	web_server/Makefile	/^CC = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -g -Wall$/;"	m
+CFLAGS	web_server/Makefile	/^CFLAGS = -g -Wall$/;"	m
+Close	cs537.c	/^void Close(int fd) $/;"	f
+Close	web_server/cs537.c	/^void Close(int fd) $/;"	f
+Connect	cs537.c	/^void Connect(int sockfd, struct sockaddr *serv_addr, int addrlen) $/;"	f
+Connect	web_server/cs537.c	/^void Connect(int sockfd, struct sockaddr *serv_addr, int addrlen) $/;"	f
+DEF_MODE	cs537.h	30;"	d
+DEF_MODE	web_server/cs537.h	30;"	d
+DEF_UMASK	cs537.h	31;"	d
+DEF_UMASK	web_server/cs537.h	31;"	d
+Dup2	cs537.c	/^int Dup2(int fd1, int fd2) $/;"	f
+Dup2	web_server/cs537.c	/^int Dup2(int fd1, int fd2) $/;"	f
+Execve	cs537.c	/^void Execve(const char *filename, char *const argv[], char *const envp[]) $/;"	f
+Execve	web_server/cs537.c	/^void Execve(const char *filename, char *const argv[], char *const envp[]) $/;"	f
+FIFO	server.c	/^enum schedalg {FIFO, SFNF, SFF}$/;"	e	enum:schedalg	file:
+Fork	cs537.c	/^pid_t Fork(void) $/;"	f
+Fork	web_server/cs537.c	/^pid_t Fork(void) $/;"	f
+Fstat	cs537.c	/^void Fstat(int fd, struct stat *buf) $/;"	f
+Fstat	web_server/cs537.c	/^void Fstat(int fd, struct stat *buf) $/;"	f
+Gethostbyaddr	cs537.c	/^struct hostent *Gethostbyaddr(const char *addr, int len, int type) $/;"	f
+Gethostbyaddr	web_server/cs537.c	/^struct hostent *Gethostbyaddr(const char *addr, int len, int type) $/;"	f
+Gethostbyname	cs537.c	/^struct hostent *Gethostbyname(const char *name) $/;"	f
+Gethostbyname	web_server/cs537.c	/^struct hostent *Gethostbyname(const char *name) $/;"	f
+Gethostname	cs537.c	/^int Gethostname(char *name, size_t len) $/;"	f
+Gethostname	web_server/cs537.c	/^int Gethostname(char *name, size_t len) $/;"	f
+LIBS	Makefile	/^LIBS = -lpthread $/;"	m
+LIBS	web_server/Makefile	/^LIBS = -lpthread $/;"	m
+LISTENQ	cs537.h	57;"	d
+LISTENQ	web_server/cs537.h	57;"	d
+Listen	cs537.c	/^void Listen(int s, int backlog) $/;"	f
+Listen	web_server/cs537.c	/^void Listen(int s, int backlog) $/;"	f
+Lseek	cs537.c	/^off_t Lseek(int fildes, off_t offset, int whence) $/;"	f
+Lseek	web_server/cs537.c	/^off_t Lseek(int fildes, off_t offset, int whence) $/;"	f
+MAXBUF	cs537.h	56;"	d
+MAXBUF	web_server/cs537.h	56;"	d
+MAXLINE	cs537.h	55;"	d
+MAXLINE	web_server/cs537.h	55;"	d
+Mmap	cs537.c	/^void *Mmap(void *addr, size_t len, int prot, int flags, int fd, off_t offset) $/;"	f
+Mmap	web_server/cs537.c	/^void *Mmap(void *addr, size_t len, int prot, int flags, int fd, off_t offset) $/;"	f
+Munmap	cs537.c	/^void Munmap(void *start, size_t length) $/;"	f
+Munmap	web_server/cs537.c	/^void Munmap(void *start, size_t length) $/;"	f
+OBJS	Makefile	/^OBJS = server.o request.o cs537.o client.o$/;"	m
+OBJS	web_server/Makefile	/^OBJS = server.o request.o cs537.o client.o$/;"	m
+Open	cs537.c	/^int Open(const char *pathname, int flags, mode_t mode) $/;"	f
+Open	web_server/cs537.c	/^int Open(const char *pathname, int flags, mode_t mode) $/;"	f
+Open_clientfd	cs537.c	/^int Open_clientfd(char *hostname, int port) $/;"	f
+Open_clientfd	web_server/cs537.c	/^int Open_clientfd(char *hostname, int port) $/;"	f
+Open_listenfd	cs537.c	/^int Open_listenfd(int port) $/;"	f
+Open_listenfd	web_server/cs537.c	/^int Open_listenfd(int port) $/;"	f
+RIO_BUFSIZE	cs537.h	41;"	d
+RIO_BUFSIZE	web_server/cs537.h	41;"	d
+Read	cs537.c	/^ssize_t Read(int fd, void *buf, size_t count) $/;"	f
+Read	web_server/cs537.c	/^ssize_t Read(int fd, void *buf, size_t count) $/;"	f
+Rio_readinitb	cs537.c	/^void Rio_readinitb(rio_t *rp, int fd)$/;"	f
+Rio_readinitb	web_server/cs537.c	/^void Rio_readinitb(rio_t *rp, int fd)$/;"	f
+Rio_readlineb	cs537.c	/^ssize_t Rio_readlineb(rio_t *rp, void *usrbuf, size_t maxlen) $/;"	f
+Rio_readlineb	web_server/cs537.c	/^ssize_t Rio_readlineb(rio_t *rp, void *usrbuf, size_t maxlen) $/;"	f
+Rio_readn	cs537.c	/^ssize_t Rio_readn(int fd, void *ptr, size_t nbytes) $/;"	f
+Rio_readn	web_server/cs537.c	/^ssize_t Rio_readn(int fd, void *ptr, size_t nbytes) $/;"	f
+Rio_readnb	cs537.c	/^ssize_t Rio_readnb(rio_t *rp, void *usrbuf, size_t n) $/;"	f
+Rio_readnb	web_server/cs537.c	/^ssize_t Rio_readnb(rio_t *rp, void *usrbuf, size_t n) $/;"	f
+Rio_writen	cs537.c	/^void Rio_writen(int fd, void *usrbuf, size_t n) $/;"	f
+Rio_writen	web_server/cs537.c	/^void Rio_writen(int fd, void *usrbuf, size_t n) $/;"	f
+SA	cs537.h	/^typedef struct sockaddr SA;$/;"	t	typeref:struct:sockaddr
+SA	web_server/cs537.h	/^typedef struct sockaddr SA;$/;"	t	typeref:struct:sockaddr
+SFF	server.c	/^enum schedalg {FIFO, SFNF, SFF}$/;"	e	enum:schedalg	file:
+SFNF	server.c	/^enum schedalg {FIFO, SFNF, SFF}$/;"	e	enum:schedalg	file:
+Select	cs537.c	/^int Select(int  n, fd_set *readfds, fd_set *writefds,$/;"	f
+Select	web_server/cs537.c	/^int Select(int  n, fd_set *readfds, fd_set *writefds,$/;"	f
+Setenv	cs537.c	/^int Setenv(const char *name, const char *value, int overwrite)$/;"	f
+Setenv	web_server/cs537.c	/^int Setenv(const char *name, const char *value, int overwrite)$/;"	f
+Setsockopt	cs537.c	/^void Setsockopt(int s, int level, int optname, const void *optval, int optlen) $/;"	f
+Setsockopt	web_server/cs537.c	/^void Setsockopt(int s, int level, int optname, const void *optval, int optlen) $/;"	f
+Socket	cs537.c	/^int Socket(int domain, int type, int protocol) $/;"	f
+Socket	web_server/cs537.c	/^int Socket(int domain, int type, int protocol) $/;"	f
+Stat	cs537.c	/^void Stat(const char *filename, struct stat *buf) $/;"	f
+Stat	web_server/cs537.c	/^void Stat(const char *filename, struct stat *buf) $/;"	f
+TARGET	Makefile	/^TARGET = server$/;"	m
+TARGET	web_server/Makefile	/^TARGET = server$/;"	m
+Time_GetSeconds	output.c	/^double Time_GetSeconds() {$/;"	f
+Time_GetSeconds	web_server/output.c	/^double Time_GetSeconds() {$/;"	f
+Wait	cs537.c	/^pid_t Wait(int *status) $/;"	f
+Wait	web_server/cs537.c	/^pid_t Wait(int *status) $/;"	f
+Write	cs537.c	/^ssize_t Write(int fd, const void *buf, size_t count) $/;"	f
+Write	web_server/cs537.c	/^ssize_t Write(int fd, const void *buf, size_t count) $/;"	f
+__CSAPP_H__	cs537.h	2;"	d
+__CSAPP_H__	web_server/cs537.h	2;"	d
+app_error	cs537.c	/^void app_error(char *msg) \/* application error *\/$/;"	f
+app_error	web_server/cs537.c	/^void app_error(char *msg) \/* application error *\/$/;"	f
+clientPrint	client.c	/^void clientPrint(int fd)$/;"	f
+clientPrint	web_server/client.c	/^void clientPrint(int fd)$/;"	f
+clientSend	client.c	/^void clientSend(int fd, char *filename)$/;"	f
+clientSend	web_server/client.c	/^void clientSend(int fd, char *filename)$/;"	f
+dns_error	cs537.c	/^void dns_error(char *msg) \/* dns-style error *\/$/;"	f
+dns_error	web_server/cs537.c	/^void dns_error(char *msg) \/* dns-style error *\/$/;"	f
+getargs	output.c	/^void getargs()$/;"	f
+getargs	server.c	/^void getargs(int *port, int argc, char *argv[])$/;"	f
+getargs	web_server/output.c	/^void getargs()$/;"	f
+getargs	web_server/server.c	/^void getargs(int *port, int argc, char *argv[])$/;"	f
+main	client.c	/^int main(int argc, char *argv[])$/;"	f
+main	output.c	/^int main(int argc, char *argv[])$/;"	f
+main	server.c	/^int main(int argc, char *argv[])$/;"	f
+main	web_server/client.c	/^int main(int argc, char *argv[])$/;"	f
+main	web_server/output.c	/^int main(int argc, char *argv[])$/;"	f
+main	web_server/server.c	/^int main(int argc, char *argv[])$/;"	f
+open_clientfd	cs537.c	/^int open_clientfd(char *hostname, int port) $/;"	f
+open_clientfd	web_server/cs537.c	/^int open_clientfd(char *hostname, int port) $/;"	f
+open_listenfd	cs537.c	/^int open_listenfd(int port) $/;"	f
+open_listenfd	web_server/cs537.c	/^int open_listenfd(int port) $/;"	f
+posix_error	cs537.c	/^void posix_error(int code, char *msg) \/* posix-style error *\/$/;"	f
+posix_error	web_server/cs537.c	/^void posix_error(int code, char *msg) \/* posix-style error *\/$/;"	f
+requestError	request.c	/^void requestError(int fd, char *cause, char *errnum, char *shortmsg, char *longmsg) $/;"	f
+requestError	web_server/request.c	/^void requestError(int fd, char *cause, char *errnum, char *shortmsg, char *longmsg) $/;"	f
+requestGetFiletype	request.c	/^void requestGetFiletype(char *filename, char *filetype)$/;"	f
+requestGetFiletype	web_server/request.c	/^void requestGetFiletype(char *filename, char *filetype)$/;"	f
+requestHandle	request.c	/^void requestHandle(int fd)$/;"	f
+requestHandle	web_server/request.c	/^void requestHandle(int fd)$/;"	f
+requestParseURI	request.c	/^int requestParseURI(char *uri, char *filename, char *cgiargs) $/;"	f
+requestParseURI	web_server/request.c	/^int requestParseURI(char *uri, char *filename, char *cgiargs) $/;"	f
+requestReadhdrs	request.c	/^void requestReadhdrs(rio_t *rp)$/;"	f
+requestReadhdrs	web_server/request.c	/^void requestReadhdrs(rio_t *rp)$/;"	f
+requestServeDynamic	request.c	/^void requestServeDynamic(int fd, char *filename, char *cgiargs)$/;"	f
+requestServeDynamic	web_server/request.c	/^void requestServeDynamic(int fd, char *filename, char *cgiargs)$/;"	f
+requestServeStatic	request.c	/^void requestServeStatic(int fd, char *filename, int filesize) $/;"	f
+requestServeStatic	web_server/request.c	/^void requestServeStatic(int fd, char *filename, int filesize) $/;"	f
+rio_buf	cs537.h	/^    char rio_buf[RIO_BUFSIZE]; \/* internal buffer *\/$/;"	m	struct:__anon2
+rio_buf	web_server/cs537.h	/^    char rio_buf[RIO_BUFSIZE]; \/* internal buffer *\/$/;"	m	struct:__anon1
+rio_bufptr	cs537.h	/^    char *rio_bufptr;          \/* next unread byte in internal buf *\/$/;"	m	struct:__anon2
+rio_bufptr	web_server/cs537.h	/^    char *rio_bufptr;          \/* next unread byte in internal buf *\/$/;"	m	struct:__anon1
+rio_cnt	cs537.h	/^    int rio_cnt;               \/* unread bytes in internal buf *\/$/;"	m	struct:__anon2
+rio_cnt	web_server/cs537.h	/^    int rio_cnt;               \/* unread bytes in internal buf *\/$/;"	m	struct:__anon1
+rio_fd	cs537.h	/^    int rio_fd;                \/* descriptor for this internal buf *\/$/;"	m	struct:__anon2
+rio_fd	web_server/cs537.h	/^    int rio_fd;                \/* descriptor for this internal buf *\/$/;"	m	struct:__anon1
+rio_read	cs537.c	/^static ssize_t rio_read(rio_t *rp, char *usrbuf, size_t n)$/;"	f	file:
+rio_read	web_server/cs537.c	/^static ssize_t rio_read(rio_t *rp, char *usrbuf, size_t n)$/;"	f	file:
+rio_readinitb	cs537.c	/^void rio_readinitb(rio_t *rp, int fd) $/;"	f
+rio_readinitb	web_server/cs537.c	/^void rio_readinitb(rio_t *rp, int fd) $/;"	f
+rio_readlineb	cs537.c	/^ssize_t rio_readlineb(rio_t *rp, void *usrbuf, size_t maxlen) $/;"	f
+rio_readlineb	web_server/cs537.c	/^ssize_t rio_readlineb(rio_t *rp, void *usrbuf, size_t maxlen) $/;"	f
+rio_readn	cs537.c	/^ssize_t rio_readn(int fd, void *usrbuf, size_t n) $/;"	f
+rio_readn	web_server/cs537.c	/^ssize_t rio_readn(int fd, void *usrbuf, size_t n) $/;"	f
+rio_readnb	cs537.c	/^ssize_t rio_readnb(rio_t *rp, void *usrbuf, size_t n) $/;"	f
+rio_readnb	web_server/cs537.c	/^ssize_t rio_readnb(rio_t *rp, void *usrbuf, size_t n) $/;"	f
+rio_t	cs537.h	/^} rio_t;$/;"	t	typeref:struct:__anon2
+rio_t	web_server/cs537.h	/^} rio_t;$/;"	t	typeref:struct:__anon1
+rio_writen	cs537.c	/^ssize_t rio_writen(int fd, void *usrbuf, size_t n) $/;"	f
+rio_writen	web_server/cs537.c	/^ssize_t rio_writen(int fd, void *usrbuf, size_t n) $/;"	f
+schedalg	server.c	/^enum schedalg {FIFO, SFNF, SFF}$/;"	g	file:
+spinfor	output.c	/^double spinfor = 5.0;$/;"	v
+spinfor	web_server/output.c	/^double spinfor = 5.0;$/;"	v
+unix_error	cs537.c	/^void unix_error(char *msg) \/* unix-style error *\/$/;"	f
+unix_error	web_server/cs537.c	/^void unix_error(char *msg) \/* unix-style error *\/$/;"	f
