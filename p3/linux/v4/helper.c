@@ -12,6 +12,7 @@
 
 void* list_add (int sz)
 {
+	list_dump();
 	//Align the size to be multiple of 8 and add the header size to it
 	int size = (int)(sz / 8);
 	if((sz % 8) != 0)
@@ -25,7 +26,7 @@ void* list_add (int sz)
 #endif
 
 	header_t* new_header = NULL;
-	node_t* found = head, *searched_node = NULL, *prev_node = NULL;
+	node_t* found = NULL, *searched_node = NULL, *prev_node = NULL;
 	node_t* cur_node = head;
 
 	//List traversal
@@ -33,13 +34,23 @@ void* list_add (int sz)
 	{
 		if(cur_node->size >= size)
 		{
-			if(found == head)														//First node search, so found will be head
+			#ifdef DEBUG
+				printf("Best-Fit Loop: %p size is more than %d\n", cur_node, size);
+			#endif
+			if(found == NULL)														//First node search, so found will be head
 			{
+				#ifdef DEBUG
+					printf("Best-Fit Loop: %p is first to satisfy size criteria \n", cur_node);
+				#endif
+
 				found = cur_node;
 				prev_node = searched_node;
 			}
-			else if(cur_node->size < found->size)
+			else if((cur_node->size) < (found->size))
 			{
+       	#ifdef DEBUG
+					printf("Best-Fit Loop: %p size(%d) is less than previously found node size(%d) \n", cur_node, cur_node->size, found->size);
+				#endif
 				found = cur_node;
 				prev_node = searched_node;
 			}
@@ -51,21 +62,19 @@ void* list_add (int sz)
 
 	//Rejoin the links once the required chunk is found
 	if(found == NULL)
+	{
+		m_error = E_NO_SPACE;
 		return NULL;
+	}
 	else if(found == head)														//For head node chosen as the chunk to be returned
 	{
 		node_t* temp = head;
-		if(found->size == size)
+		if(found->size == size || found->size == size + sizeof(node_t))
 		{
 			head = temp->next;
 		}
 		else
 		{
-			if(size > head->size)
-			{
-				m_error = E_NO_SPACE;													//Check if remaining free list size has enough to allocate the request
-				return NULL;
-			}
 			head = (node_t*)((long int) temp + size);
 			head->size = found->size - size;
 			head->next = temp->next;
@@ -73,21 +82,32 @@ void* list_add (int sz)
 	}
 	else
 	{
-		if(found->size == size)
+		if(found->size == size || found->size==size + sizeof(node_t))
 			prev_node->next = found->next;									//No new node to be created, just join the previous node to the next free node
 		else
 		{
-			prev_node->next =(node_t*)((long int)found + size);									//Splitting done
+			#ifdef DEBUG
+				printf("Splitting started here: %p size(%d) is less than previously found node size(%d) \n", cur_node, cur_node->size, found->size);
+			#endif
+
+			/*prev_node->next =(node_t*)((long int)found + size);									//Splitting done
 			node_t* temp;																		//A temp node created here if the there is still some space in the chunk
 			temp = found;
+			temp->size = found->size - size;*/								//Not sure a new node is created here	
+			node_t* temp;																		//A temp node created here if the there is still some space in the chunk
+			temp = (node_t*)((long int)found + size);	
+			prev_node->next = temp;									//Splitting done
 			temp->size = found->size - size;								//Not sure a new node is created here	
-			temp->next = searched_node;										
+			temp->next = found->next;																			
 		}
 	}
 
 	//Calculations for header creation
 	new_header = (header_t*) found;
-	new_header->size = size; 
+	if(found->size == size)
+		new_header->size = size;
+	else
+		new_header->size = size + sizeof(node_t);
 	new_header->magic = MAGIC; 	
 	
 	//Calculate the node pointer to be returned
@@ -204,11 +224,12 @@ void list_dump()
 	cur_node = head;
 	int n = 0;
  	
+	printf("\n-----------------------Mem---Dump---------------------------------------------\n");
 	while(cur_node != NULL)
  	{
-		printf("\n");
 		printf("Node: %d, Start Address: %p , Available size: %d\n", n, cur_node, cur_node->size);
- 		cur_node = cur_node->next;
+		cur_node = cur_node->next;
 		n++;
 	}
+ 	printf("---------------------------------------------------------------------------------\n");
 }	
