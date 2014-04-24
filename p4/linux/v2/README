@@ -1,0 +1,9 @@
+Linux p4
+
+-Made all changes in server.c
+-Added wrappers for required functions
+-Added additional arguments required
+-Declared global variables for variables and created a structure to store the filename, filesize 
+- Wrote a functions do_get to get the Connection FD required for different scheduling algorithms
+-Created the number of threads required as asked by the caller
+
