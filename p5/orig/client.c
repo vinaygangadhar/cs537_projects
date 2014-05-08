@@ -7,11 +7,11 @@ char buffer[BUFFER_SIZE];
 int
 main(int argc, char *argv[])
 {
-    int sd = UDP_Open(1245);
+    int sd = UDP_Open(0);
     assert(sd > -1);
 
     struct sockaddr_in saddr;
-    int rc = UDP_FillSockAddr(&saddr, "altair.cs.wisc.edu", 1245);
+    int rc = UDP_FillSockAddr(&saddr, "claudio.cs.wisc.edu", 10000);
     assert(rc == 0);
 
     printf("CLIENT:: about to send message (%d)\n", rc);
