@@ -33,7 +33,7 @@ int Lookup_parse(char* message, int* pinum, char (*name)[NAME_SIZE])
 
 	if(num > NAME_SIZE)
 	{
-		printf("----Error: Filename too long\n");
+		printf("----Error: Filename too long - %d\n", num);
 		return -1;
 	}
 
@@ -70,7 +70,7 @@ int Stat_parse(char* message, int* inum)
 }
 
 //MFS_Write parser
-int Write_parse(char* message, int* inum, char (*buffer)[BUFFER_SIZE], int* block)
+int Write_parse(char* message, int* inum, char (*buffer)[MFS_BLOCK_SIZE], int* block)
 {
 	char  *pend1, *pend2;
 	char buf1;
@@ -83,15 +83,12 @@ int Write_parse(char* message, int* inum, char (*buffer)[BUFFER_SIZE], int* bloc
 	//Parse the number of bytes of buffer content to write
 	strncpy(bytes, message+(2*sizeof(char)), BYTE_SIZE);
 	int num = strtol(bytes, &pend2, DEC);
+	
+	printf("num: %d\n", num);
 
-	//Parse the block offset   -- Parsing it first before the write content
-	char buf2[1];
-	strcpy(buf2, message+(6*sizeof(char)));
-	*block = atoi(buf2);
-
-	if(num > BUFFER_SIZE)
+	if(num > MFS_BLOCK_SIZE)
 	{
-		printf("----Error: Write buffer too big\n");
+		printf("----Error: Write buffer too big - %d\n", num);
 		return -1;
 	}
 
@@ -99,9 +96,14 @@ int Write_parse(char* message, int* inum, char (*buffer)[BUFFER_SIZE], int* bloc
 	char temp[num];
 	strncpy(temp, message+(7*sizeof(char)), num+1);
 	strcpy((char*)buffer, temp);
-
+	
+	//Parse the block offset   -- Parsing it first before the write content
+	char buf2[1];
+	strcpy(buf2, message+(6*sizeof(char)));
+	*block = atoi(buf2);
+	
 #ifdef DEBUG 
-	printf("----MFS_Write called		- inum: %d, Write_buffer: %s, block_offset: %d\n", *inum, *buffer, *block);
+	printf("----MFS_Write called		- inum: %d, Write_buffer: %s, Block_offset: %d\n", *inum, *buffer, *block);
 	//printf("MFS_Write		= inum: %d, Write_buffer: %s, Block_offset: %d\n", *inum, *buffer, *block);
 #endif
 
@@ -160,7 +162,6 @@ int Creat_parse(char* message, int* pinum, int* type, char (*name)[NAME_SIZE])
 	char temp[num];
 	strncpy(temp, message+(7*sizeof(char)), num+1);
 	strcpy((char*)name, temp);
-	//*name = temp;    //This is done in lookup function. If name is passed as name[60], then do the same there also like here
 	
 #ifdef DEBUG
 	printf("----MFS_Creat called		- pinum: %d, type: %d, name: %s\n", *pinum, *type, *name);
@@ -203,3 +204,4 @@ int Unlink_parse(char* message, int* pinum, char (*name)[NAME_SIZE])
 
 	return 0;
 }
+

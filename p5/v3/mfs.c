@@ -1,5 +1,6 @@
 #include "mfs.h"
 #include "helper.h"
+#include "parser.h"
 
 static packet_t com_t; 
 
@@ -11,7 +12,7 @@ int send_msg()
 		return -1;
 	else
 	{
-		printf("CLIENT:: Sent %d bytes (message: '%s')\n", rc, com_t.message);
+		printf("				CLIENT:: Sent %d bytes (message: '%s')\n", rc, com_t.message);
 		com_t.send_ack = 1;
 	}
 
@@ -31,7 +32,7 @@ int recv_msg() //TODO::Timeout functionality
 		if(rc < 0)
 			return -1;
 		else
-			printf("CLIENT:: Recieved %d bytes (message: '%s')\n", rc, com_t.buffer);
+			printf("				CLIENT:: Recieved %d bytes (message: '%s')\n", rc, com_t.buffer);
 	
 		return 0;
 }
@@ -54,7 +55,7 @@ int MFS_Init(char* hostname, int port)
 	printf("\n----Calling MFS_Init to server %s at port %d\n", hostname, port);
 #endif
 
-	printf("CLIENT:: about to send the message (%d)\n", rc);
+	printf("				CLIENT:: about to send the message (%d)\n", rc);
 
 	return 0;
 }
@@ -70,13 +71,22 @@ int MFS_Lookup(int pinum, char* name)
 	strcat(com_t.message, name);
 
 #ifdef DEBUG
-	printf("\n----MFS_Lookup Complete message: %s\n", com_t.message);
+	printf("\n----MFS_Lookup Sent message: %s\n", com_t.message);
 #endif
 	
 	if(send_msg() < 0)
 		return -1;
 
 	//Recieve yet to write, should return inode num of name, if failure return -1
+	if(recv_msg() < 0)
+	{
+		printf("					CLIENT:: Message was not recieved\n");
+		return -1;
+	}
+
+#ifdef DEBUG
+	printf("----MFS_Lookup Recieved message: %s\n", com_t.buffer);
+#endif
 
 	return 0;
 }
@@ -89,13 +99,22 @@ int MFS_Stat(int inum, MFS_Stat_t* m)
 	snprintf(com_t.message, 2*sizeof(int), "%d%d", 2, inum); //Function 2 -- MFS_Stat
 
 #ifdef DEBUG
-	printf("\n----MFS_Stat Complete message: %s\n", com_t.message);
+	printf("\n----MFS_Stat Sent message: %s\n", com_t.message);
 #endif
 	
 	if(send_msg() < 0)
 		return -1;
 
 	//Once you recieve the response, fill in the MFS_Stat structure
+	if(recv_msg() < 0)
+	{
+		printf("					CLIENT:: Message was not recieved\n");
+		return -1;
+	}
+
+#ifdef DEBUG
+	printf("----MFS_Stat Recieved message: %s\n", com_t.buffer);
+#endif 
 
 	return 0;
 }
@@ -112,14 +131,23 @@ int MFS_Write(int inum, char* buffer, int block)
 	strcat(com_t.message, buffer);
 
 #ifdef DEBUG
-	printf("\n----MFS_Write Complete message: %s\n", com_t.message);
+	printf("\n----MFS_Write Sent message: %s\n", com_t.message);
 #endif
 	
 	if(send_msg() < 0)
 		return -1;
 
 	//Once you recieve the response, response is write success or failure
+	if(recv_msg() < 0)
+	{
+		printf("					CLIENT:: Message was not recieved\n");
+		return -1;
+	}
 
+#ifdef DEBUG
+	printf("----MFS_Write Recieved message: %s\n", com_t.buffer);
+#endif 
+	
 	return 0;
 }
 
@@ -131,13 +159,22 @@ int MFS_Read(int inum, char* buffer, int block)
 	snprintf(com_t.message, 3*sizeof(int), "%d%d%d", 4, inum, block); //Function 4 -- MFS_Read
 
 #ifdef DEBUG
-	printf("\n----MFS_Read Complete message: %s\n", com_t.message);
+	printf("\n----MFS_Read Sent message: %s\n", com_t.message);
 #endif
 	
 	if(send_msg() < 0)
 		return -1;
 
 	//Once you recieve the response, response is written to buffer
+	if(recv_msg() < 0)
+	{
+		printf("					CLIENT:: Message was not recieved\n");
+		return -1;
+	}
+
+#ifdef DEBUG
+	printf("----MFS_Read Recieved message: %s\n", com_t.buffer);
+#endif
 
 	return 0;
 }
@@ -153,13 +190,23 @@ int MFS_Creat(int pinum, int type, char* name)
 	strcat(com_t.message, name);
 
 #ifdef DEBUG
-	printf("\n----MFS_Creat Complete message: %s\n", com_t.message);
+	printf("\n----MFS_Creat Sent message: %s\n", com_t.message);
 #endif
 	
 	if(send_msg() < 0)
 		return -1;
 
-	//Once you recieve the response, inode num is returned
+	//Once you recieve the response, status is returned
+	if(recv_msg() < 0)
+	{
+		printf("					CLIENT:: Message was not recieved\n");
+		return -1;
+	}
+
+#ifdef DEBUG
+	printf("----MFS_Creat Recieved message: %s\n", com_t.buffer);
+#endif
+	
 	return 0;
 }
 
@@ -174,7 +221,7 @@ int MFS_Unlink(int pinum, char* name)
 	strcat(com_t.message, name);
 
 #ifdef DEBUG
-	printf("\n----MFS_Unlink Complete message: %s\n", com_t.message);
+	printf("\n----MFS_Unlink Sent message: %s\n", com_t.message);
 #endif
 	
 	if(send_msg() < 0)
@@ -193,7 +240,7 @@ int MFS_Shutdown()
 	snprintf(com_t.message, sizeof(int), "%d", 7); //Function 7 -- MFS_Shutdown
 
 #ifdef DEBUG
-	printf("\n----MFS_Shutdown Complete message: %s\n", com_t.message);
+	printf("\n----MFS_Shutdown Sent message: %s\n", com_t.message);
 #endif
 	
 	if(send_msg() < 0)

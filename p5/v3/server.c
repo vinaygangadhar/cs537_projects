@@ -7,14 +7,15 @@
 #include "helper.h"
 #include "parser.h"
 
-static int disk_fd;
 
 //Response sending routine
-int send_resp(int sd, struct sockaddr_in s, char* response)
+int send_resp(int sd, struct sockaddr_in* s, char* response)
 {
-	char resp[MSG_SIZE];
-	sprintf(resp, response);
-	int rc = UDP_Write(sd, &s, resp, MSG_SIZE);
+	int rc = UDP_Write(sd, s, response, MSG_BUFFER_SIZE);
+
+#ifdef DEBUG
+	printf("				SERVER:: sending %d bytes (message: '%s')\n", rc, response);
+#endif
 
 	return rc;
 }
@@ -36,7 +37,7 @@ void get_args(int* port, char** file_img, int argc, char* argv[])
 		}
 
 #ifdef DEBUG
-		printf("----Arguments received: Port = %d, File_image = %s\n", *port, *file_img);
+		printf("\n----Arguments received: Port = %d, File_image = %s\n", *port, *file_img);
 #endif
 }
 
@@ -82,38 +83,86 @@ main(int argc, char *argv[])
     while (1) 
 		{
 			struct sockaddr_in s;
-			char buffer[MSG_SIZE];					//Redefined the size as, it may recieve more than 4096 bytes
+			char buffer[MSG_BUFFER_SIZE];					//Redefined the size as, it may recieve more than 4096 bytes
 	
-			int rc = UDP_Read(sd, &s, buffer, MSG_SIZE);
+			int rc = UDP_Read(sd, &s, buffer, MSG_BUFFER_SIZE);
 			
 			if (rc > 0) 
 			{
-	    	printf("                                \nSERVER:: Read %d bytes (message: '%s')\n", rc, buffer);
+	    	printf("                            	SERVER:: Read %d bytes (message: '%s')\n", rc, buffer);
 	 
 				int ret_func = parse_msg(buffer);   //Parse the message
 				
 				//Common paramters across all routines
-				int pinum, inum, type, block;
+				int pinum, inum, type, block, entries;
 				char name[NAME_SIZE];
-				char write_buf[BUFFER_SIZE];
-				int res_c, ret;
+				char rw_buf[MFS_BLOCK_SIZE];
+				char buf[MSG_BUFFER_SIZE];
+				int res_t, ret;  //res_t- return status of server side routines
+				S_Stat_t m;
 
 				switch(ret_func)
 				{
 					case 1:
 						ret = Lookup_parse(buffer, &pinum, &name);
+						if (!ret)
+							res_t = S_Lookup(pinum, name);
+						else
+							res_t = -1;
+						
+						//MSG Format: Function_id, Success_state(-1 or inum)
+						memset(buf, 0, MSG_BUFFER_SIZE);
+						snprintf(buf, 2*sizeof(int) , "%d%d", ret_func, res_t);
+						send_resp(sd, &s, buf);
 						break;
 					case 2:
 						ret = Stat_parse(buffer, &inum);
+						if(!ret)
+							res_t = S_Stat(inum, &m);
+						else
+							res_t = -1;
+						
+						//MSG Format: Function_id, Success_State, File_type, File_size
+						memset(buf, 0, MSG_BUFFER_SIZE);
+						snprintf(buf, 4*sizeof(int) , "%d%d%d%04d", ret_func, res_t, m.type, m.size);
+						send_resp(sd, &s, buf);
 						break;
 					case 3:
-						ret = Write_parse(buffer, &inum, &write_buf, &block);
+						ret = Write_parse(buffer, &inum, &rw_buf, &block);
+						if(!ret)
+							res_t = S_Write(inum, rw_buf, block);
+						else
+							res_t = -1;
+
+						//MSG Format: Function_id, Success_state
+						memset(buf, 0, MSG_BUFFER_SIZE);
+						snprintf(buf, 2*sizeof(int) , "%d%d", ret_func, res_t);
+						send_resp(sd, &s, buf);
 						break;
 					case 4:
 						ret = Read_parse(buffer, &inum, &block);
+						if(!ret)
+							res_t = S_Read(inum, &rw_buf, block, &type, &entries);
+						else
+							res_t = -1;
+						
+						//MSG Format: Function_id, Success_state, File_type, Num_of_entries, 4K buffer bytes read
+						memset(buf, 0, MSG_BUFFER_SIZE);
+						snprintf(buf, 4*sizeof(int) , "%d%d%d%02d", ret_func, res_t, type, entries);
+						strcat(buf, rw_buf);
+						send_resp(sd, &s, buf);
 						break;
 					case 5:
 						ret = Creat_parse(buffer, &pinum, &type, &name);
+						if(!ret)
+							res_t = S_Creat(pinum, type, name);
+						else
+							res_t = -1;
+						
+						//MSG Format: Function_id, Success_state
+						memset(buf, 0, MSG_BUFFER_SIZE);
+						snprintf(buf, 2*sizeof(int) , "%d%d", ret_func, res_t);
+						send_resp(sd, &s, buf);
 						break;
 					case 6:
 						ret = Unlink_parse(buffer, &pinum, &name);
@@ -130,14 +179,6 @@ main(int argc, char *argv[])
 						ret = -1;
 						break;
 				}
-				
-				if(ret < 0)
-				{
-					printf("Parse or Response Error: Exiting\n");
-					exit(1);
-				}
-				else if(res_c < 0)
-					printf("Response Sending Failed: Resend\n");
 				
 			}														//rc > 0 loop
 
