@@ -55,7 +55,6 @@ int create_img(char* file_path)
 	for (i = 1; i < IMAP_SIZE; i++)
 		imap_0.inode_p[i] = 0;
 
-
 	cur_offset +=  sizeof(inode_t); 
 	//Update the CR
 	CR_t cr;
@@ -266,13 +265,6 @@ int S_Lookup(int pinum, char* name)
 	for(it = 0; it < MAX_DIRECT_P; it++)
 	{
 		db_addr = parent_inode.dp[it];  //Need to check if the db_addr is valid
-/*
-		if(db_addr == 0)
-		{
-			printf("Error: Invalid Data block, Filename looking doesn't exist Inode_p[%d]\n", it); //Done searching through all existing data block's entries - No point in searching further
-			return -1;
-		}
-*/
 
 		//Read the data block #it
 		ret = db_read(db_addr, &DB_Iter);
@@ -284,7 +276,7 @@ int S_Lookup(int pinum, char* name)
 		for(entrynum = 0; entrynum < MAX_DIR_ENTRIES; entrynum++)
 		{
 			DirEnt_t temp_entry = DB_Iter.entry[entrynum];
-			if(strcmp(temp_entry.name, name) ==0)
+			if((strcmp(temp_entry.name, name) == 0) && (temp_entry.inum != -1))
 			{
 				found = 1;
 				found_inum = temp_entry.inum;
@@ -332,7 +324,7 @@ int S_Stat(int inum, S_Stat_t* m){
 	return 0;
 }
 
-//Server Side MFS_Write   //TODO: Update the file's size if new DB is installed , or retain if old DB is updated ??? -- Checking at line 372
+//Server Side MFS_Write   //TODO: Update the file's size if new DB is installed , or retain if old DB is updated ??? -- Checking at line 365
 int S_Write(int inum, char *buffer, int block)
 {
 	CR_t CR;
@@ -369,15 +361,13 @@ int S_Write(int inum, char *buffer, int block)
 		perror("write");
 
 	//Update old inode and write it to new location
+	//Also update the file's size if new DB is installed , or retain if old DB is updated ???
 	inode_new = inode_old;
 	if(inode_new.dp[block] == 0)
 		inode_new.size += sizeof(MFS_BLOCK_SIZE);
 
 	inode_new.dp[block] = cur_addr;					//Update the dp
 	
-	//Also update the file's size if new DB is installed , or retain if old DB is updated ???
-
-
 	cur_addr += sizeof(Dir_t);
 
 	//lseek(disk_fd, cur_addr, SEEK_SET);
@@ -497,12 +487,6 @@ int S_Creat(int pinum, int type, char *name)
 	CR_t CR;
 	imap_t parent_imap;
 	inode_t parent_inode;
-	int found = 0;
-
-	int pimap_num = (int) (pinum / IMAP_SIZE);
-	int pimap_off = pinum % IMAP_SIZE;
-
-	uint db_addr, pdb_addr;
 
 	//Checks
 	if(pinum >= MAX_INODES)
@@ -516,17 +500,106 @@ int S_Creat(int pinum, int type, char *name)
 		return -1;
 	}
 
-	//Checks
+	//Error Checks
 	//Parent Inode must be a directory
 	if(parent_inode.type != MFS_DIRECTORY)
 		return -1;
 
 	//The name too long category will already be checked in parse function and -1 will be returned there
-	//Check if the name already exists, if yes return 0;
+
+  //Check if there are free entries in the parent dir (Among 14 data blocks)	
+	Dir_t DB_par;
+	
+	int iter, entryno;
+	int found_new_db = 0;
+	int found_entry = 0;
+	uint pdb_addr;
+
+	for(iter = 0; iter < MAX_DIRECT_P; iter++)
+	{
+		entryno = 0;
+		pdb_addr = parent_inode.dp[iter];
+	  if(pdb_addr == 0)												//Say you finish 1st DB and all entries there are full, 2nd one is the new one
+		{
+			found_new_db = 1;
+			break;
+		}
+
+		//Read the data block #it
+		ret = db_read(pdb_addr, &DB_par);
+		if(ret < 0)
+			return -1;
+
+		//Read each data entry in the directory data block and see if the file name is there
+		for(entryno = 0; entryno < MAX_DIR_ENTRIES; entryno++)
+		{
+			DirEnt_t t_entry = DB_par.entry[entryno];
+			if(t_entry.inum == -1)
+			{
+				found_entry = 1;
+				break;
+			}
+		}
+		if(found_entry)
+			break;
+	}
+
+	if(found_new_db || found_entry)
+#ifdef DEBUG
+	printf("Free dir entry found in DB %d and free entry: %d\n", iter, entryno);
+#endif
+	else
+		return -1;   					// No free entry found
+	
+
+	// Once a free entry is found, check for a free inode in all imaps [Check for all 4096 inodes]
+	int imap_ptr, ip;
+	int inode_found = 0;
+	int new_imap_found = 0;
+	uint imap_addr;
+	imap_t imap_iter; 
+
+	for(imap_ptr = 0; imap_ptr < MAX_IMAPS; imap_ptr++)
+	{
+		ip = 0;
+		imap_addr = CR.imap_p[imap_ptr];
+		if(imap_addr == 0)									//If its a new imap, then the inode will be the first one
+		{
+			new_imap_found = 1;
+			break;
+		}
+			
+		ret = get_imap(imap_addr, &imap_iter);
+		if(ret < 0)
+			return -1;
+
+		for(ip = 0; ip < IMAP_SIZE; ip++)   // traverse through all 16 entries
+		{
+			if(imap_iter.inode_p[ip] == 0)
+			{	
+				inode_found = 1;
+				break;
+			}
+		}
+		if(inode_found)
+			break;
+	}
+
+	if(inode_found || new_imap_found)
+#ifdef DEBUG
+	printf("Choose inode number %d in imap %d for new file/dir\n", ip, imap_ptr);
+#endif
+	else
+		return -1; 						//All 4096 are occupied
+
+
+	// Once above 2 checks are done, Check if the name already exists, if yes return 0;
 	//Go through all the 14 data blocks of inode to check for the file name
 	Dir_t DB_Iter;
 	
 	int it;
+	int found = 0;
+	uint db_addr;
 	for(it = 0; it < MAX_DIRECT_P; it++)
 	{
 		db_addr = parent_inode.dp[it];
@@ -541,7 +614,7 @@ int S_Creat(int pinum, int type, char *name)
 		for(entrynum = 0; entrynum < MAX_DIR_ENTRIES; entrynum++)
 		{
 			DirEnt_t temp_entry = DB_Iter.entry[entrynum];
-			if(strcmp(temp_entry.name, name) ==0)
+			if((strcmp(temp_entry.name, name) == 0) && (temp_entry.inum != -1))
 			{
 				found = 1;
 			}
@@ -551,53 +624,123 @@ int S_Creat(int pinum, int type, char *name)
 	if(found)
 	{
 #ifdef DEBUG
-		printf("Filename already exists - Creat exiting\n");
+		printf("Filename %s already exists - Creat exiting\n", name);
 #endif
 		return 0;
 	}
 
-	//Here on a new file is created
-	//Find the first free entry with -1 among all data blocks of parent inode	
-	Dir_t DB_p;
-	
-	int iter;
-	int valid_entry = 0;
-	int found_iter = 0;
 
-	for(iter = 0; iter < MAX_DIRECT_P; iter++)
+	//Get the current log of the file
+	uint cur_addr = CR.log_end;
+	int bw = 0;
+
+	//ALL CHECKS DONE - We have free entry in a dir DB
+	//We have a free inode in an imap
+	inode_t new_inode;	
+	Dir_t new_dir;
+	int dp_iter;
+
+	if(type == MFS_REGULAR_FILE)	
 	{
-		int entryno = 0;
-		pdb_addr = parent_inode.dp[iter];
-	  if(pdb_addr == 0)										//Say you finish 1st DB and all entries there are full, 2nd one is the new one
-		{
-			found_iter = 1;
-		}
+		new_inode.type = type;
+		new_inode.size = 0;
+		
+		for(dp_iter = 0; dp_iter < MAX_DIRECT_P; dp_iter++)		//initialise all the data pointers to 0
+			new_inode.dp[dp_iter] = 0;
 
-		//Read the data block #it
-		ret = db_read(pdb_addr, &DB_p);
-		if(ret < 0)
-			return -1;
+		//Write the inode
+		lseek(disk_fd, cur_addr, SEEK_SET);
+		ret = write(disk_fd, &new_inode, sizeof(inode_t));
+	  if(bw != sizeof(inode_t))
+			perror("write");
 
-		//Read each data entry in the directory data block and see if the file name is there
-		for(entryno = 0; entryno < MAX_DIR_ENTRIES; entryno++)
-		{
-			DirEnt_t t_entry = DB_p.entry[entryno];
-			if(t_entry.inum == -1)
-			{
-				found = 1;
-				break;
-			}
-			valid_entry++;			
-		}
-		if(found)
-			break;
+#ifdef DEBUG
+		printf("Inode of a file written to disk\n");
+#endif
+
+	}
+	else if(type == MFS_DIRECTORY)
+	{
+	
+		const char* cur_dir = ".";
+		const char* par_dir = "..";
+	
+		strcpy(new_dir.entry[0].name, cur_dir);
+		new_dir.entry[0].inum = ip;										//Cur inode num -- newly found
+		strcpy(new_dir.entry[1].name, par_dir);
+		new_dir.entry[1].inum = pinum;									// Parent inode num
+	
+		//Remaining of the new dir db entries inum should be initialised to -1
+		int i;
+		for(i = 2; i < MAX_DIR_ENTRIES; i++)
+			new_dir.entry[i].inum = -1;
+
+		//Write the Dir DB
+		lseek(disk_fd, cur_addr, SEEK_SET);
+		ret = write(disk_fd, &new_dir, sizeof(Dir_t));
+	  if(bw != sizeof(Dir_t))
+			perror("write");
+
+		new_inode.type = type;
+		new_inode.size = MFS_BLOCK_SIZE;
+	
+		new_inode.dp[0] = cur_addr;	
+
+		for(dp_iter = 1; dp_iter < MAX_DIRECT_P; dp_iter++)		//initialise all the data pointers to 0
+			new_inode.dp[dp_iter] = 0;
+
+		bw = write(disk_fd, &new_inode, sizeof(inode_t));
+		if(bw != sizeof(inode_t))
+			perror("error");
+				
+		cur_addr += sizeof(Dir_t);
+
+#ifdef DEBUG
+		printf("Inode of a Directory written to disk\n");
+#endif
+
 	}
 
-	if(found_iter)
-		printf("First free entry- dp: %d\n", iter);
 
-printf("First free entry- dp: %d, Entry: %d\n", iter, valid_entry + 1);
+	//Update the imap to include the pointer to new inode
+	//If its a new imap need to update, first entry is the inode	
+	imap_t new_imap;
+	
+	//Still the old imap
+	if(inode_found)
+		new_imap = imap_iter;
+
+	new_imap.inode_p[ip] = cur_addr;
+
+	//Initialise remaining inode ptrs in the new imap to 0
+	int i;
+	if(new_imap_found)
+	{
+		for (i = 1; i < IMAP_SIZE; i++)
+		new_imap.inode_p[i] = 0;
+	}
+
+	bw = write(disk_fd, &new_imap, sizeof(imap_t));
+	if(bw != sizeof(imap_t))
+		perror("write");
+
+	cur_addr += sizeof(inode_t);
+
+	//Update the CR 
+	CR.imap_p[imap_ptr] = cur_addr;
+
+	cur_addr += sizeof(imap_t);
+
+	//Update the parent data structures
 
 
+
+	return 0;
+}
+
+//Server Side MFS_Unlink
+int S_Unlink(int pinum, char* name)
+{
+	printf("Pinum: %d, name: %s\n", pinum, name);
 	return 0;
 }

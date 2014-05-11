@@ -66,7 +66,7 @@ int MFS_Lookup(int pinum, char* name)
 	
 	//Provide the number of bytes to read for the name
 	int len = strlen(name);
-	snprintf(com_t.message, 3*sizeof(int), "%d%d%04d", 1, pinum, len); //Function 1 --LOOKUP
+	snprintf(com_t.message, 3*sizeof(int), "%d%04d%04d", 1, pinum, len); //Function 1 --LOOKUP
 	strcat(com_t.message, name);
 
 #ifdef DEBUG
@@ -88,13 +88,19 @@ int MFS_Lookup(int pinum, char* name)
 #endif
 	
 	//Parse the response and return
-	char buf[1];
-	strncpy(buf, com_t.buffer, 1);
-	if (atoi(buf) != 1)
-		printf("Something went horribly wrong\n");
+	char buf;
+	char *pend;
+	char bytes[4];
 
-	strncpy(buf, com_t.buffer+sizeof(char), 1);
-	int inum = atoi(buf);
+	strncpy(&buf, com_t.buffer, 1);
+	int func_id = atoi(&buf);
+
+	if (func_id != 1)
+		printf("Something went horribly wrong :%d\n", func_id);
+
+	//Return status or inum
+	strcpy(bytes, com_t.buffer+sizeof(char));
+	int inum = strtol(bytes, &pend, 10);
 
 #ifdef DEBUG
 	printf("----MFS_Lookup- pinum: %d, name: %s == inum: %d\n", pinum, name, inum);
@@ -108,7 +114,7 @@ int MFS_Stat(int inum, MFS_Stat_t* m)
 {
 	memset(com_t.message, 0, MSG_BUFFER_SIZE); //Clear the send buffer
 	
-	snprintf(com_t.message, 2*sizeof(int), "%d%d", 2, inum); //Function 2 -- MFS_Stat
+	snprintf(com_t.message, 2*sizeof(int), "%d%04d", 2, inum); //Function 2 -- MFS_Stat
 
 #ifdef DEBUG
 	printf("\n----MFS_Stat Sent message: %s\n", com_t.message);
@@ -129,27 +135,29 @@ int MFS_Stat(int inum, MFS_Stat_t* m)
 #endif 
 
 	//Parse the response and return
-	char buf;
-	char *pend;
+	char buf1;
+	char *pend1;
 	char bytes[4];
 
-	//Func_id
-	strncpy(&buf, com_t.buffer, 1);
-	int func_id = strtol(&buf, &pend, 10);
+	strncpy(&buf1, com_t.buffer, 1);
+	int func_id = atoi(&buf1);
+
 	if (func_id != 2)
-		printf("Something went horribly wrong\n");
+		printf("Something went horribly wrong :%d\n", func_id);
 
-	//Status
-	strncpy(&buf, com_t.buffer+sizeof(char), 1);
-	int status = atoi(&buf);
+	//Parse the success state
+	char buf2;
+	strncpy(&buf2, com_t.buffer+sizeof(char), 1);
+	int status = atoi(&buf2);
 
-	//Type
-	strncpy(&buf, com_t.buffer+(2*sizeof(char)), 1);
-	m->type = atoi(&buf);
+	//File type
+	char buf3;
+	strncpy(&buf3, com_t.buffer+(2*sizeof(char)), 1);
+	m->type = atoi(&buf3);
 
-	//Type
+	//Size
 	strcpy(bytes, com_t.buffer+(3*sizeof(char)));
-	m->size = atoi(bytes);
+	m->size = strtol(bytes, &pend1, 10);
 
 #ifdef DEBUG
 	printf("----MFS_Stat - inum: %d == Type: %d, Size: %d\n", status, m->type, m->size);
@@ -166,10 +174,15 @@ int MFS_Write(int inum, char* buffer, int block)
 	int len = strlen(buffer);
 
 	//Packing the block first before the write content
-	snprintf(com_t.message, 4*sizeof(int), "%d%d%04d%d", 3, inum, len, block); //Function 3 -- MFS_Write
-	strcat(com_t.message, buffer);
+	snprintf(com_t.message, 4*sizeof(int), "%d%04d%04d%02d", 3, inum, len, block); //Function 3 -- MFS_Write
+	//strcat(com_t.message, buffer);
+	
+	strncpy(com_t.message+(11*sizeof(char)), buffer, 4096);
+
 
 #ifdef DEBUG
+	printf("\n-----MFS_Write char %c\n", com_t.message[12]);
+	printf("\n-----MFS_Write char %c\n", com_t.message[17]);
 	printf("\n----MFS_Write Sent message: %s\n", com_t.message);
 #endif
 	
@@ -186,8 +199,25 @@ int MFS_Write(int inum, char* buffer, int block)
 #ifdef DEBUG
 	printf("----MFS_Write Recieved message: %s\n", com_t.buffer);
 #endif 
+
+	//Parse the response
+	char buf1;
+	strncpy(&buf1, com_t.buffer, 1);
+	int func_id = atoi(&buf1);
+
+	if (func_id != 3)
+		printf("Something went horribly wrong: %d\n", func_id);
+
+	//Parse the success state
+	char buf2[1];
+	strcpy(buf2, com_t.buffer+sizeof(char));
+	int status = atoi(buf2);
+
+#ifdef DEBUG
+	printf("----MFS_Write - inum: %d, Write: %s, Block_offset: %d  == Status: %d\n", inum, buffer, block, status);
+#endif
 	
-	return 0;
+	return status;
 }
 
 //Function 4 Send Format: Function_num,block
@@ -195,7 +225,7 @@ int MFS_Read(int inum, char* buffer, int block)
 {
 	memset(com_t.message, 0, MSG_BUFFER_SIZE); //Clear the send buffer
 
-	snprintf(com_t.message, 3*sizeof(int), "%d%d%d", 4, inum, block); //Function 4 -- MFS_Read
+	snprintf(com_t.message, 3*sizeof(int), "%d%04d%02d", 4, inum, block); //Function 4 -- MFS_Read
 
 #ifdef DEBUG
 	printf("\n----MFS_Read Sent message: %s\n", com_t.message);
@@ -215,7 +245,39 @@ int MFS_Read(int inum, char* buffer, int block)
 	printf("----MFS_Read Recieved message: %s\n", com_t.buffer);
 #endif
 
-	return 0;
+	//Parse the response - if Dir fill the entires in MFS_DireEnt_t, if file directly return
+	char buf1;
+	strncpy(&buf1, com_t.buffer, 1);
+	int func_id = atoi(&buf1);
+
+	if (func_id != 4)
+		printf("Something went horribly wrong: %d\n", func_id);
+
+	//Parse the success state
+	char buf2;
+	strncpy(&buf2, com_t.buffer+sizeof(char), 1);
+	int status = buf2 - '0';
+
+	//Parse the file type
+	char buf3;
+	strncpy(&buf3, com_t.buffer+(2*sizeof(char)), 1);
+	int type = buf3 - '0';
+	
+	//Parse the entries
+	char ent[2];	
+	char* pend2;
+	strncpy(ent, com_t.buffer+(3*sizeof(char)), 2);
+	int entries = strtol(ent, &pend2, 10);
+
+	char bytes[MFS_BLOCK_SIZE];
+	strncpy(bytes, com_t.buffer+(5*sizeof(char)), MFS_BLOCK_SIZE);
+	strcpy(buffer, bytes);
+
+#ifdef DEBUG
+	printf("----MFS_Read- inum: %d, Block_offset: %d == Status: %d, Type: %d, Entries: %d, Read Buffer: %s\n", inum, block, status, type, entries, buffer);
+#endif
+
+	return status;
 }
 
 //Function 5 Send Format: Function_num,pinum,type,No_of_char_bytes,char_bytes
@@ -225,7 +287,7 @@ int MFS_Creat(int pinum, int type, char* name)
 
 	int len = strlen(name);
 
-	snprintf(com_t.message, 4*sizeof(int), "%d%d%d%04d", 5, pinum, type, len); //Function 5 -- MFS_Creat
+	snprintf(com_t.message, 4*sizeof(int), "%d%04d%d%04d", 5, pinum, type, len); //Function 5 -- MFS_Creat
 	strcat(com_t.message, name);
 
 #ifdef DEBUG
@@ -246,7 +308,24 @@ int MFS_Creat(int pinum, int type, char* name)
 	printf("----MFS_Creat Recieved message: %s\n", com_t.buffer);
 #endif
 	
-	return 0;
+	//Parse the response
+	char buf1;
+	strncpy(&buf1, com_t.buffer, 1);
+	int func_id = atoi(&buf1);
+
+	if (func_id != 5)
+		printf("Something went horribly wrong: %d\n", func_id);
+
+	//Parse the success state
+	char buf2[1];
+	strcpy(buf2, com_t.buffer+sizeof(char));
+	int status = atoi(buf2);
+
+#ifdef DEBUG
+	printf("----MFS_Creat- pinum: %d, type: %d, name: %s == Status: %d\n", pinum, type, name, status);
+#endif
+
+	return status;
 }
 
 //Function 6 Send Format: Function_num,pinum,No_of_char_bytes,char_bytes
@@ -256,7 +335,7 @@ int MFS_Unlink(int pinum, char* name)
 
 	int len = strlen(name);
 
-	snprintf(com_t.message, 3*sizeof(int), "%d%d%04d", 6, pinum, len); //Function 6 -- MFS_Unlink
+	snprintf(com_t.message, 3*sizeof(int), "%d%04d%04d", 6, pinum, len); //Function 6 -- MFS_Unlink
 	strcat(com_t.message, name);
 
 #ifdef DEBUG
@@ -266,9 +345,34 @@ int MFS_Unlink(int pinum, char* name)
 	if(send_msg() < 0)
 		return -1;
 
-	//Once you recieve the response, status is returned
+	if(recv_msg() < 0)
+	{
+		printf("					CLIENT:: Message was not recieved\n");
+		return -1;
+	}
+
+#ifdef DEBUG
+	printf("----MFS_Unlink Recieved message: %s\n", com_t.buffer);
+#endif	
 	
-	return 0;
+	//Parse the response
+	char buf1;
+	strncpy(&buf1, com_t.buffer, 1);
+	int func_id = atoi(&buf1);
+
+	if (func_id != 6)
+		printf("Something went horribly wrong: %d\n", func_id);
+
+	//Parse the success state
+	char buf2[1];
+	strcpy(buf2, com_t.buffer+sizeof(char));
+	int status = atoi(buf2);
+
+#ifdef DEBUG
+	printf("----MFS_Unlink- pinum: %d, name: %s == Status: %d\n", pinum, name, status);
+#endif
+
+	return status;
 }
 
 //Function 7 Send Format: Function_num,pinum
@@ -292,35 +396,22 @@ int MFS_Shutdown()
 		return -1;
 	}
 
-	//Parse the response and return
-	char buf;
-	char *pend1;
-
-	strncpy(&buf, com_t.buffer, 1);
-	int func_id = strtol(&buf, &pend1, 10);
-
-	if (func_id != 7)
-		printf("Something went horribly wrong: %d\n", atoi(&buf));
-	
-	
-/*	
-	char buf1, buf2;
-	char *pend1 *pend2;
-
+	//Parse the response
+	char buf1;
 	strncpy(&buf1, com_t.buffer, 1);
-	int func_id = strtol(&buf1, &pend1, 10);
+	int func_id = atoi(&buf1);
+
 	if (func_id != 7)
-		printf("Something went horribly wrong\n");
+		printf("Something went horribly wrong: %d\n", func_id);
 
-	strncpy(&buf2, com_t.buffer+sizeof(char), 1);
-	int status = atoi(&buf2);
-*/
-
-	int status = 0;
+	//Parse the success state
+	char buf2[1];
+	strcpy(buf2, com_t.buffer+sizeof(char));
+	int status = atoi(buf2);
 
 #ifdef DEBUG
 	printf("----MFS_Shutdown Called - Exiting (%d)\n", status);
 #endif
 
- return status;
+ return 0;
 }

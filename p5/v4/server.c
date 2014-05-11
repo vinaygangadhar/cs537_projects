@@ -15,6 +15,7 @@ int send_resp(int sd, struct sockaddr_in* s, char* response)
 
 #ifdef DEBUG
 	printf("				SERVER:: sending %d bytes (message: '%s')\n", rc, response);
+	printf("\n");
 #endif
 
 	return rc;
@@ -79,7 +80,8 @@ main(int argc, char *argv[])
 #endif
 
 		printf("                                SERVER:: waiting in loop\n");
-		
+		printf("\n");
+
     while (1) 
 		{
 			struct sockaddr_in s;
@@ -112,7 +114,7 @@ main(int argc, char *argv[])
 						
 						//MSG Format: Function_id, Success_state(-1 or inum)
 						memset(buf, 0, MSG_BUFFER_SIZE);
-						snprintf(buf, 2*sizeof(int) , "%d%d", ret_func, res_t);
+						snprintf(buf, 2*sizeof(int) , "%d%04d", ret_func, res_t);
 						send_resp(sd, &s, buf);
 						break;
 					case 2:
@@ -166,6 +168,15 @@ main(int argc, char *argv[])
 						break;
 					case 6:
 						ret = Unlink_parse(buffer, &pinum, &name);
+						if(!ret)
+							res_t = S_Unlink(pinum, name);
+						else
+							res_t = -1;
+						
+						//MSG Format: Function_id, Success_state
+						memset(buf, 0, MSG_BUFFER_SIZE);
+						snprintf(buf, 2*sizeof(int) , "%d%d", ret_func, res_t);
+						send_resp(sd, &s, buf);
 						break;
 					case 7:
 #ifdef DEBUG
