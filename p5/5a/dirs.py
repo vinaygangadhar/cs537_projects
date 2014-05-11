@@ -103,6 +103,8 @@ class UnlinkTest(MfsTest):
 
       self.creat(ROOT, MFS_REGULAR_FILE, "test")
       inum = self.lookup(ROOT, "test")
+      if inum == -1:
+         raise Failure("MFS_Lookup should succeed on a created file")
 
       self.unlink(ROOT, "test")
       inum = self.libmfs.MFS_Lookup(ROOT, "test")
@@ -125,6 +127,8 @@ class Unlink2Test(MfsTest):
 
       self.creat(ROOT, MFS_DIRECTORY, "test")
       inum = self.lookup(ROOT, "test")
+      if inum == -1:
+         raise Failure("MFS_Lookup should succeed on a created file")
 
       self.unlink(ROOT, "test")
       inum = self.libmfs.MFS_Lookup(ROOT, "test")
@@ -173,7 +177,7 @@ class NameTest(MfsTest):
       self.start_server()
       self.mfs_init("localhost", self.port)
 
-      toolong = "A" * 60
+      toolong = "A" * 61
       r = self.libmfs.MFS_Creat(ROOT, MFS_REGULAR_FILE, toolong)
       if r != -1:
          raise Failure("Name argument too long did not result in failure")

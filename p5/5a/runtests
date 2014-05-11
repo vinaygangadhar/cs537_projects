@@ -1,4 +1,4 @@
 #!/bin/bash
-base=/afs/cs.wisc.edu/u/a/n/anilkuma/cs537_projects/p5/5a
+base=/afs/cs.wisc.edu/u/b/d/bdavis/public/cs537/tests/5a
 python $base/project5a.py --test-path $base $@ | tee -i runtests.log
 exit $?

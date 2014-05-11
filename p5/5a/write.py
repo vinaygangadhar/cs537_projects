@@ -17,7 +17,7 @@ class WriteTest(MfsTest):
       inum = self.lookup(0, "test")
 
       buf1 = gen_block(1)
-      self.write(inum, buf1, 0)
+			self.write(inum, buf1, 0)
 
       buf2 = BlockBuffer()
       self.read(inum, buf2, 0)
